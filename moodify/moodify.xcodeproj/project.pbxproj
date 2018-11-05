@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2315F171C3A72704CEEA52FF /* Pods_moodifyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F507D08B70C17EA65A890297 /* Pods_moodifyTests.framework */; };
+		5B27FD42E8C44EE9F251E8C4 /* Pods_moodify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F915251430401FD86654B59E /* Pods_moodify.framework */; };
+		E0BC795E35C1D8FFD2444B8B /* Pods_moodifyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F90C3E3CA672039066E78B /* Pods_moodifyUITests.framework */; };
 		E546690C218FE7420016D466 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E546690B218FE7420016D466 /* AppDelegate.swift */; };
 		E546690E218FE7420016D466 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E546690D218FE7420016D466 /* ViewController.swift */; };
 		E5466911218FE7420016D466 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E546690F218FE7420016D466 /* Main.storyboard */; };
@@ -15,6 +18,9 @@
 		E5466919218FE7440016D466 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5466917218FE7440016D466 /* LaunchScreen.storyboard */; };
 		E5466924218FE7440016D466 /* moodifyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5466923218FE7440016D466 /* moodifyTests.swift */; };
 		E546692F218FE7440016D466 /* moodifyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E546692E218FE7440016D466 /* moodifyUITests.swift */; };
+		E546693D218FED2E0016D466 /* GoogleService-Info (2).plist in Resources */ = {isa = PBXBuildFile; fileRef = E546693C218FED2E0016D466 /* GoogleService-Info (2).plist */; };
+		E546693E218FED2E0016D466 /* GoogleService-Info (2).plist in Resources */ = {isa = PBXBuildFile; fileRef = E546693C218FED2E0016D466 /* GoogleService-Info (2).plist */; };
+		E546693F218FED2E0016D466 /* GoogleService-Info (2).plist in Resources */ = {isa = PBXBuildFile; fileRef = E546693C218FED2E0016D466 /* GoogleService-Info (2).plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +41,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0427289D88F8424F90E2F219 /* Pods-moodifyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moodifyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-moodifyTests/Pods-moodifyTests.release.xcconfig"; sourceTree = "<group>"; };
+		34C5A717E56117714F6DDAAB /* Pods-moodify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moodify.release.xcconfig"; path = "Pods/Target Support Files/Pods-moodify/Pods-moodify.release.xcconfig"; sourceTree = "<group>"; };
+		5D9C0BA1893508DE190179E9 /* Pods-moodifyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moodifyTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-moodifyTests/Pods-moodifyTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A5ED18B41198F8D47C50E130 /* Pods-moodifyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moodifyUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-moodifyUITests/Pods-moodifyUITests.release.xcconfig"; sourceTree = "<group>"; };
+		A7826491D688FF9329B564D3 /* Pods-moodifyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moodifyUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-moodifyUITests/Pods-moodifyUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		CE9D61E19FF1AE24E74580A9 /* Pods-moodify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moodify.debug.xcconfig"; path = "Pods/Target Support Files/Pods-moodify/Pods-moodify.debug.xcconfig"; sourceTree = "<group>"; };
 		E5466908218FE7420016D466 /* moodify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = moodify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E546690B218FE7420016D466 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E546690D218FE7420016D466 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +61,10 @@
 		E546692A218FE7440016D466 /* moodifyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = moodifyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E546692E218FE7440016D466 /* moodifyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moodifyUITests.swift; sourceTree = "<group>"; };
 		E5466930218FE7440016D466 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E546693C218FED2E0016D466 /* GoogleService-Info (2).plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info (2).plist"; path = "../../../../../Downloads/GoogleService-Info (2).plist"; sourceTree = "<group>"; };
+		F2F90C3E3CA672039066E78B /* Pods_moodifyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_moodifyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F507D08B70C17EA65A890297 /* Pods_moodifyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_moodifyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F915251430401FD86654B59E /* Pods_moodify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_moodify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B27FD42E8C44EE9F251E8C4 /* Pods_moodify.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2315F171C3A72704CEEA52FF /* Pods_moodifyTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +88,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0BC795E35C1D8FFD2444B8B /* Pods_moodifyUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8F2EEEA6B77868FADA79C83F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CE9D61E19FF1AE24E74580A9 /* Pods-moodify.debug.xcconfig */,
+				34C5A717E56117714F6DDAAB /* Pods-moodify.release.xcconfig */,
+				5D9C0BA1893508DE190179E9 /* Pods-moodifyTests.debug.xcconfig */,
+				0427289D88F8424F90E2F219 /* Pods-moodifyTests.release.xcconfig */,
+				A7826491D688FF9329B564D3 /* Pods-moodifyUITests.debug.xcconfig */,
+				A5ED18B41198F8D47C50E130 /* Pods-moodifyUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D3A6793AC1DA90C5A1F5FDD2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F915251430401FD86654B59E /* Pods_moodify.framework */,
+				F507D08B70C17EA65A890297 /* Pods_moodifyTests.framework */,
+				F2F90C3E3CA672039066E78B /* Pods_moodifyUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E54668FF218FE7420016D466 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +125,8 @@
 				E5466922218FE7440016D466 /* moodifyTests */,
 				E546692D218FE7440016D466 /* moodifyUITests */,
 				E5466909218FE7420016D466 /* Products */,
+				8F2EEEA6B77868FADA79C83F /* Pods */,
+				D3A6793AC1DA90C5A1F5FDD2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,6 +150,7 @@
 				E5466917218FE7440016D466 /* LaunchScreen.storyboard */,
 				E546691A218FE7440016D466 /* Info.plist */,
 				E5466912218FE7420016D466 /* moodify.xcdatamodeld */,
+				E546693C218FED2E0016D466 /* GoogleService-Info (2).plist */,
 			);
 			path = moodify;
 			sourceTree = "<group>";
@@ -135,9 +180,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E5466933218FE7450016D466 /* Build configuration list for PBXNativeTarget "moodify" */;
 			buildPhases = (
+				1217D0BA6F33B818A0AB5736 /* [CP] Check Pods Manifest.lock */,
 				E5466904218FE7420016D466 /* Sources */,
 				E5466905218FE7420016D466 /* Frameworks */,
 				E5466906218FE7420016D466 /* Resources */,
+				B6939FD524839EC598E09D6F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -152,6 +199,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E5466936218FE7450016D466 /* Build configuration list for PBXNativeTarget "moodifyTests" */;
 			buildPhases = (
+				B8567D0E9F5E8C7E43C2BE65 /* [CP] Check Pods Manifest.lock */,
 				E546691B218FE7440016D466 /* Sources */,
 				E546691C218FE7440016D466 /* Frameworks */,
 				E546691D218FE7440016D466 /* Resources */,
@@ -170,6 +218,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E5466939218FE7450016D466 /* Build configuration list for PBXNativeTarget "moodifyUITests" */;
 			buildPhases = (
+				330DFDFD1755BE100988DE47 /* [CP] Check Pods Manifest.lock */,
 				E5466926218FE7440016D466 /* Sources */,
 				E5466927218FE7440016D466 /* Frameworks */,
 				E5466928218FE7440016D466 /* Resources */,
@@ -232,6 +281,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E546693D218FED2E0016D466 /* GoogleService-Info (2).plist in Resources */,
 				E5466919218FE7440016D466 /* LaunchScreen.storyboard in Resources */,
 				E5466916218FE7440016D466 /* Assets.xcassets in Resources */,
 				E5466911218FE7420016D466 /* Main.storyboard in Resources */,
@@ -242,6 +292,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E546693E218FED2E0016D466 /* GoogleService-Info (2).plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,10 +300,104 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E546693F218FED2E0016D466 /* GoogleService-Info (2).plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1217D0BA6F33B818A0AB5736 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-moodify-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		330DFDFD1755BE100988DE47 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-moodifyUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B6939FD524839EC598E09D6F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-moodify/Pods-moodify-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-moodify/Pods-moodify-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B8567D0E9F5E8C7E43C2BE65 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-moodifyTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E5466904218FE7420016D466 /* Sources */ = {
@@ -434,6 +579,7 @@
 		};
 		E5466934218FE7450016D466 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE9D61E19FF1AE24E74580A9 /* Pods-moodify.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -451,6 +597,7 @@
 		};
 		E5466935218FE7450016D466 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 34C5A717E56117714F6DDAAB /* Pods-moodify.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -468,6 +615,7 @@
 		};
 		E5466937218FE7450016D466 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5D9C0BA1893508DE190179E9 /* Pods-moodifyTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -488,6 +636,7 @@
 		};
 		E5466938218FE7450016D466 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0427289D88F8424F90E2F219 /* Pods-moodifyTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -508,6 +657,7 @@
 		};
 		E546693A218FE7450016D466 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A7826491D688FF9329B564D3 /* Pods-moodifyUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -527,6 +677,7 @@
 		};
 		E546693B218FE7450016D466 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A5ED18B41198F8D47C50E130 /* Pods-moodifyUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

@@ -1,0 +1,6 @@
+framework module Pods_moodify {
+  umbrella header "Pods-moodify-umbrella.h"
+
+  export *
+  module * { export * }
+}

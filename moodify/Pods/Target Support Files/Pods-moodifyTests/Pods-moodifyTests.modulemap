@@ -1,0 +1,6 @@
+framework module Pods_moodifyTests {
+  umbrella header "Pods-moodifyTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
