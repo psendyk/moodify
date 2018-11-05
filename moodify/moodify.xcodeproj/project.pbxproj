@@ -18,9 +18,9 @@
 		E5466919218FE7440016D466 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5466917218FE7440016D466 /* LaunchScreen.storyboard */; };
 		E5466924218FE7440016D466 /* moodifyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5466923218FE7440016D466 /* moodifyTests.swift */; };
 		E546692F218FE7440016D466 /* moodifyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E546692E218FE7440016D466 /* moodifyUITests.swift */; };
-		E546693D218FED2E0016D466 /* GoogleService-Info (2).plist in Resources */ = {isa = PBXBuildFile; fileRef = E546693C218FED2E0016D466 /* GoogleService-Info (2).plist */; };
-		E546693E218FED2E0016D466 /* GoogleService-Info (2).plist in Resources */ = {isa = PBXBuildFile; fileRef = E546693C218FED2E0016D466 /* GoogleService-Info (2).plist */; };
-		E546693F218FED2E0016D466 /* GoogleService-Info (2).plist in Resources */ = {isa = PBXBuildFile; fileRef = E546693C218FED2E0016D466 /* GoogleService-Info (2).plist */; };
+		E5BCF758218FF18900868870 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5BCF757218FF18900868870 /* GoogleService-Info.plist */; };
+		E5BCF759218FF18900868870 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5BCF757218FF18900868870 /* GoogleService-Info.plist */; };
+		E5BCF75A218FF18900868870 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5BCF757218FF18900868870 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,7 +61,7 @@
 		E546692A218FE7440016D466 /* moodifyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = moodifyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E546692E218FE7440016D466 /* moodifyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moodifyUITests.swift; sourceTree = "<group>"; };
 		E5466930218FE7440016D466 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E546693C218FED2E0016D466 /* GoogleService-Info (2).plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info (2).plist"; path = "../../../../../Downloads/GoogleService-Info (2).plist"; sourceTree = "<group>"; };
+		E5BCF757218FF18900868870 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		F2F90C3E3CA672039066E78B /* Pods_moodifyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_moodifyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F507D08B70C17EA65A890297 /* Pods_moodifyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_moodifyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F915251430401FD86654B59E /* Pods_moodify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_moodify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,7 +150,7 @@
 				E5466917218FE7440016D466 /* LaunchScreen.storyboard */,
 				E546691A218FE7440016D466 /* Info.plist */,
 				E5466912218FE7420016D466 /* moodify.xcdatamodeld */,
-				E546693C218FED2E0016D466 /* GoogleService-Info (2).plist */,
+				E5BCF757218FF18900868870 /* GoogleService-Info.plist */,
 			);
 			path = moodify;
 			sourceTree = "<group>";
@@ -281,8 +281,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E546693D218FED2E0016D466 /* GoogleService-Info (2).plist in Resources */,
 				E5466919218FE7440016D466 /* LaunchScreen.storyboard in Resources */,
+				E5BCF758218FF18900868870 /* GoogleService-Info.plist in Resources */,
 				E5466916218FE7440016D466 /* Assets.xcassets in Resources */,
 				E5466911218FE7420016D466 /* Main.storyboard in Resources */,
 			);
@@ -292,7 +292,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E546693E218FED2E0016D466 /* GoogleService-Info (2).plist in Resources */,
+				E5BCF759218FF18900868870 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,7 +300,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E546693F218FED2E0016D466 /* GoogleService-Info (2).plist in Resources */,
+				E5BCF75A218FF18900868870 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
