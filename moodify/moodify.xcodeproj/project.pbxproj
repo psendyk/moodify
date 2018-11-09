@@ -21,6 +21,9 @@
 		E5BCF758218FF18900868870 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5BCF757218FF18900868870 /* GoogleService-Info.plist */; };
 		E5BCF759218FF18900868870 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5BCF757218FF18900868870 /* GoogleService-Info.plist */; };
 		E5BCF75A218FF18900868870 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5BCF757218FF18900868870 /* GoogleService-Info.plist */; };
+		E5BCF75C219169B500868870 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5BCF75B219169B500868870 /* SpotifyiOS.framework */; };
+		E5BCF75D219169B500868870 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5BCF75B219169B500868870 /* SpotifyiOS.framework */; };
+		E5BCF75E219169B500868870 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5BCF75B219169B500868870 /* SpotifyiOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +65,8 @@
 		E546692E218FE7440016D466 /* moodifyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moodifyUITests.swift; sourceTree = "<group>"; };
 		E5466930218FE7440016D466 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5BCF757218FF18900868870 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		E5BCF75B219169B500868870 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyiOS.framework; path = "ios-sdk-1.0.0/SpotifyiOS.framework"; sourceTree = "<group>"; };
+		E5BCF75F21916C0D00868870 /* moodify-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "moodify-Bridging-Header.h"; sourceTree = "<group>"; };
 		F2F90C3E3CA672039066E78B /* Pods_moodifyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_moodifyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F507D08B70C17EA65A890297 /* Pods_moodifyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_moodifyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F915251430401FD86654B59E /* Pods_moodify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_moodify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,6 +78,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B27FD42E8C44EE9F251E8C4 /* Pods_moodify.framework in Frameworks */,
+				E5BCF75C219169B500868870 /* SpotifyiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +87,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2315F171C3A72704CEEA52FF /* Pods_moodifyTests.framework in Frameworks */,
+				E5BCF75D219169B500868870 /* SpotifyiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +96,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0BC795E35C1D8FFD2444B8B /* Pods_moodifyUITests.framework in Frameworks */,
+				E5BCF75E219169B500868870 /* SpotifyiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +119,7 @@
 		D3A6793AC1DA90C5A1F5FDD2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E5BCF75B219169B500868870 /* SpotifyiOS.framework */,
 				F915251430401FD86654B59E /* Pods_moodify.framework */,
 				F507D08B70C17EA65A890297 /* Pods_moodifyTests.framework */,
 				F2F90C3E3CA672039066E78B /* Pods_moodifyUITests.framework */,
@@ -121,6 +130,8 @@
 		E54668FF218FE7420016D466 = {
 			isa = PBXGroup;
 			children = (
+				E5BCF75F21916C0D00868870 /* moodify-Bridging-Header.h */,
+				E5BCF757218FF18900868870 /* GoogleService-Info.plist */,
 				E546690A218FE7420016D466 /* moodify */,
 				E5466922218FE7440016D466 /* moodifyTests */,
 				E546692D218FE7440016D466 /* moodifyUITests */,
@@ -150,7 +161,6 @@
 				E5466917218FE7440016D466 /* LaunchScreen.storyboard */,
 				E546691A218FE7440016D466 /* Info.plist */,
 				E5466912218FE7420016D466 /* moodify.xcdatamodeld */,
-				E5BCF757218FF18900868870 /* GoogleService-Info.plist */,
 			);
 			path = moodify;
 			sourceTree = "<group>";
@@ -360,14 +370,24 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-moodify/Pods-moodify-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -496,6 +516,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 3P6LB5DCFW;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -516,8 +537,10 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "moodify-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -557,6 +580,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 3P6LB5DCFW;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -570,8 +594,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OBJC_BRIDGING_HEADER = "moodify-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -583,6 +609,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ios-sdk-1.0.0",
+				);
 				INFOPLIST_FILE = moodify/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -601,6 +631,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ios-sdk-1.0.0",
+				);
 				INFOPLIST_FILE = moodify/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -620,6 +654,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ios-sdk-1.0.0",
+				);
 				INFOPLIST_FILE = moodifyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -641,6 +679,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ios-sdk-1.0.0",
+				);
 				INFOPLIST_FILE = moodifyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -661,6 +703,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ios-sdk-1.0.0",
+				);
 				INFOPLIST_FILE = moodifyUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -681,6 +727,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ios-sdk-1.0.0",
+				);
 				INFOPLIST_FILE = moodifyUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
