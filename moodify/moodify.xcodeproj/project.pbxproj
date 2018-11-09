@@ -11,7 +11,6 @@
 		5B27FD42E8C44EE9F251E8C4 /* Pods_moodify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F915251430401FD86654B59E /* Pods_moodify.framework */; };
 		E0BC795E35C1D8FFD2444B8B /* Pods_moodifyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F90C3E3CA672039066E78B /* Pods_moodifyUITests.framework */; };
 		E546690C218FE7420016D466 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E546690B218FE7420016D466 /* AppDelegate.swift */; };
-		E546690E218FE7420016D466 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E546690D218FE7420016D466 /* ViewController.swift */; };
 		E5466911218FE7420016D466 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E546690F218FE7420016D466 /* Main.storyboard */; };
 		E5466914218FE7420016D466 /* moodify.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E5466912218FE7420016D466 /* moodify.xcdatamodeld */; };
 		E5466916218FE7440016D466 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5466915218FE7440016D466 /* Assets.xcassets */; };
@@ -24,6 +23,12 @@
 		E5BCF75C219169B500868870 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5BCF75B219169B500868870 /* SpotifyiOS.framework */; };
 		E5BCF75D219169B500868870 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5BCF75B219169B500868870 /* SpotifyiOS.framework */; };
 		E5BCF75E219169B500868870 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5BCF75B219169B500868870 /* SpotifyiOS.framework */; };
+		F7A921142193DA2E00B49CAD /* SpeakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A921132193DA2E00B49CAD /* SpeakerViewController.swift */; };
+		F7A921162193DA6300B49CAD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A921152193DA6300B49CAD /* LoginViewController.swift */; };
+		F7A921182193DACC00B49CAD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A921172193DACC00B49CAD /* ProfileViewController.swift */; };
+		F7A9211A2193DAFD00B49CAD /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A921192193DAFD00B49CAD /* FriendViewController.swift */; };
+		F7A9211C2193DB1200B49CAD /* AllPlaylistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A9211B2193DB1200B49CAD /* AllPlaylistsViewController.swift */; };
+		F7A9211E2193DB7800B49CAD /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A9211D2193DB7800B49CAD /* PlaylistViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +57,6 @@
 		CE9D61E19FF1AE24E74580A9 /* Pods-moodify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moodify.debug.xcconfig"; path = "Pods/Target Support Files/Pods-moodify/Pods-moodify.debug.xcconfig"; sourceTree = "<group>"; };
 		E5466908218FE7420016D466 /* moodify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = moodify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E546690B218FE7420016D466 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E546690D218FE7420016D466 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E5466910218FE7420016D466 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E5466913218FE7420016D466 /* moodify.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = moodify.xcdatamodel; sourceTree = "<group>"; };
 		E5466915218FE7440016D466 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -69,6 +73,12 @@
 		E5BCF75F21916C0D00868870 /* moodify-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "moodify-Bridging-Header.h"; sourceTree = "<group>"; };
 		F2F90C3E3CA672039066E78B /* Pods_moodifyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_moodifyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F507D08B70C17EA65A890297 /* Pods_moodifyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_moodifyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7A921132193DA2E00B49CAD /* SpeakerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerViewController.swift; sourceTree = "<group>"; };
+		F7A921152193DA6300B49CAD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F7A921172193DACC00B49CAD /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		F7A921192193DAFD00B49CAD /* FriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
+		F7A9211B2193DB1200B49CAD /* AllPlaylistsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPlaylistsViewController.swift; sourceTree = "<group>"; };
+		F7A9211D2193DB7800B49CAD /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
 		F915251430401FD86654B59E /* Pods_moodify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_moodify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -155,10 +165,15 @@
 			isa = PBXGroup;
 			children = (
 				E546690B218FE7420016D466 /* AppDelegate.swift */,
-				E546690D218FE7420016D466 /* ViewController.swift */,
 				E546690F218FE7420016D466 /* Main.storyboard */,
+				F7A9211B2193DB1200B49CAD /* AllPlaylistsViewController.swift */,
+				F7A9211D2193DB7800B49CAD /* PlaylistViewController.swift */,
+				F7A921192193DAFD00B49CAD /* FriendViewController.swift */,
+				F7A921152193DA6300B49CAD /* LoginViewController.swift */,
 				E5466915218FE7440016D466 /* Assets.xcassets */,
 				E5466917218FE7440016D466 /* LaunchScreen.storyboard */,
+				F7A921172193DACC00B49CAD /* ProfileViewController.swift */,
+				F7A921132193DA2E00B49CAD /* SpeakerViewController.swift */,
 				E546691A218FE7440016D466 /* Info.plist */,
 				E5466912218FE7420016D466 /* moodify.xcdatamodeld */,
 			);
@@ -424,8 +439,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E546690E218FE7420016D466 /* ViewController.swift in Sources */,
+				F7A9211E2193DB7800B49CAD /* PlaylistViewController.swift in Sources */,
+				F7A9211A2193DAFD00B49CAD /* FriendViewController.swift in Sources */,
+				F7A921142193DA2E00B49CAD /* SpeakerViewController.swift in Sources */,
 				E546690C218FE7420016D466 /* AppDelegate.swift in Sources */,
+				F7A9211C2193DB1200B49CAD /* AllPlaylistsViewController.swift in Sources */,
+				F7A921182193DACC00B49CAD /* ProfileViewController.swift in Sources */,
+				F7A921162193DA6300B49CAD /* LoginViewController.swift in Sources */,
 				E5466914218FE7420016D466 /* moodify.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
