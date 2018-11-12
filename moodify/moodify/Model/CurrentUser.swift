@@ -18,27 +18,12 @@ class CurrentUser {
     var profilePicture: UIImage?
     var topArtists: [String]
     var topGenres: [String]
-    var currentMood: String
+    var currentMood: Mood
     
     init() {
         playlists = []
     }
     
-    func createPlaylist(mood: String) {
-        var tracks = []
-        var playlist = Playlist(tracks, id: playlists.count + 1)
-        playlists.append(playlist)
-    }
-    
-    // gets user's top artists and genres
-    func getUserFavorites() {
-        // make request 
-    }
-    
-    // gets recommendations based on artists, genres, and
-    func getRecommendations() {
-        
-    }
 }
 
 class Playlist {
@@ -64,24 +49,6 @@ class Track {
         self.id = id
         self.name = name
         self.artist = artist
-    }
-}
-
-class Mood {
-    
-    var name: String
-    var danceability: Int
-    var energy: Int
-    var instrumentalness: Int
-    var tempo: Int
-    var valence: Int
-    
-    init(name: String, danceability: Int, energy: Int, instrumentalness: Int, tempo: Int, valence: Int) {
-        self.danceability = danceability
-        self.energy = energy
-        self.instrumentalness = instrumentalness
-        self.tempo = tempo
-        self.valence = valence
     }
 }
 
