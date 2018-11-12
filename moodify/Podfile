@@ -7,6 +7,13 @@ target 'moodify' do
 
   # Pods for moodify
   pod 'Firebase/Core'
+  pod 'FirebaseAuth'
+  pod 'FirebaseStorage'
+  pod 'SDWebImage'
+  pod 'MBProgressHUD'
+  pod 'SDWebImage'
+  pod 'FirebaseDatabase'
+  pod 'Alamofire', '~> 4.7'
 
   target 'moodifyTests' do
     inherit! :search_paths
