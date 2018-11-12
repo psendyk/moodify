@@ -14,16 +14,24 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var logInViewController: LoginViewController!
 
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         
+        
         if let logInViewController = window?.rootViewController as? LoginViewController {
+            self.logInViewController = logInViewController
             logInViewController.spotifyController = SpotifyController()
         }
         
+        return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        self.logInViewController.sessionManager.application(app, open: url, options: options)
         return true
     }
 
@@ -31,11 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
         // Disconnect the Spotify App Remote
-        /*
-        if self.appRemote.isConnected {
-            self.appRemote.disconnect()
-        }
-         */
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -110,4 +113,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
-

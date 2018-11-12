@@ -28,6 +28,7 @@ class PlaylistViewController: UIViewController, SPTAppRemoteDelegate, SPTAppRemo
             }
         })
     }
+    
     func appRemote(_ appRemote: SPTAppRemote, didDisconnectWithError error: Error?) {
         print("disconnected")
     }

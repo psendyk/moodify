@@ -19,7 +19,7 @@ class LoginViewController: UIViewController, SPTSessionManagerDelegate {
     }
     
     @IBAction func loginButton(_ sender: Any) {
-        let requestedScopes: SPTScope = [.userReadPrivate]
+        let requestedScopes: SPTScope = [.playlistReadPrivate]
         self.sessionManager.initiateSession(with: requestedScopes, options: .default)
     }
     
@@ -35,8 +35,8 @@ class LoginViewController: UIViewController, SPTSessionManagerDelegate {
     
     // Might have to set up a server later - now running locally
     lazy var sessionManager: SPTSessionManager = {
-        if let tokenSwapURL = URL(string: "https://moodifyy.herokuapp.com/api/token"),
-            let tokenRefreshURL = URL(string: "https://moodifyy.herokuapp.com/api/refresh_token") {
+        if let tokenSwapURL = URL(string: "https://polar-crag-31078.herokuapp.com/swap"),
+            let tokenRefreshURL = URL(string: "https://polar-crag-31078.herokuapp.com/refresh") {
             self.configuration.tokenSwapURL = tokenSwapURL
             self.configuration.tokenRefreshURL = tokenRefreshURL
             self.configuration.playURI = ""
