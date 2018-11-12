@@ -11,7 +11,8 @@ import UIKit
 class PlaylistViewController: UIViewController, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate {
 
     var spotifyController: SpotifyController!
-    
+    var textRecorded: String?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

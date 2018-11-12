@@ -22,8 +22,13 @@ class SpeakerViewController: UIViewController, SFSpeechRecognizerDelegate {
     private let audioEngine = AVAudioEngine()
     
     @IBOutlet var textView: UITextView!
-    
     @IBOutlet var recordButton: UIButton!
+    @IBAction func createPlaylist(_ sender: Any) {
+        performSegue(withIdentifier: "toPlaylist", sender: sender)
+    }
+    @IBAction func toProfile(_ sender: Any) {
+        performSegue(withIdentifier: "toProfile", sender: sender)
+    }
     
     // MARK: UIViewController
     
@@ -150,6 +155,17 @@ class SpeakerViewController: UIViewController, SFSpeechRecognizerDelegate {
             } catch {
                 recordButton.setTitle("Recording Not Available", for: [])
             }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? PlaylistViewController {
+            dest.textRecorded = textView.text
+            
+        } else if let dest = segue.destination as? ProfileViewController {
+            
+        } else if let dest = segue.destination as? FriendViewController {
+            
         }
     }
 }
