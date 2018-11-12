@@ -10,6 +10,7 @@
 		2315F171C3A72704CEEA52FF /* Pods_moodifyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F507D08B70C17EA65A890297 /* Pods_moodifyTests.framework */; };
 		5B27FD42E8C44EE9F251E8C4 /* Pods_moodify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F915251430401FD86654B59E /* Pods_moodify.framework */; };
 		E0BC795E35C1D8FFD2444B8B /* Pods_moodifyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F90C3E3CA672039066E78B /* Pods_moodifyUITests.framework */; };
+		E541B45D21969FE1004ED662 /* SpotifyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E541B45C21969FE1004ED662 /* SpotifyController.swift */; };
 		E546690C218FE7420016D466 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E546690B218FE7420016D466 /* AppDelegate.swift */; };
 		E5466911218FE7420016D466 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E546690F218FE7420016D466 /* Main.storyboard */; };
 		E5466914218FE7420016D466 /* moodify.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E5466912218FE7420016D466 /* moodify.xcdatamodeld */; };
@@ -17,6 +18,7 @@
 		E5466919218FE7440016D466 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5466917218FE7440016D466 /* LaunchScreen.storyboard */; };
 		E5466924218FE7440016D466 /* moodifyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5466923218FE7440016D466 /* moodifyTests.swift */; };
 		E546692F218FE7440016D466 /* moodifyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E546692E218FE7440016D466 /* moodifyUITests.swift */; };
+		E54D5C3A21990C3B00FD9A97 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54D5C3921990C3B00FD9A97 /* CurrentUser.swift */; };
 		E5BCF758218FF18900868870 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5BCF757218FF18900868870 /* GoogleService-Info.plist */; };
 		E5BCF759218FF18900868870 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5BCF757218FF18900868870 /* GoogleService-Info.plist */; };
 		E5BCF75A218FF18900868870 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5BCF757218FF18900868870 /* GoogleService-Info.plist */; };
@@ -24,7 +26,7 @@
 		E5BCF75D219169B500868870 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5BCF75B219169B500868870 /* SpotifyiOS.framework */; };
 		E5BCF75E219169B500868870 /* SpotifyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5BCF75B219169B500868870 /* SpotifyiOS.framework */; };
 		F7A921142193DA2E00B49CAD /* SpeakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A921132193DA2E00B49CAD /* SpeakerViewController.swift */; };
-		F7A921162193DA6300B49CAD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A921152193DA6300B49CAD /* LoginViewController.swift */; };
+		F7A921162193DA6300B49CAD /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A921152193DA6300B49CAD /* LogInViewController.swift */; };
 		F7A921182193DACC00B49CAD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A921172193DACC00B49CAD /* ProfileViewController.swift */; };
 		F7A9211A2193DAFD00B49CAD /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A921192193DAFD00B49CAD /* FriendViewController.swift */; };
 		F7A9211C2193DB1200B49CAD /* AllPlaylistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A9211B2193DB1200B49CAD /* AllPlaylistsViewController.swift */; };
@@ -55,6 +57,7 @@
 		A5ED18B41198F8D47C50E130 /* Pods-moodifyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moodifyUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-moodifyUITests/Pods-moodifyUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A7826491D688FF9329B564D3 /* Pods-moodifyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moodifyUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-moodifyUITests/Pods-moodifyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CE9D61E19FF1AE24E74580A9 /* Pods-moodify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moodify.debug.xcconfig"; path = "Pods/Target Support Files/Pods-moodify/Pods-moodify.debug.xcconfig"; sourceTree = "<group>"; };
+		E541B45C21969FE1004ED662 /* SpotifyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyController.swift; sourceTree = "<group>"; };
 		E5466908218FE7420016D466 /* moodify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = moodify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E546690B218FE7420016D466 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5466910218FE7420016D466 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -68,13 +71,14 @@
 		E546692A218FE7440016D466 /* moodifyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = moodifyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E546692E218FE7440016D466 /* moodifyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moodifyUITests.swift; sourceTree = "<group>"; };
 		E5466930218FE7440016D466 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E54D5C3921990C3B00FD9A97 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		E5BCF757218FF18900868870 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		E5BCF75B219169B500868870 /* SpotifyiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpotifyiOS.framework; path = "ios-sdk-1.0.0/SpotifyiOS.framework"; sourceTree = "<group>"; };
 		E5BCF75F21916C0D00868870 /* moodify-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "moodify-Bridging-Header.h"; sourceTree = "<group>"; };
 		F2F90C3E3CA672039066E78B /* Pods_moodifyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_moodifyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F507D08B70C17EA65A890297 /* Pods_moodifyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_moodifyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7A921132193DA2E00B49CAD /* SpeakerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerViewController.swift; sourceTree = "<group>"; };
-		F7A921152193DA6300B49CAD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F7A921152193DA6300B49CAD /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		F7A921172193DACC00B49CAD /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		F7A921192193DAFD00B49CAD /* FriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
 		F7A9211B2193DB1200B49CAD /* AllPlaylistsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPlaylistsViewController.swift; sourceTree = "<group>"; };
@@ -137,6 +141,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E541B4642196A042004ED662 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E541B45C21969FE1004ED662 /* SpotifyController.swift */,
+				E54D5C3921990C3B00FD9A97 /* CurrentUser.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		E54668FF218FE7420016D466 = {
 			isa = PBXGroup;
 			children = (
@@ -169,13 +182,14 @@
 				F7A9211B2193DB1200B49CAD /* AllPlaylistsViewController.swift */,
 				F7A9211D2193DB7800B49CAD /* PlaylistViewController.swift */,
 				F7A921192193DAFD00B49CAD /* FriendViewController.swift */,
-				F7A921152193DA6300B49CAD /* LoginViewController.swift */,
+				F7A921152193DA6300B49CAD /* LogInViewController.swift */,
 				E5466915218FE7440016D466 /* Assets.xcassets */,
 				E5466917218FE7440016D466 /* LaunchScreen.storyboard */,
 				F7A921172193DACC00B49CAD /* ProfileViewController.swift */,
 				F7A921132193DA2E00B49CAD /* SpeakerViewController.swift */,
 				E546691A218FE7440016D466 /* Info.plist */,
 				E5466912218FE7420016D466 /* moodify.xcdatamodeld */,
+				E541B4642196A042004ED662 /* Model */,
 			);
 			path = moodify;
 			sourceTree = "<group>";
@@ -440,12 +454,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7A9211E2193DB7800B49CAD /* PlaylistViewController.swift in Sources */,
+				E54D5C3A21990C3B00FD9A97 /* CurrentUser.swift in Sources */,
 				F7A9211A2193DAFD00B49CAD /* FriendViewController.swift in Sources */,
 				F7A921142193DA2E00B49CAD /* SpeakerViewController.swift in Sources */,
 				E546690C218FE7420016D466 /* AppDelegate.swift in Sources */,
+				E541B45D21969FE1004ED662 /* SpotifyController.swift in Sources */,
 				F7A9211C2193DB1200B49CAD /* AllPlaylistsViewController.swift in Sources */,
 				F7A921182193DACC00B49CAD /* ProfileViewController.swift in Sources */,
-				F7A921162193DA6300B49CAD /* LoginViewController.swift in Sources */,
+				F7A921162193DA6300B49CAD /* LogInViewController.swift in Sources */,
 				E5466914218FE7420016D466 /* moodify.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
