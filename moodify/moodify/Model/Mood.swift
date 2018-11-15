@@ -6,6 +6,8 @@
 //  Copyright © 2018 Pawel Sendyk. All rights reserved.
 //
 
+/*
+ 
 import Foundation
 
 class Mood {
@@ -27,4 +29,7 @@ class Mood {
         self.tempo = tempo
         self.valence = valence
     }
+    
 }
+
+*/

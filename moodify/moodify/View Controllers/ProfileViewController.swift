@@ -1,5 +1,5 @@
 //
-//  AllPlaylistsViewController.swift
+//  ProfileViewController.swift
 //  moodify
 //
 //  Created by Stephen Boyle on 11/7/18.
@@ -8,7 +8,10 @@
 
 import UIKit
 
-class AllPlaylistsViewController: UIViewController {
+class ProfileViewController: UIViewController, MoodifyViewController {
+    
+    var spotifyController: SpotifyController!
+    var currentUser: CurrentUser!
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,9 +8,10 @@
 
 import UIKit
 
-class PlaylistViewController: UIViewController, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate {
+class PlaylistViewController: UIViewController, MoodifyViewController, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate {
 
     var spotifyController: SpotifyController!
+    var currentUser: CurrentUser!
     var textRecorded: String?
 
     override func viewDidLoad() {

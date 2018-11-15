@@ -14,41 +14,38 @@ import Alamofire
 class CurrentUser {
     
     var username: String!
-    var playlists: [Playlist]
-    var profilePicture: UIImage?
-    var topArtists: [String]
-    var topGenres: [String]
-    var currentMood: Mood
+    var playlists: [Playlist]!
+    var profilePicture: UIImage!
+    var currentMood: String?
     
-    init() {
-        playlists = []
+    init(username: String) {
+        self.username = username
+        self.loadPlaylists()
+        self.loadPicture()
+        self.loadMood()
+    }
+    
+    func loadPlaylists() {
+        self.playlists = [Playlist]()
+        // Load all of user's playlist from the Firebase
+    }
+    
+    func loadPicture() {
+        // Load user's picture from the Firebase (note that it won't update if it changes in Spotify)
+        self.profilePicture = UIImage(named: "oski")
+    }
+    
+    func loadMood() {
+        // Get the most recent mood from the Firebase
+    }
+    
+    func updateMood(mood: String) {
+        // Update user's current mood
+        self.currentMood = mood
+    }
+    
+    func getPlaylists() -> [Playlist] {
+        return self.playlists
     }
     
 }
-
-class Playlist {
-
-    var id: Int
-    var name: String
-    var tracks: [Track]
-        
-    init(tracks: [Track], id: Int) {
-        self.id =
-        self.name = "Playlist" + String(id)
-        self.tracks = tracks
-    }
-}
-    
-class Track {
-    
-    var id: String
-    var name: String
-    var artist: String
-        
-    init(id: String, name: String, artist: String) {
-        self.id = id
-        self.name = name
-        self.artist = artist
-    }
-}
-

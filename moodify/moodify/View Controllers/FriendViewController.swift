@@ -10,6 +10,9 @@ import UIKit
 
 class FriendViewController: UIViewController {
 
+    var spotifyController: SpotifyController!
+    var currentUser: CurrentUser!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

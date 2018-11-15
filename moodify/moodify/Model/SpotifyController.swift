@@ -7,12 +7,13 @@
 //
 
 import Foundation
+import Alamofire
 
 class SpotifyController {
     
     var configuration: SPTConfiguration!
     var sessionManager: SPTSessionManager!
-    var currentUser: CurrentUser
+    var currentUser: CurrentUser!
     
     init() {
         
@@ -20,25 +21,30 @@ class SpotifyController {
     
     // creates playlist for user's current mood
     func createPlaylist() {
-        updateUserFavorites()
         var tracks = getRecommendations()
-        var playlist = Playlist(tracks, id: playlists.count + 1)
+        var playlist = Playlist(tracks: tracks, id: currentUser.getPlaylists().count + 1)
         currentUser.playlists.append(playlist)
     }
     
     // gets current user's top artists and genres
-    func updateUserFavorites() -> [String] {
-        var topArtists: [String]
-        var topGenres: [String]
+    func getTopArtists() -> [String] {
+        var topArtists = [String]()
         // make request "https://api.spotify.com/v1/me/top/artists?limit=5"
-        currentUser.topArtists = topArtists
-        currentUser.topGenres = topGenres
+        return topArtists
     }
     
-    // gets recommendations based on current user's top artists/genres and current mood
+    // gets current user's top artists and genres
+    func getTopGenre() -> [String] {
+        var topArtists = getTopArtists()
+        // make request "https://api.spotify.com/v1/me/top/artists?limit=5"
+        return topArtists
+    }
+    
     func getRecommendations() -> [Track] {
-        var tracks: [Track]
+    // Get recommendations based on current user's top artists/genres and current mood
+        var tracks = [Track]()
         var mood = currentUser.currentMood
+        var topGenre = getTopGenre()
         // make request
         return tracks
     }

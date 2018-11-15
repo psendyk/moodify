@@ -11,6 +11,7 @@ import UIKit
 class LoginViewController: UIViewController, SPTSessionManagerDelegate {
 
     var spotifyController: SpotifyController!
+    var currentUser: CurrentUser?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,7 @@ class LoginViewController: UIViewController, SPTSessionManagerDelegate {
     @IBAction func loginButton(_ sender: Any) {
         let requestedScopes: SPTScope = [.playlistReadPrivate]
         self.sessionManager.initiateSession(with: requestedScopes, options: .default)
+        createCurrentUser()
     }
     
     // AUTHORIZATION
@@ -63,20 +65,14 @@ class LoginViewController: UIViewController, SPTSessionManagerDelegate {
         return true
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func createCurrentUser() {
+        
     }
-    */
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let playlistViewController = segue.destination as? PlaylistViewController {
-            playlistViewController.spotifyController = spotifyController
+        if var moodifyViewController = segue.destination as? MoodifyViewController {
+            moodifyViewController.spotifyController = self.spotifyController
+            moodifyViewController.currentUser = self.currentUser
         }
     }
 

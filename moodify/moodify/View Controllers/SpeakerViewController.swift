@@ -9,25 +9,24 @@
 import UIKit
 import Speech
 
-class SpeakerViewController: UIViewController, SFSpeechRecognizerDelegate {
-
-    // MARK: Properties
+class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRecognizerDelegate {
+    
+    var spotifyController: SpotifyController!
+    var currentUser: CurrentUser!
     
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))!
-    
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
-    
     private var recognitionTask: SFSpeechRecognitionTask?
-    
     private let audioEngine = AVAudioEngine()
     
     @IBOutlet var textView: UITextView!
     @IBOutlet var recordButton: UIButton!
+    
     @IBAction func createPlaylist(_ sender: Any) {
-        performSegue(withIdentifier: "toPlaylist", sender: sender)
+        performSegue(withIdentifier: "speakerToPlaylist", sender: sender)
     }
     @IBAction func toProfile(_ sender: Any) {
-        performSegue(withIdentifier: "toProfile", sender: sender)
+        performSegue(withIdentifier: "speakerToProfile", sender: sender)
     }
     
     // MARK: UIViewController
