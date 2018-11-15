@@ -8,13 +8,7 @@
 
 import UIKit
 
-<<<<<<< HEAD:moodify/moodify/View Controllers/PlaylistViewController.swift
-class PlaylistViewController: UIViewController, MoodifyViewController, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate {
-=======
-/*class PlaylistViewController: UIViewController, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate, UITableViewDelegate, UITableViewDataSource {*/
->>>>>>> ui_updates:moodify/moodify/PlaylistViewController.swift
-
-class PlaylistViewController: UIViewController,  UITableViewDelegate, UITableViewDataSource {
+class PlaylistViewController: UIViewController, MoodifyViewController, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     var spotifyController: SpotifyController!
