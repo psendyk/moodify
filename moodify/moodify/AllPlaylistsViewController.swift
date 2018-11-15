@@ -23,6 +23,7 @@ class AllPlaylistsViewController: UIViewController, UITableViewDelegate, UITable
         
         // DEBUG
         currentUser = CurrentUser(username: "username")
+        currentUser?.profilePicture = #imageLiteral(resourceName: "testProfilePicture")
         
         var tracks = [Track]()
         tracks.append(Track(id: "id1", name: "name1", artist: "artist1"))
@@ -31,7 +32,13 @@ class AllPlaylistsViewController: UIViewController, UITableViewDelegate, UITable
         currentUser?.playlists.append(Playlist(tracks: tracks, id: 1))
         currentUser?.playlists.append(Playlist(tracks: tracks, id: 2))
         
+        // keep
         username.text = currentUser?.username
+        profilePicture.image = currentUser?.profilePicture
+        //profilePicture.layer.borderColor = CGColor()
+        profilePicture.layer.borderWidth = 5
+        profilePicture.layer.masksToBounds = true;
+        profilePicture.layer.cornerRadius = profilePicture.frame.height / 2;
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
