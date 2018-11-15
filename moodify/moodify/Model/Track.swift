@@ -13,7 +13,10 @@ class Track {
     var id: String
     var name: String
     var artist: String
+<<<<<<< HEAD
     var cover: UIImage?
+=======
+>>>>>>> ui_updates
     
     init(id: String, name: String, artist: String) {
         self.id = id

@@ -161,7 +161,7 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
         if let dest = segue.destination as? PlaylistViewController {
             dest.textRecorded = textView.text
             
-        } else if let dest = segue.destination as? ProfileViewController {
+        } else if let dest = segue.destination as? AllPlaylistsViewController {
             
         } else if let dest = segue.destination as? FriendViewController {
             
