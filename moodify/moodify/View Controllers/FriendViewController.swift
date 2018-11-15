@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FriendViewController: UIViewController {
+class FriendViewController: UIViewController, MoodifyViewController {
 
     var spotifyController: SpotifyController!
     var currentUser: CurrentUser!

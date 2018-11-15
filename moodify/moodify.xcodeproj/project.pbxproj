@@ -29,6 +29,8 @@
 		E5F3CBC6219CF0E20030BD22 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F3CBC5219CF0E20030BD22 /* Playlist.swift */; };
 		E5F3CBC8219CF0FA0030BD22 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F3CBC7219CF0FA0030BD22 /* Track.swift */; };
 		E5F3CBCA219D017C0030BD22 /* MoodifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F3CBC9219D017C0030BD22 /* MoodifyViewController.swift */; };
+		E5F3CBCD219D432C0030BD22 /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F3CBCC219D432C0030BD22 /* TrackTableViewCell.swift */; };
+		E5F3CBCF219D46370030BD22 /* PlaylistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F3CBCE219D46370030BD22 /* PlaylistTableViewCell.swift */; };
 		F7A921142193DA2E00B49CAD /* SpeakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A921132193DA2E00B49CAD /* SpeakerViewController.swift */; };
 		F7A921162193DA6300B49CAD /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A921152193DA6300B49CAD /* LogInViewController.swift */; };
 		F7A921182193DACC00B49CAD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A921172193DACC00B49CAD /* ProfileViewController.swift */; };
@@ -82,6 +84,8 @@
 		E5F3CBC5219CF0E20030BD22 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		E5F3CBC7219CF0FA0030BD22 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		E5F3CBC9219D017C0030BD22 /* MoodifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodifyViewController.swift; sourceTree = "<group>"; };
+		E5F3CBCC219D432C0030BD22 /* TrackTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackTableViewCell.swift; sourceTree = "<group>"; };
+		E5F3CBCE219D46370030BD22 /* PlaylistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistTableViewCell.swift; sourceTree = "<group>"; };
 		F2F90C3E3CA672039066E78B /* Pods_moodifyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_moodifyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F507D08B70C17EA65A890297 /* Pods_moodifyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_moodifyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7A921132193DA2E00B49CAD /* SpeakerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerViewController.swift; sourceTree = "<group>"; };
@@ -225,6 +229,8 @@
 				F7A9211D2193DB7800B49CAD /* PlaylistViewController.swift */,
 				F7A921172193DACC00B49CAD /* ProfileViewController.swift */,
 				F7A921192193DAFD00B49CAD /* FriendViewController.swift */,
+				E5F3CBCC219D432C0030BD22 /* TrackTableViewCell.swift */,
+				E5F3CBCE219D46370030BD22 /* PlaylistTableViewCell.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -457,12 +463,14 @@
 				F7A9211E2193DB7800B49CAD /* PlaylistViewController.swift in Sources */,
 				E54D5C3A21990C3B00FD9A97 /* CurrentUser.swift in Sources */,
 				F7A9211A2193DAFD00B49CAD /* FriendViewController.swift in Sources */,
+				E5F3CBCF219D46370030BD22 /* PlaylistTableViewCell.swift in Sources */,
 				D12DA73E2199414800E2D74B /* Mood.swift in Sources */,
 				F7A921142193DA2E00B49CAD /* SpeakerViewController.swift in Sources */,
 				E546690C218FE7420016D466 /* AppDelegate.swift in Sources */,
 				E541B45D21969FE1004ED662 /* SpotifyController.swift in Sources */,
 				F7A921182193DACC00B49CAD /* ProfileViewController.swift in Sources */,
 				F7A921162193DA6300B49CAD /* LogInViewController.swift in Sources */,
+				E5F3CBCD219D432C0030BD22 /* TrackTableViewCell.swift in Sources */,
 				E5F3CBCA219D017C0030BD22 /* MoodifyViewController.swift in Sources */,
 				E5F3CBC8219CF0FA0030BD22 /* Track.swift in Sources */,
 				E5466914218FE7420016D466 /* moodify.xcdatamodeld in Sources */,

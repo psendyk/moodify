@@ -158,13 +158,9 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let dest = segue.destination as? PlaylistViewController {
-            dest.textRecorded = textView.text
-            
-        } else if let dest = segue.destination as? AllPlaylistsViewController {
-            
-        } else if let dest = segue.destination as? FriendViewController {
-            
+        if var dest = segue.destination as? MoodifyViewController {
+            dest.currentUser = currentUser
+            dest.spotifyController = spotifyController
         }
     }
 }

@@ -10,10 +10,12 @@ import UIKit
 
 class PlaylistViewController: UIViewController, MoodifyViewController, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var name: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    
     var spotifyController: SpotifyController!
     var currentUser: CurrentUser!
-    var textRecorded: String?
+    
     var playlist: Playlist?
 
     override func viewDidLoad() {
@@ -21,11 +23,17 @@ class PlaylistViewController: UIViewController, MoodifyViewController, SPTAppRem
         tableView.delegate = self
         tableView.dataSource = self
         
+        if let playlist = self.playlist {
+            self.name.text = playlist.name
+        }
+        
         // DEBUG
         var tracks = [Track]()
         tracks.append(Track(id: "id1", name: "name1", artist: "artist1"))
         tracks.append(Track(id: "id2", name: "name2", artist: "artist2"))
-        playlist = Playlist(tracks: tracks, id: 1)
+        playlist = Playlist(tracks: tracks, id: 1, mood: "happy")
+        
+        
     }
     
     func appRemoteDidEstablishConnection(_ appRemote: SPTAppRemote) {
@@ -59,7 +67,7 @@ class PlaylistViewController: UIViewController, MoodifyViewController, SPTAppRem
         let appRemote = SPTAppRemote(configuration: spotifyController.configuration, logLevel: .debug)
         appRemote.delegate = self
         return appRemote
-    }
+    }()
     
     /* UI */
     
@@ -71,10 +79,10 @@ class PlaylistViewController: UIViewController, MoodifyViewController, SPTAppRem
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "playlistCell", for: indexPath) as! PlaylistTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "trackCell", for: indexPath) as! TrackTableViewCell
         let track = (playlist?.tracks[indexPath.item])
-        cell.songTitle.text = track?.name
-        cell.artist.text = track?.artist
+        cell.trackTitle.text = track?.name
+        cell.trackArtist.text = track?.artist
         return cell
     }
     

@@ -19,7 +19,7 @@ class SpotifyController {
     // creates playlist for user's current mood
     func createPlaylist() {
         var tracks = getRecommendations()
-        var playlist = Playlist(tracks: tracks, id: currentUser.getPlaylists().count + 1)
+        var playlist = Playlist(tracks: tracks, id: currentUser.getPlaylists().count + 1, mood: currentUser.currentMood!)
         currentUser.playlists.append(playlist)
     }
     

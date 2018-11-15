@@ -20,7 +20,7 @@ class LoginViewController: UIViewController, SPTSessionManagerDelegate {
     }
     
     @IBAction func loginButton(_ sender: Any) {
-        let requestedScopes: SPTScope = [.playlistReadPrivate]
+        let requestedScopes: SPTScope = [.playlistReadPrivate, .appRemoteControl]
         self.sessionManager.initiateSession(with: requestedScopes, options: .default)
         createCurrentUser()
     }
