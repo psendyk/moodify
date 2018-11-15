@@ -29,7 +29,7 @@ class PlaylistViewController: UIViewController,  UITableViewDelegate, UITableVie
         playlist = Playlist(tracks: tracks, id: 1)
     }
     
-    /*func appRemoteDidEstablishConnection(_ appRemote: SPTAppRemote) {
+    func appRemoteDidEstablishConnection(_ appRemote: SPTAppRemote) {
         print("connected")
         // Connection was successful, you can begin issuing commands
         self.appRemote.playerAPI?.delegate = self
@@ -60,7 +60,7 @@ class PlaylistViewController: UIViewController,  UITableViewDelegate, UITableVie
         let appRemote = SPTAppRemote(configuration: spotifyController.configuration, logLevel: .debug)
         appRemote.delegate = self
         return appRemote
-    }()*/
+    }
     
     /* UI */
     
