@@ -81,8 +81,8 @@ class SpeakerViewController: UIViewController, SFSpeechRecognizerDelegate {
         
         // Configure the audio session for the app.
         let audioSession = AVAudioSession.sharedInstance()
-        try audioSession.setCategory(.record, mode: .measurement, options: .duckOthers)
-        try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+        /*try audioSession.setCategory(.record, mode: .measurement, options: .duckOthers)
+        try audioSession.setActive(true, options: .notifyOthersOnDeactivation)*/
         let inputNode = audioEngine.inputNode
         
         // Create and configure the speech recognition request.
@@ -162,7 +162,7 @@ class SpeakerViewController: UIViewController, SFSpeechRecognizerDelegate {
         if let dest = segue.destination as? PlaylistViewController {
             dest.textRecorded = textView.text
             
-        } else if let dest = segue.destination as? ProfileViewController {
+        } else if let dest = segue.destination as? AllPlaylistsViewController {
             
         } else if let dest = segue.destination as? FriendViewController {
             

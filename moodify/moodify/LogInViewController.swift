@@ -58,10 +58,10 @@ class LoginViewController: UIViewController, SPTSessionManagerDelegate {
         print("renewed", session)
     }
     
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+    /*func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         self.sessionManager.application(app, open: url, options: options)
         return true
-    }
+    }*/
     
 
     /*

@@ -8,12 +8,51 @@
 
 import UIKit
 
-class AllPlaylistsViewController: UIViewController {
+class AllPlaylistsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var username: UILabel!
+    @IBOutlet weak var profilePicture: UIImageView!
+    
+    var currentUser: CurrentUser?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        // DEBUG
+        currentUser = CurrentUser(username: "username")
+        
+        var tracks = [Track]()
+        tracks.append(Track(id: "id1", name: "name1", artist: "artist1"))
+        tracks.append(Track(id: "id2", name: "name2", artist: "artist2"))
+        
+        currentUser?.playlists.append(Playlist(tracks: tracks, id: 1))
+        currentUser?.playlists.append(Playlist(tracks: tracks, id: 2))
+        
+        username.text = currentUser?.username
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let c = currentUser {
+            return c.playlists.count
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "allPlaylistsCell", for: indexPath) as! AllPlaylistsTableViewCell
+        let playlist = (currentUser?.playlists[indexPath.item])
+        cell.name.text = playlist?.name
+        if let p = playlist {
+            cell.numSongs.text = String(p.tracks.count) + " songs"
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
     }
     
 

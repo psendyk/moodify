@@ -7,3 +7,16 @@
 //
 
 import Foundation
+
+class Track {
+    
+    var id: String
+    var name: String
+    var artist: String
+    
+    init(id: String, name: String, artist: String) {
+        self.id = id
+        self.name = name
+        self.artist = artist
+    }
+}
