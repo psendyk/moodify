@@ -14,10 +14,7 @@ class SpotifyController {
     var configuration: SPTConfiguration!
     var sessionManager: SPTSessionManager!
     var currentUser: CurrentUser!
-    
-    init() {
-        
-    }
+
     
     // creates playlist for user's current mood
     func createPlaylist() {
@@ -26,18 +23,18 @@ class SpotifyController {
         currentUser.playlists.append(playlist)
     }
     
-    // gets current user's top artists and genres
     func getTopArtists() -> [String] {
+    // Get current user's top artists
         var topArtists = [String]()
         // make request "https://api.spotify.com/v1/me/top/artists?limit=5"
         return topArtists
     }
     
-    // gets current user's top artists and genres
     func getTopGenre() -> [String] {
-        var topArtists = getTopArtists()
-        // make request "https://api.spotify.com/v1/me/top/artists?limit=5"
-        return topArtists
+    // Get current user's top genres
+        var topGenre = getTopArtists()
+        // make request to classify artists by genre
+        return topGenre
     }
     
     func getRecommendations() -> [Track] {
