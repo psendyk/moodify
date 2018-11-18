@@ -23,7 +23,7 @@ class LoginViewController: UIViewController, SPTSessionManagerDelegate {
     }
     
     @IBAction func loginButton(_ sender: Any) {
-        let requestedScopes: SPTScope = [.playlistReadPrivate, .appRemoteControl]
+        let requestedScopes: SPTScope = [.appRemoteControl, .userTopRead]
         self.sessionManager.initiateSession(with: requestedScopes, options: .default)
         createCurrentUser()
     }
@@ -76,9 +76,11 @@ class LoginViewController: UIViewController, SPTSessionManagerDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if var dest = segue.destination as? MoodifyViewController {
-            dest.spotifyController = self.spotifyController
-            dest.currentUser = self.currentUser
+        if let dest = segue.destination as? UINavigationController {
+            if var moodifyViewController = dest.topViewController as? MoodifyViewController {
+                moodifyViewController.spotifyController = self.spotifyController
+                moodifyViewController.currentUser = self.currentUser
+            }
         }
     }
 

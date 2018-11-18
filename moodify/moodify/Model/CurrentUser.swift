@@ -16,7 +16,7 @@ class CurrentUser {
     var username: String!
     var playlists: [Playlist]!
     var profilePicture: UIImage!
-    var currentMood: String?
+    var currentMood: String!
     
     var settings = ["numTracks": 20, "popularity": 0.8]
     
@@ -44,6 +44,10 @@ class CurrentUser {
     func updateMood(mood: String) {
         // Update user's current mood
         self.currentMood = mood
+    }
+    
+    func getCurrentMood() -> String {
+        return self.currentMood
     }
     
     func getPlaylists() -> [Playlist] {

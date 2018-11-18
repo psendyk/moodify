@@ -8,6 +8,7 @@
 
 import UIKit
 import Speech
+import Alamofire
 
 class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRecognizerDelegate {
     
@@ -27,12 +28,14 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
         // if mood has been detected make a request to Spotify API
         // else ask how he feels directly and then make a request
         // The following is just for debugging until we implement the Tone Analyzer
-        let mood = "Happy"
-        if let currentUser = self.currentUser {
-            currentUser.updateMood(mood: mood)
-            currentUser.addPlaylist(playlist: spotifyController.createPlaylist(currentUser: self.currentUser, mood: mood))
-        }
-        performSegue(withIdentifier: "speakerToPlaylist", sender: sender)
+        let mood = "happy"
+        self.currentUser.updateMood(mood: mood)
+        spotifyController.createPlaylist(currentUser: currentUser, mood: mood, completion: { playlist in
+            if let playlist = playlist {
+                self.currentUser.addPlaylist(playlist: playlist)
+                self.performSegue(withIdentifier: "speakerToPlaylist", sender: sender)
+            }
+        })
     }
     
     @IBAction func toProfile(_ sender: Any) {
