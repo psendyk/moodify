@@ -18,6 +18,8 @@ class CurrentUser {
     var profilePicture: UIImage!
     var currentMood: String?
     
+    var settings = ["numTracks": 20, "popularity": 0.8]
+    
     init(username: String) {
         self.username = username
         self.loadPlaylists()
@@ -46,6 +48,14 @@ class CurrentUser {
     
     func getPlaylists() -> [Playlist] {
         return self.playlists
+    }
+    
+    func addPlaylist(playlist: Playlist) {
+        self.playlists.append(playlist)
+    }
+    
+    func latestPlaylist() -> Playlist {
+        return self.playlists[self.playlists.count-1]
     }
     
 }

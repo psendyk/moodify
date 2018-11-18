@@ -21,12 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         
-        
-        if let logInViewController = window?.rootViewController as? LoginViewController {
-            self.logInViewController = logInViewController
-            logInViewController.spotifyController = SpotifyController()
-        }
-        
         return true
     }
     

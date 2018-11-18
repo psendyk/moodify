@@ -15,6 +15,9 @@ class LoginViewController: UIViewController, SPTSessionManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.spotifyController = SpotifyController()
+        self.spotifyController.configuration = self.configuration
+        self.spotifyController.sessionManager = self.sessionManager
 
         // Do any additional setup after loading the view.
     }
@@ -50,7 +53,8 @@ class LoginViewController: UIViewController, SPTSessionManagerDelegate {
     
     func sessionManager(manager: SPTSessionManager, didInitiate session: SPTSession) {
         debugPrint("success", session)
-        performSegue(withIdentifier: "logInToListen", sender: self)
+        self.spotifyController.session = session
+        performSegue(withIdentifier: "logInToSpeaker", sender: self)
     }
     
     func sessionManager(manager: SPTSessionManager, didFailWith error: Error) {
@@ -66,13 +70,15 @@ class LoginViewController: UIViewController, SPTSessionManagerDelegate {
     }
     
     func createCurrentUser() {
-        
+        // Authorize or sign up in the Firebase
+        let username = "Dan Garcia"
+        self.currentUser = CurrentUser(username: username)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if var moodifyViewController = segue.destination as? MoodifyViewController {
-            moodifyViewController.spotifyController = self.spotifyController
-            moodifyViewController.currentUser = self.currentUser
+        if var dest = segue.destination as? MoodifyViewController {
+            dest.spotifyController = self.spotifyController
+            dest.currentUser = self.currentUser
         }
     }
 

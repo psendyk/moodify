@@ -23,8 +23,18 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
     @IBOutlet var recordButton: UIButton!
     
     @IBAction func createPlaylist(_ sender: Any) {
+        // make a request to the Tone Analyzer
+        // if mood has been detected make a request to Spotify API
+        // else ask how he feels directly and then make a request
+        // The following is just for debugging until we implement the Tone Analyzer
+        let mood = "Happy"
+        if let currentUser = self.currentUser {
+            currentUser.updateMood(mood: mood)
+            currentUser.addPlaylist(playlist: spotifyController.createPlaylist(currentUser: self.currentUser, mood: mood))
+        }
         performSegue(withIdentifier: "speakerToPlaylist", sender: sender)
     }
+    
     @IBAction func toProfile(_ sender: Any) {
         performSegue(withIdentifier: "speakerToProfile", sender: sender)
     }
@@ -159,8 +169,11 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if var dest = segue.destination as? MoodifyViewController {
-            dest.currentUser = currentUser
-            dest.spotifyController = spotifyController
+            dest.currentUser = self.currentUser
+            dest.spotifyController = self.spotifyController
+        }
+        if let dest = segue.destination as? PlaylistViewController {
+            dest.playlist = self.currentUser.latestPlaylist()
         }
     }
 }

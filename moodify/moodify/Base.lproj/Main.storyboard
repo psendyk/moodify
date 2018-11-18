@@ -136,7 +136,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <segue destination="wE4-8q-p1u" kind="show" identifier="logInToListen" id="ZRg-rY-F8l"/>
+                        <segue destination="wE4-8q-p1u" kind="show" identifier="logInToSpeaker" id="ZRg-rY-F8l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -343,6 +343,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="0pY-Dy-EAa"/>
+        <segue reference="28j-lM-HRU"/>
     </inferredMetricsTieBreakers>
 </document>

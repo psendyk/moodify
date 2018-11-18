@@ -31,8 +31,7 @@ class PlaylistViewController: UIViewController, MoodifyViewController, SPTAppRem
         var tracks = [Track]()
         tracks.append(Track(id: "id1", name: "name1", artist: "artist1"))
         tracks.append(Track(id: "id2", name: "name2", artist: "artist2"))
-        playlist = Playlist(tracks: tracks, id: 1, mood: "happy")
-        
+        self.playlist = Playlist(tracks: tracks, id: 1, mood: "happy")
         
     }
     
