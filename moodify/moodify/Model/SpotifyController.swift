@@ -67,13 +67,17 @@ class SpotifyController {
         Alamofire.request("https://api.spotify.com/v1/me/top/artists?limit=5", headers: headers).responseJSON { response in
             if let data = response.data {
                 let json = JSON(data)
-                print(json)
                 for i in 0...json["items"].count-1 {
                     for genre in json["items"][i]["genres"] {
                         topGenre.append(genre.1.string!)
                     }
-                    completion(topGenre)
                 }
+                var counts = [String:Int]()
+                for item in topGenre {
+                    counts[item] = (counts[item] ?? 0) + 1
+                }
+                let topCounts = counts.sorted { $0.value > $1.value }.map { $0.key }
+                completion(Array(topCounts[0...4]))
             } else {
                 completion(nil)
             }
@@ -89,18 +93,20 @@ class SpotifyController {
             "Authorization": "Bearer " + self.session.accessToken
         ]
         getTopGenre(currentUser: currentUser, completion: { topGenre in
-            Alamofire.request("https://api.spotify.com/v1/recommendations?limit=10", headers: headers).responseJSON { response in
-                if let data = response.data {
-                    let json = JSON(data)
-                    for (key, subJson) in json {
-                        if key == "error" {
-                            completion(nil)
+            if let topGenre = topGenre {
+                let seed_str = "https://api.spotify.com/v1/recommendations?limit=5&seed_genres=" + topGenre.joined(separator: ",").replacingOccurrences(of: " ", with: "%20")
+                let seed_genre = URL(string: seed_str)!
+                print(seed_genre)
+                Alamofire.request(seed_genre, headers: headers).responseJSON { response in
+                    if let data = response.data {
+                        let json = JSON(data)
+                        for (_, track) in json["tracks"]{
+                            tracks.append(Track(id: track["id"].string!, name: track["name"].string!, artist: track["artists"][0]["name"].string!))
                         }
+                        completion(tracks)
+                    } else {
+                        completion(nil)
                     }
-                    print(json)
-                    completion(tracks)
-                } else {
-                    completion(nil)
                 }
             }
         })

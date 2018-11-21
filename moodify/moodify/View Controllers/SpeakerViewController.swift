@@ -27,15 +27,16 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
         // make a request to the Tone Analyzer
         // if mood has been detected make a request to Spotify API
         // else ask how he feels directly and then make a request
-        // The following is just for debugging until we implement the Tone Analyzer
-        let mood = "happy"
-        self.currentUser.updateMood(mood: mood)
-        spotifyController.createPlaylist(currentUser: currentUser, mood: mood, completion: { playlist in
-            if let playlist = playlist {
-                self.currentUser.addPlaylist(playlist: playlist)
-                self.performSegue(withIdentifier: "speakerToPlaylist", sender: sender)
-            }
-        })
+        if let text = textView.text {
+            let mood = extractMood(text)
+            self.currentUser.updateMood(mood: extractMood(mood))
+            spotifyController.createPlaylist(currentUser: currentUser, mood: mood, completion: { playlist in
+                if let playlist = playlist {
+                    self.currentUser.addPlaylist(playlist: playlist)
+                    self.performSegue(withIdentifier: "speakerToPlaylist", sender: sender)
+                }
+            })
+        }
     }
     
     @IBAction func toProfile(_ sender: Any) {
@@ -170,13 +171,19 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
         }
     }
     
+    func extractMood(_ text: String) -> String {
+        return "happy"
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if var dest = segue.destination as? MoodifyViewController {
             dest.currentUser = self.currentUser
             dest.spotifyController = self.spotifyController
         }
         if let dest = segue.destination as? PlaylistViewController {
-            dest.playlist = self.currentUser.latestPlaylist()
+            if let playlist = self.currentUser.latestPlaylist() {
+                dest.playlist = playlist
+            }
         }
     }
 }

@@ -58,8 +58,11 @@ class CurrentUser {
         self.playlists.append(playlist)
     }
     
-    func latestPlaylist() -> Playlist {
-        return self.playlists[self.playlists.count-1]
+    func latestPlaylist() -> Playlist? {
+        if self.playlists.count > 0 {
+            return self.playlists[self.playlists.count-1]
+        }
+        return nil
     }
     
 }
