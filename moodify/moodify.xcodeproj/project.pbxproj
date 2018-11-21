@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2315F171C3A72704CEEA52FF /* Pods_moodifyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F507D08B70C17EA65A890297 /* Pods_moodifyTests.framework */; };
 		5B27FD42E8C44EE9F251E8C4 /* Pods_moodify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F915251430401FD86654B59E /* Pods_moodify.framework */; };
-		D12DA73E2199414800E2D74B /* Mood.swift in Sources */ = {isa = PBXBuildFile; fileRef = D12DA73D2199414800E2D74B /* Mood.swift */; };
 		E0BC795E35C1D8FFD2444B8B /* Pods_moodifyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2F90C3E3CA672039066E78B /* Pods_moodifyUITests.framework */; };
 		E541B45D21969FE1004ED662 /* SpotifyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E541B45C21969FE1004ED662 /* SpotifyController.swift */; };
 		E546690C218FE7420016D466 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E546690B218FE7420016D466 /* AppDelegate.swift */; };
@@ -62,7 +61,6 @@
 		A5ED18B41198F8D47C50E130 /* Pods-moodifyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moodifyUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-moodifyUITests/Pods-moodifyUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A7826491D688FF9329B564D3 /* Pods-moodifyUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moodifyUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-moodifyUITests/Pods-moodifyUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CE9D61E19FF1AE24E74580A9 /* Pods-moodify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-moodify.debug.xcconfig"; path = "Pods/Target Support Files/Pods-moodify/Pods-moodify.debug.xcconfig"; sourceTree = "<group>"; };
-		D12DA73D2199414800E2D74B /* Mood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mood.swift; sourceTree = "<group>"; };
 		E541B45C21969FE1004ED662 /* SpotifyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyController.swift; sourceTree = "<group>"; };
 		E5466908218FE7420016D466 /* moodify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = moodify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E546690B218FE7420016D466 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -156,7 +154,6 @@
 			children = (
 				E541B45C21969FE1004ED662 /* SpotifyController.swift */,
 				E54D5C3921990C3B00FD9A97 /* CurrentUser.swift */,
-				D12DA73D2199414800E2D74B /* Mood.swift */,
 				E5F3CBC5219CF0E20030BD22 /* Playlist.swift */,
 				E5F3CBC7219CF0FA0030BD22 /* Track.swift */,
 			);
@@ -413,6 +410,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-moodify/Pods-moodify-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
@@ -424,6 +422,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
@@ -466,7 +465,6 @@
 				E54D5C3A21990C3B00FD9A97 /* CurrentUser.swift in Sources */,
 				F7A9211A2193DAFD00B49CAD /* FriendViewController.swift in Sources */,
 				E5F3CBCF219D46370030BD22 /* PlaylistTableViewCell.swift in Sources */,
-				D12DA73E2199414800E2D74B /* Mood.swift in Sources */,
 				F7A921142193DA2E00B49CAD /* SpeakerViewController.swift in Sources */,
 				E546690C218FE7420016D466 /* AppDelegate.swift in Sources */,
 				E541B45D21969FE1004ED662 /* SpotifyController.swift in Sources */,

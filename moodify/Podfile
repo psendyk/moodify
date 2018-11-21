@@ -15,6 +15,7 @@ target 'moodify' do
   pod 'FirebaseDatabase'
   pod 'Alamofire', '~> 4.7'
   pod 'SwiftyJSON', '~> 4.0'
+  pod 'AlamofireImage', '~> 3.4'
 
   target 'moodifyTests' do
     inherit! :search_paths

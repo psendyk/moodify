@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireImage
 
 class TrackTableViewCell: UITableViewCell {
     
     @IBOutlet weak var trackTitle: UILabel!
     @IBOutlet weak var trackImage: UIImageView!
     @IBOutlet weak var trackArtist: UILabel!
+    var track: Track?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,5 +27,16 @@ class TrackTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    func update() {
+        if let track = self.track {
+            self.trackTitle.text = track.name
+            self.trackArtist.text = track.artist
+            Alamofire.request(track.coverUrl).responseImage(completionHandler: { response in
+                if let image = response.result.value {
+                    self.trackImage.image = image
+                }
+            })
+        }
+    }
 }

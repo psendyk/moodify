@@ -27,7 +27,7 @@
 			<string>com.moodify.moodify</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>moodify://spotify-login-callback</string>
+				<string>moodify</string>
 			</array>
 		</dict>
     </array>

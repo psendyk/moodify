@@ -13,10 +13,12 @@ class Track {
     var id: String
     var name: String
     var artist: String
+    var coverUrl: String
     
-    init(id: String, name: String, artist: String) {
+    init(id: String, name: String, artist: String, coverUrl: String) {
         self.id = id
         self.name = name
         self.artist = artist
+        self.coverUrl = coverUrl
     }
 }

@@ -25,7 +25,6 @@ class LoginViewController: UIViewController, SPTSessionManagerDelegate {
     @IBAction func loginButton(_ sender: Any) {
         let requestedScopes: SPTScope = [.appRemoteControl, .userTopRead]
         self.sessionManager.initiateSession(with: requestedScopes, options: .default)
-        createCurrentUser()
     }
     
     // AUTHORIZATION
@@ -44,7 +43,7 @@ class LoginViewController: UIViewController, SPTSessionManagerDelegate {
             let tokenRefreshURL = URL(string: "https://polar-crag-31078.herokuapp.com/refresh") {
             self.configuration.tokenSwapURL = tokenSwapURL
             self.configuration.tokenRefreshURL = tokenRefreshURL
-            self.configuration.playURI = ""
+            self.configuration.playURI = "spotify:album:5uMfshtC2Jwqui0NUyUYIL"
         }
         let manager = SPTSessionManager(configuration: self.configuration, delegate: self)
         return manager
@@ -53,6 +52,7 @@ class LoginViewController: UIViewController, SPTSessionManagerDelegate {
     
     func sessionManager(manager: SPTSessionManager, didInitiate session: SPTSession) {
         debugPrint("success", session)
+        createCurrentUser()
         self.spotifyController.session = session
         performSegue(withIdentifier: "logInToSpeaker", sender: self)
     }
@@ -62,11 +62,6 @@ class LoginViewController: UIViewController, SPTSessionManagerDelegate {
     }
     func sessionManager(manager: SPTSessionManager, didRenew session: SPTSession) {
         print("renewed", session)
-    }
-    
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        self.sessionManager.application(app, open: url, options: options)
-        return true
     }
     
     func createCurrentUser() {

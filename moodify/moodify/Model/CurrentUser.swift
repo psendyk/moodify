@@ -16,9 +16,9 @@ class CurrentUser {
     var username: String!
     var playlists: [Playlist]!
     var profilePicture: UIImage!
-    var currentMood: String!
+    var currentMood = "happy" // Everyone is happy at the beginning
     
-    var settings = ["numTracks": 20, "popularity": 0.8]
+    var settings = ["numTracks": "10", "popularity": "0.8"]
     
     init(username: String) {
         self.username = username
@@ -63,6 +63,10 @@ class CurrentUser {
             return self.playlists[self.playlists.count-1]
         }
         return nil
+    }
+    
+    func getSetting(_ setting: String) -> String {
+        return self.settings[setting]!
     }
     
 }
