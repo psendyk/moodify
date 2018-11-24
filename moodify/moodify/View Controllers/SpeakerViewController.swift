@@ -9,8 +9,11 @@
 import UIKit
 import Speech
 import Alamofire
+import ToneAnalyzer
 
 class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRecognizerDelegate {
+    
+    let toneAnalyzer = ToneAnalyzer(version: "2018-11-23", apiKey: "EaVbmU9ob6iq7n7p4RIrV29rt19t4TDmbQ8N_PSYoFFe")
     
     var spotifyController: SpotifyController!
     var currentUser: CurrentUser!
@@ -28,14 +31,18 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
         // if mood has been detected make a request to Spotify API
         // else ask how he feels directly and then make a request
         if let text = textView.text {
-            let mood = extractMood(text)
-            self.currentUser.updateMood(mood: extractMood(mood))
-            spotifyController.createPlaylist(currentUser: currentUser, mood: mood, completion: { playlist in
-                if let playlist = playlist {
-                    self.currentUser.addPlaylist(playlist: playlist)
-                    self.performSegue(withIdentifier: "speakerToPlaylist", sender: sender)
+            extractMood(text, completion: { mood in
+                if let mood = mood {
+                    self.currentUser.updateMood(mood: mood)
+                    self.spotifyController.createPlaylist(currentUser: self.currentUser, mood: mood, completion: { playlist in
+                        if let playlist = playlist {
+                            self.currentUser.addPlaylist(playlist: playlist)
+                            self.performSegue(withIdentifier: "speakerToPlaylist", sender: sender)
+                        }
+                    })
                 }
             })
+            
         }
     }
     
@@ -171,8 +178,16 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
         }
     }
     
-    func extractMood(_ text: String) -> String {
-        return "happy"
+    func extractMood(_ text: String, completion: @escaping ((String?) -> Void)) {
+        toneAnalyzer.serviceURL = "https://gateway.watsonplatform.net/tone-analyzer/api"
+        let toneInput = ToneInput(text: text)
+        toneAnalyzer.tone(toneInput: toneInput, success: { tone in
+            if let tones = tone.documentTone.tones {
+                completion(tones[0].toneName)
+            } else {
+                completion("")
+            }
+        })
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

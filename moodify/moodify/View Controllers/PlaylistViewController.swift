@@ -61,6 +61,7 @@ class PlaylistViewController: UIViewController, MoodifyViewController, SPTAppRem
         let appRemote = SPTAppRemote(configuration: self.spotifyController.configuration, logLevel: .debug)
         appRemote.delegate = self
         return appRemote
+        
     }()
     
     var defaultCallback: SPTAppRemoteCallback {

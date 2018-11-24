@@ -17,10 +17,10 @@ class SpotifyController {
     var configuration: SPTConfiguration!
     
     // We make it a variable because we'll either let user adjust it or adjust it on their listening history
-    var trackAttributes = ["happy": ["energy": "0.8", "danceability": "0.8", "instrumentalness": "0.5", "valence": "0.9"],
-                           "sad": ["energy": "0.3", "danceability": "0.1", "instrumentalness": "0.8", "valence": "0.3"],
-                           "angry": ["energy": "0.9", "danceability": "0.4", "instrumentalness": "0.3", "valence": "0.3"],
-                           "stressed": ["energy": "0.4", "danceability": "0.2", "instrumentalness": "0.8", "valence": "0.9"]]
+    var trackAttributes = ["Joy": ["energy": "0.8", "danceability": "0.8", "instrumentalness": "0.5", "valence": "0.9"],
+                           "Sadness": ["energy": "0.3", "danceability": "0.1", "instrumentalness": "0.8", "valence": "0.3"],
+                           "Anger": ["energy": "0.9", "danceability": "0.4", "instrumentalness": "0.3", "valence": "0.3"],
+                           "Fear": ["energy": "0.4", "danceability": "0.2", "instrumentalness": "0.8", "valence": "0.9"]]
     
     // creates playlist for user's current mood
     func createPlaylist(currentUser: CurrentUser, mood: String, completion: @escaping ((Playlist?) -> Void)) {
@@ -97,7 +97,6 @@ class SpotifyController {
                 let genreStr = "&seed_genres=" + topGenre.joined(separator: ",").replacingOccurrences(of: " ", with: "%20")
                 let attrStr = "&target_energy=" + trackAttributes["energy"]! + "&target_danceability=" + trackAttributes["danceability"]! + "&target_instrumentalness=" + trackAttributes["instrumentalness"]! + "&target_valence=" + trackAttributes["valence"]! // We can later randomzie this part a little bit
                 let urlStr = "https://api.spotify.com/v1/recommendations" + limitStr + popularityStr + genreStr + attrStr
-                print(urlStr)
                 let url = URL(string: urlStr)!
                 Alamofire.request(url, headers: headers).responseJSON { response in
                     if let data = response.data {

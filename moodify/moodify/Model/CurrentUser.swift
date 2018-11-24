@@ -16,7 +16,7 @@ class CurrentUser {
     var username: String!
     var playlists: [Playlist]!
     var profilePicture: UIImage!
-    var currentMood = "happy" // Everyone is happy at the beginning
+    var currentMood = "Joy" // Everyone is happy at the beginning
     
     var settings = ["numTracks": "10", "popularity": "0.8"]
     
