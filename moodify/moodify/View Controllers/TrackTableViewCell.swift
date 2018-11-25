@@ -28,15 +28,4 @@ class TrackTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func update() {
-        if let track = self.track {
-            self.trackTitle.text = track.name
-            self.trackArtist.text = track.artist
-            Alamofire.request(track.coverUrl).responseImage(completionHandler: { response in
-                if let image = response.result.value {
-                    self.trackImage.image = image
-                }
-            })
-        }
-    }
 }

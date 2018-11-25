@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 
 class PlaylistViewController: UIViewController, MoodifyViewController, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate, UITableViewDelegate, UITableViewDataSource {
@@ -91,25 +92,37 @@ class PlaylistViewController: UIViewController, MoodifyViewController, SPTAppRem
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let p = playlist {
             return p.tracks.count
+        } else {
+            return 0
         }
-        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "trackCell", for: indexPath) as! TrackTableViewCell
         let track = (playlist?.tracks[indexPath.item])
         if let track = track {
-            cell.track = track
-            cell.update()
+            cell.trackTitle.text = track.name
+            cell.trackArtist.text = track.artist
+            Alamofire.request(track.coverUrl).responseImage(completionHandler: { response in
+                if let image = response.result.value {
+                    cell.trackImage.image = image
+                }
+            })
         }
         return cell
     }
     
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        /*
         let cell = tableView.dequeueReusableCell(withIdentifier: "trackCell", for: indexPath) as! TrackTableViewCell
         if let track = cell.track {
             playTrack(trackId: track.id)
+        }
+        */
+        if let track = self.playlist?.tracks[indexPath.item] {
+            let trackId = "spotify:track:"+track.id
+            self.appRemote.playerAPI?.play(trackId, callback: defaultCallback)
         }
     }
 

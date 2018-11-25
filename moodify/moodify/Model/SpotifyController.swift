@@ -98,6 +98,7 @@ class SpotifyController {
                 let attrStr = "&target_energy=" + trackAttributes["energy"]! + "&target_danceability=" + trackAttributes["danceability"]! + "&target_instrumentalness=" + trackAttributes["instrumentalness"]! + "&target_valence=" + trackAttributes["valence"]! // We can later randomzie this part a little bit
                 let urlStr = "https://api.spotify.com/v1/recommendations" + limitStr + popularityStr + genreStr + attrStr
                 let url = URL(string: urlStr)!
+                print(url)
                 Alamofire.request(url, headers: headers).responseJSON { response in
                     if let data = response.data {
                         let json = JSON(data)

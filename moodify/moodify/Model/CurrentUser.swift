@@ -18,7 +18,7 @@ class CurrentUser {
     var profilePicture: UIImage!
     var currentMood = "Joy" // Everyone is happy at the beginning
     
-    var settings = ["numTracks": "10", "popularity": "0.8"]
+    var settings = ["numTracks": "10", "popularity": "80"]
     
     init(username: String) {
         self.username = username
