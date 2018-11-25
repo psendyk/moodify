@@ -74,6 +74,7 @@ PODS:
     - SDWebImage/Core (= 4.4.2)
   - SDWebImage/Core (4.4.2)
   - SwiftyJSON (4.2.0)
+  - TransitionButton (0.5.2)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
@@ -86,6 +87,7 @@ DEPENDENCIES:
   - MBProgressHUD
   - SDWebImage
   - SwiftyJSON (~> 4.0)
+  - TransitionButton
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -109,6 +111,7 @@ SPEC REPOS:
     - nanopb
     - SDWebImage
     - SwiftyJSON
+    - TransitionButton
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
@@ -131,7 +134,8 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+  TransitionButton: fb271583d9c9e4bb116b97103047e5157653f233
 
-PODFILE CHECKSUM: 010f7bba7c4a8e1a22c26a7552b84fb41c461819
+PODFILE CHECKSUM: 64b2b06d21783b0781be6a1d5a6972b120e30706
 
 COCOAPODS: 1.5.3

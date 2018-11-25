@@ -17,6 +17,7 @@ target 'moodify' do
   pod 'SwiftyJSON', '~> 4.0'
   pod 'AlamofireImage', '~> 3.4'
   pod 'IBMWatsonToneAnalyzerV3', '~> 0.38.0'
+  pod 'TransitionButton'
   target 'moodifyTests' do
     inherit! :search_paths
     # Pods for testing

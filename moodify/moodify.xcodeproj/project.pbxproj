@@ -30,6 +30,7 @@
 		E5F3CBCA219D017C0030BD22 /* MoodifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F3CBC9219D017C0030BD22 /* MoodifyViewController.swift */; };
 		E5F3CBCD219D432C0030BD22 /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F3CBCC219D432C0030BD22 /* TrackTableViewCell.swift */; };
 		E5F3CBCF219D46370030BD22 /* PlaylistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F3CBCE219D46370030BD22 /* PlaylistTableViewCell.swift */; };
+		F72AEAD021AA7BB30098B93C /* spotify-icon-16-256.png in Resources */ = {isa = PBXBuildFile; fileRef = F72AEACF21AA7BB30098B93C /* spotify-icon-16-256.png */; };
 		F7A921142193DA2E00B49CAD /* SpeakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A921132193DA2E00B49CAD /* SpeakerViewController.swift */; };
 		F7A921162193DA6300B49CAD /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A921152193DA6300B49CAD /* LogInViewController.swift */; };
 		F7A921182193DACC00B49CAD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A921172193DACC00B49CAD /* ProfileViewController.swift */; };
@@ -86,6 +87,7 @@
 		E5F3CBCE219D46370030BD22 /* PlaylistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistTableViewCell.swift; sourceTree = "<group>"; };
 		F2F90C3E3CA672039066E78B /* Pods_moodifyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_moodifyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F507D08B70C17EA65A890297 /* Pods_moodifyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_moodifyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F72AEACF21AA7BB30098B93C /* spotify-icon-16-256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "spotify-icon-16-256.png"; path = "../../../../../spotify-icon-16-256.png"; sourceTree = "<group>"; };
 		F7A921132193DA2E00B49CAD /* SpeakerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerViewController.swift; sourceTree = "<group>"; };
 		F7A921152193DA6300B49CAD /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		F7A921172193DACC00B49CAD /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 		E54668FF218FE7420016D466 = {
 			isa = PBXGroup;
 			children = (
+				F72AEACF21AA7BB30098B93C /* spotify-icon-16-256.png */,
 				E5BCF75F21916C0D00868870 /* moodify-Bridging-Header.h */,
 				E5BCF757218FF18900868870 /* GoogleService-Info.plist */,
 				E546690A218FE7420016D466 /* moodify */,
@@ -343,6 +346,7 @@
 				E5466919218FE7440016D466 /* LaunchScreen.storyboard in Resources */,
 				E5BCF758218FF18900868870 /* GoogleService-Info.plist in Resources */,
 				E5466916218FE7440016D466 /* Assets.xcassets in Resources */,
+				F72AEAD021AA7BB30098B93C /* spotify-icon-16-256.png in Resources */,
 				E5466911218FE7420016D466 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,6 +422,7 @@
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/TransitionButton/TransitionButton.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -432,6 +437,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TransitionButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);

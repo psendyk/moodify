@@ -11,6 +11,7 @@ import Speech
 import Alamofire
 import ToneAnalyzer
 
+
 class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRecognizerDelegate {
     
     let toneAnalyzer = ToneAnalyzer(version: "2018-11-23", apiKey: "EaVbmU9ob6iq7n7p4RIrV29rt19t4TDmbQ8N_PSYoFFe")

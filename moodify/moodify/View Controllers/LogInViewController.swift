@@ -7,25 +7,61 @@
 //
 
 import UIKit
+import TransitionButton
 
 class LoginViewController: UIViewController, SPTSessionManagerDelegate {
-
+    
     var spotifyController: SpotifyController!
     var currentUser: CurrentUser?
     
+    let button = TransitionButton(frame: CGRect(x: 50, y: 100, width: 180, height: 40))
+    // please use Autolayout in real project
+    
+    //replace when we have logo
+    
+    @IBOutlet weak var logoImage: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.spotifyController = SpotifyController()
         self.spotifyController.configuration = self.configuration
         self.spotifyController.sessionManager = self.sessionManager
-
+        logoImage.center = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height/2 - 150)
+        self.view.addSubview(button)
+        button.frame.origin = CGPoint(x: self.view.frame.size.width/2 - 90, y: self.view.frame.size.height - 350)
+        button.backgroundColor = .brown
+        button.setTitle("Log In With Spotify", for: .normal)
+        button.cornerRadius = 20
+        button.spinnerColor = .white
+        button.addTarget(self, action: #selector(buttonAction(_:)), for: .touchUpInside)
+        
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func loginButton(_ sender: Any) {
-        let requestedScopes: SPTScope = [.appRemoteControl, .userTopRead]
-        self.sessionManager.initiateSession(with: requestedScopes, options: .default)
+    @IBAction func buttonAction(_ button: TransitionButton) {
+        button.startAnimation() // 2: Then start the animation when the user tap the button
+        let qualityOfServiceClass = DispatchQoS.QoSClass.background
+        let backgroundQueue = DispatchQueue.global(qos: qualityOfServiceClass)
+        backgroundQueue.async(execute: {
+            
+            sleep(1) // 3: Do your networking task or background work here.
+            let requestedScopes: SPTScope = [.appRemoteControl, .userTopRead]
+            self.sessionManager.initiateSession(with: requestedScopes, options: .default)
+            DispatchQueue.main.async(execute: { () -> Void in
+                // 4: Stop the animation, here you have three options for the `animationStyle` property:
+                // .expand: useful when the task has been compeletd successfully and you want to expand the button and transit to another view controller in the completion callback
+                // .shake: when you want to reflect to the user that the task did not complete successfly
+                // .normal
+                button.stopAnimation(animationStyle: .expand, completion: {
+                    
+                })
+            })
+        })
     }
+    
+    //    @IBAction func loginButton(_ sender: Any) {
+    //        let requestedScopes: SPTScope = [.appRemoteControl, .userTopRead]
+    //        self.sessionManager.initiateSession(with: requestedScopes, options: .default)
+    //    }
     
     // AUTHORIZATION
     
@@ -43,7 +79,7 @@ class LoginViewController: UIViewController, SPTSessionManagerDelegate {
             let tokenRefreshURL = URL(string: "https://polar-crag-31078.herokuapp.com/refresh") {
             self.configuration.tokenSwapURL = tokenSwapURL
             self.configuration.tokenRefreshURL = tokenRefreshURL
-            self.configuration.playURI = ""
+            self.configuration.playURI = "spotify:album:5uMfshtC2Jwqui0NUyUYIL"
         }
         let manager = SPTSessionManager(configuration: self.configuration, delegate: self)
         return manager
@@ -78,5 +114,5 @@ class LoginViewController: UIViewController, SPTSessionManagerDelegate {
             }
         }
     }
-
+    
 }

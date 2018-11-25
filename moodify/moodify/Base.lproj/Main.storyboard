@@ -123,25 +123,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sjo-K1-3wx">
-                                <rect key="frame" x="123" y="318" width="128" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Log In with Spotify"/>
-                                <connections>
-                                    <action selector="loginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Pz5-mN-jMM"/>
-                                </connections>
-                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spotify-icon-16-256.png" translatesAutoresizingMaskIntoConstraints="NO" id="mVJ-t3-fBx">
+                                <rect key="frame" x="75" y="162" width="225" height="219"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="219" id="73I-Yf-CgI"/>
+                                    <constraint firstAttribute="width" constant="225" id="rQj-ox-QKX"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="mVJ-t3-fBx" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="4Qa-lD-m5b"/>
+                            <constraint firstItem="mVJ-t3-fBx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="142" id="LBH-AV-awx"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="logoImage" destination="mVJ-t3-fBx" id="JQQ-Ml-zsp"/>
                         <segue destination="wE4-8q-p1u" kind="show" identifier="logInToSpeaker" id="ZRg-rY-F8l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="490" y="133"/>
+            <point key="canvasLocation" x="488.80000000000001" y="132.68365817091455"/>
         </scene>
         <!--Playlist View Controller-->
         <scene sceneID="o0z-4T-rmr">
@@ -344,6 +348,9 @@
             <point key="canvasLocation" x="1800.8" y="132.68365817091455"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="spotify-icon-16-256.png" width="256" height="256"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="28j-lM-HRU"/>
     </inferredMetricsTieBreakers>
