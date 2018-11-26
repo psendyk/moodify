@@ -21,6 +21,12 @@ class ProfileViewController: UIViewController, MoodifyViewController, UITableVie
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+//        profilePicture.setImage(UIImage(named: "profilepic"), for: .normal) //set profile image
+        profilePicture.layer.borderWidth = 4
+        profilePicture.layer.masksToBounds = false
+        profilePicture.layer.borderColor = UIColor.black.cgColor //set mood color
+        profilePicture.layer.cornerRadius = (profilePicture.frame.height)/2
+        profilePicture.clipsToBounds = true
 
         // Do any additional setup after loading the view.
     }
