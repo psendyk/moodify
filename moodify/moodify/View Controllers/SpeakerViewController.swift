@@ -13,8 +13,20 @@ import ToneAnalyzer
 import TransitionButton
 
 
-class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRecognizerDelegate {
+class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRecognizerDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 7
+    }
     
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = friendCollectionView.dequeueReusableCell(withReuseIdentifier: "friend", for: indexPath) as? friendCollectionViewCell
+        cell?.friendButton.setImage(friends[indexPath.row].image, for: .normal)
+        cell?.name.text = friends[indexPath.row].name
+        return cell!
+    }
+    
+    
+    @IBOutlet weak var friendCollectionView: UICollectionView!
     
     
     let toneAnalyzer = ToneAnalyzer(version: "2018-11-23", apiKey: "EaVbmU9ob6iq7n7p4RIrV29rt19t4TDmbQ8N_PSYoFFe")
