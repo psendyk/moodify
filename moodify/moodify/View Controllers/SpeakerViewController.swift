@@ -21,6 +21,11 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = friendCollectionView.dequeueReusableCell(withReuseIdentifier: "friend", for: indexPath) as? friendCollectionViewCell
         cell?.friendButton.setImage(friends[indexPath.row].image, for: .normal)
+        cell?.friendButton.imageView?.layer.borderWidth = 4
+        cell?.friendButton.imageView?.layer.masksToBounds = false
+        cell?.friendButton.imageView?.layer.borderColor = UIColor.black.cgColor //set mood color
+        cell?.friendButton.imageView?.layer.cornerRadius = (cell?.friendButton.imageView?.frame.height)!/2
+        cell?.friendButton.imageView?.clipsToBounds = true
         cell?.name.text = friends[indexPath.row].name
         return cell!
     }

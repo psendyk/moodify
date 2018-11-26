@@ -15,4 +15,10 @@ class friendCollectionViewCell: UICollectionViewCell {
     }
     @IBOutlet weak var friendButton: UIButton!
     @IBOutlet weak var name: UITextView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        // Initialization code
+    }
 }
