@@ -11,6 +11,16 @@ import Speech
 import Alamofire
 import ToneAnalyzer
 import TransitionButton
+import Material
+
+
+struct ButtonLayout {
+    struct Raised {
+        static let width: CGFloat = 150
+        static let height: CGFloat = 44
+        static let offsetY: CGFloat = 35
+    }
+}
 
 
 class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRecognizerDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
@@ -44,8 +54,9 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
     
-    let createPlaylistButton = TransitionButton(frame: CGRect(x: 50, y: 100, width: 180, height: 40))
+    let createPlaylistButton = TransitionButton(frame: CGRect(x: 97.5, y: 100, width: 180, height: 40))
     
+    let raisedRecordButton = RaisedButton(title: "Press to Record", titleColor: .white)
     
     var textHeightConstraint: NSLayoutConstraint?
     
@@ -56,7 +67,6 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
     var origTVConstraintHeight: CGFloat?
     
     
-    @IBOutlet var recordButton: UIButton!
     @IBOutlet weak var profileButton: UIButton!
     
     
@@ -77,9 +87,8 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
         profileButton.imageView?.layer.cornerRadius = (profileButton.imageView?.frame.height)!/2
         profileButton.imageView?.clipsToBounds = true
         // Disable the record buttons until authorization has been granted.
-        recordButton.isEnabled = false
         self.view.addSubview(createPlaylistButton)
-        createPlaylistButton.frame.origin = CGPoint(x: self.view.frame.size.width/2 - 90, y: self.view.frame.size.height - 350)
+        createPlaylistButton.frame.origin = CGPoint(x: 117, y: self.view.frame.size.height - 350)
         createPlaylistButton.backgroundColor = .brown
         createPlaylistButton.setTitle("Create Playlist", for: .normal)
         createPlaylistButton.cornerRadius = 20
@@ -90,6 +99,37 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
         self.textHeightConstraint = textView.heightAnchor.constraint(equalToConstant: 59)
         self.textHeightConstraint?.isActive = true
         origTVConstraintHeight = self.textView.contentSize.height
+        
+        
+        raisedRecordButton.pulseColor = .white
+        raisedRecordButton.backgroundColor = Color.brown.base
+        raisedRecordButton.addTarget(self, action: #selector(raisedRecordButton(_:)), for: .touchUpInside)
+        raisedRecordButton.layer.cornerRadius = 20
+        raisedRecordButton.clipsToBounds = true
+        
+        view.layout(raisedRecordButton)
+            .width(ButtonLayout.Raised.width)
+            .height(ButtonLayout.Raised.height)
+            .center(offsetY: ButtonLayout.Raised.offsetY)
+    }
+    
+    @IBAction func raisedRecordButton(_ button: RaisedButton) {
+        if audioEngine.isRunning {
+            audioEngine.stop()
+            recognitionRequest?.endAudio()
+            raisedRecordButton.isEnabled = false
+            raisedRecordButton.setTitle("Stopping", for: .disabled)
+            // process the text from textView
+        } else {
+            do {
+                try startRecording()
+                raisedRecordButton.setTitle("Stop Recording", for: [])
+                self.textHeightConstraint?.constant = origTVConstraintHeight ?? 0
+                self.view.layoutIfNeeded()
+            } catch {
+                raisedRecordButton.setTitle("Recording Not Available", for: [])
+            }
+        }
     }
     
     @IBAction func playlistButtonAction(_ button: TransitionButton) {
@@ -139,19 +179,19 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
             OperationQueue.main.addOperation {
                 switch authStatus {
                 case .authorized:
-                    self.recordButton.isEnabled = true
+                    self.raisedRecordButton.isEnabled = true
                     
                 case .denied:
-                    self.recordButton.isEnabled = false
-                    self.recordButton.setTitle("User denied access to speech recognition", for: .disabled)
+                    self.raisedRecordButton.isEnabled = false
+                    self.raisedRecordButton.setTitle("User denied access to speech recognition", for: .disabled)
                     
                 case .restricted:
-                    self.recordButton.isEnabled = false
-                    self.recordButton.setTitle("Speech recognition restricted on this device", for: .disabled)
+                    self.raisedRecordButton.isEnabled = false
+                    self.raisedRecordButton.setTitle("Speech recognition restricted on this device", for: .disabled)
                     
                 case .notDetermined:
-                    self.recordButton.isEnabled = false
-                    self.recordButton.setTitle("Speech recognition not yet authorized", for: .disabled)
+                    self.raisedRecordButton.isEnabled = false
+                    self.raisedRecordButton.setTitle("Speech recognition not yet authorized", for: .disabled)
                 }
             }
         }
@@ -210,8 +250,8 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
                 self.recognitionRequest = nil
                 self.recognitionTask = nil
                 
-                self.recordButton.isEnabled = true
-                self.recordButton.setTitle("Start Recording", for: [])
+                self.raisedRecordButton.isEnabled = true
+                self.raisedRecordButton.setTitle("Press to Record", for: [])
             }
         }
         
@@ -232,34 +272,17 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
     
     public func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
         if available {
-            recordButton.isEnabled = true
-            recordButton.setTitle("Start Recording", for: [])
+            raisedRecordButton.isEnabled = true
+            raisedRecordButton.setTitle("Start Recording", for: [])
         } else {
-            recordButton.isEnabled = false
-            recordButton.setTitle("Recognition Not Available", for: .disabled)
+            raisedRecordButton.isEnabled = false
+            raisedRecordButton.setTitle("Recognition Not Available", for: .disabled)
         }
     }
     
     // MARK: Interface Builder actions
     
-    @IBAction func recordButtonTapped() {
-        if audioEngine.isRunning {
-            audioEngine.stop()
-            recognitionRequest?.endAudio()
-            recordButton.isEnabled = false
-            recordButton.setTitle("Stopping", for: .disabled)
-            // process the text from textView
-        } else {
-            do {
-                try startRecording()
-                recordButton.setTitle("Stop Recording", for: [])
-                self.textHeightConstraint?.constant = origTVConstraintHeight ?? 0
-                self.view.layoutIfNeeded()
-            } catch {
-                recordButton.setTitle("Recording Not Available", for: [])
-            }
-        }
-    }
+    
     
     func extractMood(_ text: String, completion: @escaping ((String?) -> Void)) {
         toneAnalyzer.serviceURL = "https://gateway.watsonplatform.net/tone-analyzer/api"

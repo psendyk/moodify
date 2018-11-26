@@ -19,6 +19,7 @@ target 'moodify' do
   pod 'IBMWatsonToneAnalyzerV3', '~> 0.38.0'
   pod 'TransitionButton'
   pod 'GrowingTextView', '0.6.1'
+  pod 'Material', '~> 2.0'
   target 'moodifyTests' do
     inherit! :search_paths
     # Pods for testing
