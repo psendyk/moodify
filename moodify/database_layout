@@ -1,0 +1,35 @@
+Users: (referenced by email)
+    user1:
+        name
+        pictureUrl
+        settings:
+            numTracks: String
+            popularity: String
+        currentMood
+        Playlists: (referenced by id)
+            playlist1:
+                name
+                mood
+                timestamp
+                tracks: (referenced by track id)
+                    track1
+                    ...
+                    trackN
+                
+            ...
+            playlistN
+        
+    user2
+    ...
+    userN
+
+Tracks: (referneced by Spotify id)
+    track1:
+        id
+        name
+        artist
+        coverUrl
+    track2
+    ...
+    trackN
+        

@@ -35,11 +35,24 @@ class SpotifyController {
         }
     }
     
+    // Get user's Spotify profile picture
+    func getUsersPicture(completion: @escaping ((UIImage?) -> Void)) {
+        completion(nil)
+        // TODO: Get profile picture from the Web API
+    }
+    
+    // Get user's Spotify name
+    func getUsersName(completion: @escaping ((String?) -> Void)) {
+        completion(nil)
+        // TODO: Get user's name from the Web API
+    }
+
+    
     // creates playlist for user's current mood
-    func createPlaylist(currentUser: CurrentUser, mood: String, completion: @escaping ((Playlist?) -> Void)) {
+    func createPlaylist(currentUser: CurrentUser, mood: String, name: String, completion: @escaping ((Playlist?) -> Void)) {
         getRecommendations(currentUser: currentUser, completion: { tracks in
             if let tracks = tracks {
-                let playlist = Playlist(tracks: tracks, id: currentUser.getPlaylists().count + 1, mood: currentUser.getCurrentMood())
+                let playlist = Playlist(tracks: tracks, id: String(currentUser.getPlaylists().count + 1), mood: currentUser.getCurrentMood(), name: name)
                 completion(playlist)
             } else {
                 completion(nil)
@@ -105,8 +118,8 @@ class SpotifyController {
         ]
         getTopGenre(currentUser: currentUser, completion: { topGenre in
             if let topGenre = topGenre {
-                let limitStr = "?limit=" + currentUser.getSetting("numTracks")
-                let popularityStr = "&popularity=" + currentUser.getSetting("popularity")
+                let limitStr = "?limit=" + currentUser.getSetting(setting: "numTracks")
+                let popularityStr = "&popularity=" + currentUser.getSetting(setting: "popularity")
                 let genreStr = "&seed_genres=" + topGenre.joined(separator: ",").replacingOccurrences(of: " ", with: "%20")
                 let attrStr = "&target_energy=" + trackAttributes["energy"]! + "&target_danceability=" + trackAttributes["danceability"]! + "&target_instrumentalness=" + trackAttributes["instrumentalness"]! + "&target_valence=" + trackAttributes["valence"]! // We can later randomzie this part a little bit
                 let urlStr = "https://api.spotify.com/v1/recommendations" + limitStr + popularityStr + genreStr + attrStr

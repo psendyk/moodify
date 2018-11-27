@@ -143,7 +143,7 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
                 self.extractMood(text, completion: { mood in
                     if let mood = mood {
                         self.currentUser.updateMood(mood: mood)
-                        self.spotifyController.createPlaylist(currentUser: self.currentUser, mood: mood, completion: { playlist in
+                        self.spotifyController.createPlaylist(currentUser: self.currentUser, mood: mood, name: self.textView.text, completion: { playlist in
                             if let playlist = playlist {
                                 self.currentUser.addPlaylist(playlist: playlist)
                                 self.performSegue(withIdentifier: "speakerToPlaylist", sender: self)

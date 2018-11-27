@@ -11,15 +11,17 @@ import Foundation
 
 class Playlist {
     
-    var id: Int
+    var id: String
     var name: String
     var tracks: [Track]
     var mood: String
+    var timestamp: String
     
-    init(tracks: [Track], id: Int, mood: String) {
-        self.id = id
-        self.name = "Playlist" + String(id)
+    init(tracks: [Track], id: String, mood: String, name: String) {
+        self.id = id 
+        self.name = name // Set an actual name later (maybe the phrase that the user said?)
         self.tracks = tracks
         self.mood = mood
+        self.timestamp = "" // Get current timestamp
     }
 }
