@@ -30,16 +30,8 @@
 		E5F3CBCA219D017C0030BD22 /* MoodifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F3CBC9219D017C0030BD22 /* MoodifyViewController.swift */; };
 		E5F3CBCD219D432C0030BD22 /* TrackTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F3CBCC219D432C0030BD22 /* TrackTableViewCell.swift */; };
 		E5F3CBCF219D46370030BD22 /* PlaylistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F3CBCE219D46370030BD22 /* PlaylistTableViewCell.swift */; };
-		F72AEAD021AA7BB30098B93C /* spotify-icon-16-256.png in Resources */ = {isa = PBXBuildFile; fileRef = F72AEACF21AA7BB30098B93C /* spotify-icon-16-256.png */; };
 		F72AEAD921ABB5720098B93C /* friendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72AEAD821ABB5720098B93C /* friendCollectionViewCell.swift */; };
 		F72AEADB21ABB84A0098B93C /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = F72AEADA21ABB84A0098B93C /* Friends.swift */; };
-		F72AEAE321ABBBFD0098B93C /* barry.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F72AEADC21ABBBFC0098B93C /* barry.jpg */; };
-		F72AEAE421ABBBFD0098B93C /* boo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F72AEADD21ABBBFC0098B93C /* boo.jpg */; };
-		F72AEAE521ABBBFD0098B93C /* ellen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F72AEADE21ABBBFC0098B93C /* ellen.jpg */; };
-		F72AEAE621ABBBFD0098B93C /* phil.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F72AEADF21ABBBFC0098B93C /* phil.jpg */; };
-		F72AEAE721ABBBFD0098B93C /* hillary.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F72AEAE021ABBBFD0098B93C /* hillary.jpg */; };
-		F72AEAE821ABBBFD0098B93C /* kim.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F72AEAE121ABBBFD0098B93C /* kim.jpg */; };
-		F72AEAE921ABBBFD0098B93C /* bey.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F72AEAE221ABBBFD0098B93C /* bey.jpg */; };
 		F7A921142193DA2E00B49CAD /* SpeakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A921132193DA2E00B49CAD /* SpeakerViewController.swift */; };
 		F7A921162193DA6300B49CAD /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A921152193DA6300B49CAD /* LogInViewController.swift */; };
 		F7A921182193DACC00B49CAD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A921172193DACC00B49CAD /* ProfileViewController.swift */; };
@@ -96,16 +88,8 @@
 		E5F3CBCE219D46370030BD22 /* PlaylistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistTableViewCell.swift; sourceTree = "<group>"; };
 		F2F90C3E3CA672039066E78B /* Pods_moodifyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_moodifyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F507D08B70C17EA65A890297 /* Pods_moodifyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_moodifyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F72AEACF21AA7BB30098B93C /* spotify-icon-16-256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "spotify-icon-16-256.png"; path = "../../../../../spotify-icon-16-256.png"; sourceTree = "<group>"; };
 		F72AEAD821ABB5720098B93C /* friendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = friendCollectionViewCell.swift; sourceTree = "<group>"; };
 		F72AEADA21ABB84A0098B93C /* Friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
-		F72AEADC21ABBBFC0098B93C /* barry.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = barry.jpg; path = ../../../../../barry.jpg; sourceTree = "<group>"; };
-		F72AEADD21ABBBFC0098B93C /* boo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = boo.jpg; path = ../../../../../boo.jpg; sourceTree = "<group>"; };
-		F72AEADE21ABBBFC0098B93C /* ellen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = ellen.jpg; path = ../../../../../ellen.jpg; sourceTree = "<group>"; };
-		F72AEADF21ABBBFC0098B93C /* phil.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = phil.jpg; path = ../../../../../phil.jpg; sourceTree = "<group>"; };
-		F72AEAE021ABBBFD0098B93C /* hillary.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = hillary.jpg; path = ../../../../../hillary.jpg; sourceTree = "<group>"; };
-		F72AEAE121ABBBFD0098B93C /* kim.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = kim.jpg; path = ../../../../../kim.jpg; sourceTree = "<group>"; };
-		F72AEAE221ABBBFD0098B93C /* bey.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = bey.jpg; path = ../../../../../bey.jpg; sourceTree = "<group>"; };
 		F7A921132193DA2E00B49CAD /* SpeakerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerViewController.swift; sourceTree = "<group>"; };
 		F7A921152193DA6300B49CAD /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		F7A921172193DACC00B49CAD /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -185,14 +169,6 @@
 		E54668FF218FE7420016D466 = {
 			isa = PBXGroup;
 			children = (
-				F72AEACF21AA7BB30098B93C /* spotify-icon-16-256.png */,
-				F72AEADC21ABBBFC0098B93C /* barry.jpg */,
-				F72AEAE221ABBBFD0098B93C /* bey.jpg */,
-				F72AEADD21ABBBFC0098B93C /* boo.jpg */,
-				F72AEADE21ABBBFC0098B93C /* ellen.jpg */,
-				F72AEAE021ABBBFD0098B93C /* hillary.jpg */,
-				F72AEAE121ABBBFD0098B93C /* kim.jpg */,
-				F72AEADF21ABBBFC0098B93C /* phil.jpg */,
 				E5BCF75F21916C0D00868870 /* moodify-Bridging-Header.h */,
 				E5BCF757218FF18900868870 /* GoogleService-Info.plist */,
 				E546690A218FE7420016D466 /* moodify */,
@@ -370,18 +346,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F72AEAE521ABBBFD0098B93C /* ellen.jpg in Resources */,
-				F72AEAE421ABBBFD0098B93C /* boo.jpg in Resources */,
-				F72AEAE321ABBBFD0098B93C /* barry.jpg in Resources */,
 				E5466919218FE7440016D466 /* LaunchScreen.storyboard in Resources */,
-				F72AEAE621ABBBFD0098B93C /* phil.jpg in Resources */,
 				E5BCF758218FF18900868870 /* GoogleService-Info.plist in Resources */,
-				F72AEAE921ABBBFD0098B93C /* bey.jpg in Resources */,
 				E5466916218FE7440016D466 /* Assets.xcassets in Resources */,
-				F72AEAD021AA7BB30098B93C /* spotify-icon-16-256.png in Resources */,
 				E5466911218FE7420016D466 /* Main.storyboard in Resources */,
-				F72AEAE721ABBBFD0098B93C /* hillary.jpg in Resources */,
-				F72AEAE821ABBBFD0098B93C /* kim.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

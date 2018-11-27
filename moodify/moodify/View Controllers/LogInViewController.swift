@@ -44,7 +44,7 @@ class LoginViewController: UIViewController, SPTSessionManagerDelegate {
         backgroundQueue.async(execute: {
             
             sleep(1) // 3: Do your networking task or background work here.
-            let requestedScopes: SPTScope = [.appRemoteControl, .userTopRead]
+            let requestedScopes: SPTScope = [.appRemoteControl, .userTopRead, .userReadEmail]
             self.sessionManager.initiateSession(with: requestedScopes, options: .default)
             DispatchQueue.main.async(execute: { () -> Void in
                 // 4: Stop the animation, here you have three options for the `animationStyle` property:
@@ -57,13 +57,6 @@ class LoginViewController: UIViewController, SPTSessionManagerDelegate {
             })
         })
     }
-    
-    //    @IBAction func loginButton(_ sender: Any) {
-    //        let requestedScopes: SPTScope = [.appRemoteControl, .userTopRead]
-    //        self.sessionManager.initiateSession(with: requestedScopes, options: .default)
-    //    }
-    
-    // AUTHORIZATION
     
     let SpotifyClientID = "991ca7685e364b6a98c3cab163e01f47"
     let SpotifyRedirectURL = URL(string: "moodify://spotify-login-callback")!
@@ -88,9 +81,10 @@ class LoginViewController: UIViewController, SPTSessionManagerDelegate {
     
     func sessionManager(manager: SPTSessionManager, didInitiate session: SPTSession) {
         debugPrint("success", session)
-        createCurrentUser()
         self.spotifyController.session = session
-        performSegue(withIdentifier: "logInToSpeaker", sender: self)
+        createCurrentUser(completion: {_ in
+            self.performSegue(withIdentifier: "logInToSpeaker", sender: self)
+        })
     }
     
     func sessionManager(manager: SPTSessionManager, didFailWith error: Error) {
@@ -100,10 +94,18 @@ class LoginViewController: UIViewController, SPTSessionManagerDelegate {
         print("renewed", session)
     }
     
-    func createCurrentUser() {
-        // Authorize or sign up in the Firebase
-        let username = "Dan Garcia"
-        self.currentUser = CurrentUser(username: username)
+    func createCurrentUser(completion: @escaping ((String?) -> Void)) {
+        // Create a new user
+        spotifyController.getUsersEmail(completion: {email in
+            if let email = email {
+                self.currentUser = CurrentUser(username: email)
+                completion(nil)
+            } else {
+                let alert = UIAlertController(title: "Error", message: "Unable to retrieve user's email", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        })
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

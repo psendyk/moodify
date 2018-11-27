@@ -22,6 +22,19 @@ class SpotifyController {
                            "Anger": ["energy": "0.9", "danceability": "0.4", "instrumentalness": "0.3", "valence": "0.3"],
                            "Fear": ["energy": "0.4", "danceability": "0.2", "instrumentalness": "0.8", "valence": "0.9"]]
     
+    // Get the email from User's Spotify account
+    func getUsersEmail(completion: @escaping (String?) -> Void) {
+        let headers: HTTPHeaders = ["Authorization": "Bearer " + self.session.accessToken]
+        Alamofire.request("https://api.spotify.com/v1/me", headers: headers).responseJSON { response in
+            if let data = response.data {
+                let json = JSON(data)
+                completion(json["email"].string!)
+            } else {
+                completion(nil)
+            }
+        }
+    }
+    
     // creates playlist for user's current mood
     func createPlaylist(currentUser: CurrentUser, mood: String, completion: @escaping ((Playlist?) -> Void)) {
         getRecommendations(currentUser: currentUser, completion: { tracks in

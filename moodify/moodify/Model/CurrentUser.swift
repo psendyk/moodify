@@ -18,13 +18,19 @@ class CurrentUser {
     var profilePicture: UIImage!
     var currentMood = "Joy" // Everyone is happy at the beginning
     
-    var settings = ["numTracks": "10", "popularity": "80"]
+    var settings = ["numTracks": "25", "popularity": "80"] // Allow the user to change those in the settings
     
     init(username: String) {
         self.username = username
-        self.loadPlaylists()
-        self.loadPicture()
-        self.loadMood()
+        Auth.auth().signInAnonymously(completion: { (user, error) in
+            if error == nil {
+                self.loadPlaylists()
+                self.loadPicture()
+                self.loadMood()
+            } else {
+                print("Can't sign in to the Firebase")
+            }
+        })
     }
     
     func loadPlaylists() {
