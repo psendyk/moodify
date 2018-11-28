@@ -83,9 +83,10 @@ class LoginViewController: UIViewController, SPTSessionManagerDelegate {
         debugPrint("success", session)
         self.spotifyController.session = session
         createCurrentUser(completion: { currentUser in
-            self.currentUser = currentUser
-            
-            self.performSegue(withIdentifier: "logInToSpeaker", sender: self)
+            if let currentUser = currentUser {
+                self.currentUser = currentUser
+                self.performSegue(withIdentifier: "logInToSpeaker", sender: self)
+            }
         })
     }
     

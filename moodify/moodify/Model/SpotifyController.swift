@@ -37,13 +37,13 @@ class SpotifyController {
     
     // Get user's Spotify profile picture
     func getUsersPicture(completion: @escaping ((UIImage?) -> Void)) {
-        completion(nil)
+        completion(UIImage())
         // TODO: Get profile picture from the Web API
     }
     
     // Get user's Spotify name
     func getUsersName(completion: @escaping ((String?) -> Void)) {
-        completion(nil)
+        completion("")
         // TODO: Get user's name from the Web API
     }
 

@@ -18,10 +18,33 @@ class Playlist {
     var timestamp: String
     
     init(tracks: [Track], id: String, mood: String, name: String) {
-        self.id = id 
+        self.id = "p" + id 
         self.name = name // Set an actual name later (maybe the phrase that the user said?)
         self.tracks = tracks
         self.mood = mood
-        self.timestamp = "" // Get current timestamp
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM.dd.yyyy"
+        self.timestamp =  formatter.string(from: Date()) // Get current timestamp
     }
+    
+    func getTracks() -> [Track] {
+        return self.tracks
+    }
+    
+    func getId() -> String {
+        return self.id
+    }
+    
+    func getName() -> String {
+        return self.name
+    }
+    
+    func getMood() -> String {
+        return self.mood
+    }
+    
+    func getTimestamp() -> String {
+        return self.timestamp
+    }
+    
 }
