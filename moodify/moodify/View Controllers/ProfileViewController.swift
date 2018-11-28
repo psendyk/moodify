@@ -43,7 +43,7 @@ class ProfileViewController: UIViewController, MoodifyViewController, UITableVie
     */
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return currentUser.playlists.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -58,6 +58,18 @@ class ProfileViewController: UIViewController, MoodifyViewController, UITableVie
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Select playlist - perform seque to the PlaylistView
         performSegue(withIdentifier: "profileToPlaylist", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if var dest = segue.destination as? MoodifyViewController {
+            dest.currentUser = self.currentUser
+            dest.spotifyController = self.spotifyController
+        }
+        if let dest = segue.destination as? PlaylistViewController {
+            if let playlist = self.currentUser.latestPlaylist() {
+                dest.playlist = playlist
+            }
+        }
     }
     
 }

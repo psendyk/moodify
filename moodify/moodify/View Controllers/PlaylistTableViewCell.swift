@@ -10,11 +10,11 @@ import UIKit
 
 class PlaylistTableViewCell: UITableViewCell {
     
-    
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var numTracks: UILabel!
     @IBOutlet weak var moodImage: UIImageView!
     
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
