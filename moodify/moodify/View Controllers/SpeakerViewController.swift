@@ -88,10 +88,12 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
         profileButton.imageView?.clipsToBounds = true
         // Disable the record buttons until authorization has been granted.
         self.view.addSubview(createPlaylistButton)
-        createPlaylistButton.frame.origin = CGPoint(x: 117, y: self.view.frame.size.height - 350)
-        createPlaylistButton.backgroundColor = .brown
+        createPlaylistButton.frame.size = CGSize(width: 260, height: 60)
+        createPlaylistButton.frame.origin = CGPoint(x: self.view.frame.size.width/2 - 130, y: self.view.frame.size.height - 300)
+        createPlaylistButton.titleLabel?.font =  .boldSystemFont(ofSize: 24)
+        createPlaylistButton.backgroundColor = UIColor(red:0.11, green:0.73, blue:0.33, alpha:1.0)
         createPlaylistButton.setTitle("Create Playlist", for: .normal)
-        createPlaylistButton.cornerRadius = 20
+        createPlaylistButton.cornerRadius = 30
         createPlaylistButton.spinnerColor = .white
         createPlaylistButton.addTarget(self, action: #selector(playlistButtonAction(_:)), for: .touchUpInside)
         textView.clipsToBounds = true
@@ -102,15 +104,15 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
         
         
         raisedRecordButton.pulseColor = .white
-        raisedRecordButton.backgroundColor = Color.brown.base
+        raisedRecordButton.setImage(UIImage(named: "mic_black_192x192"), for: .normal)
         raisedRecordButton.addTarget(self, action: #selector(raisedRecordButton(_:)), for: .touchUpInside)
-        raisedRecordButton.layer.cornerRadius = 20
+        raisedRecordButton.layer.cornerRadius = 80
         raisedRecordButton.clipsToBounds = true
         
         view.layout(raisedRecordButton)
-            .width(ButtonLayout.Raised.width)
-            .height(ButtonLayout.Raised.height)
-            .center(offsetY: ButtonLayout.Raised.offsetY)
+            .width(CGFloat(160))
+            .height(CGFloat(160))
+            .center(offsetY: ButtonLayout.Raised.offsetY - 50)
     }
     
     @IBAction func raisedRecordButton(_ button: RaisedButton) {
@@ -252,6 +254,7 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
                 
                 self.raisedRecordButton.isEnabled = true
                 self.raisedRecordButton.setTitle("Press to Record", for: [])
+    
             }
         }
         
