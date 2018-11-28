@@ -138,34 +138,33 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
         button.startAnimation() // 2: Then start the animation when the user tap the button
         let qualityOfServiceClass = DispatchQoS.QoSClass.background
         let backgroundQueue = DispatchQueue.global(qos: qualityOfServiceClass)
-        let text = self.textView.text
-        backgroundQueue.async(execute: {
+        if let text = self.textView.text {
+            backgroundQueue.async(execute: {
             
-            sleep(1) // 3: Do your networking task or background work here.
-            //if let text = self.textView.text {
-            self.extractMood(text!, completion: { mood in
-                    if let mood = mood {
-                        self.currentUser.updateMood(mood: mood)
-                        self.spotifyController.createPlaylist(currentUser: self.currentUser, mood: mood, completion: { playlist in
-                            if let playlist = playlist {
-                                self.currentUser.addPlaylist(playlist: playlist)
-                                self.performSegue(withIdentifier: "speakerToPlaylist", sender: self)
-                            }
-                        })
-                    }
-                })
-                
-            //}
-            DispatchQueue.main.async(execute: { () -> Void in
-                // 4: Stop the animation, here you have three options for the `animationStyle` property:
-                // .expand: useful when the task has been compeletd successfully and you want to expand the button and transit to another view controller in the completion callback
-                // .shake: when you want to reflect to the user that the task did not complete successfly
-                // .normal
-                button.stopAnimation(animationStyle: .normal, completion: {
-                    
+                sleep(1) // 3: Do your networking task or background work here.
+                self.extractMood(text, completion: { mood in
+                        if let mood = mood {
+                            self.currentUser.updateMood(mood: mood)
+                            self.spotifyController.createPlaylist(currentUser: self.currentUser, mood: mood, completion: { playlist in
+                                if let playlist = playlist {
+                                    self.currentUser.addPlaylist(playlist: playlist)
+                                    self.performSegue(withIdentifier: "speakerToPlaylist", sender: self)
+                                }
+                            })
+                        }
+                    })
+
+                DispatchQueue.main.async(execute: { () -> Void in
+                    // 4: Stop the animation, here you have three options for the `animationStyle` property:
+                    // .expand: useful when the task has been compeletd successfully and you want to expand the button and transit to another view controller in the completion callback
+                    // .shake: when you want to reflect to the user that the task did not complete successfly
+                    // .normal
+                    button.stopAnimation(animationStyle: .normal, completion: {
+                        
+                    })
                 })
             })
-        })
+        }
     }
     
     override public func viewDidAppear(_ animated: Bool) {
@@ -293,7 +292,9 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
         let toneInput = ToneInput(text: text)
         toneAnalyzer.tone(toneInput: toneInput, success: { tone in
             if let tones = tone.documentTone.tones {
-                completion(tones[0].toneName)
+                if tones.count > 0 {
+                    completion(tones[0].toneName)
+                }
             } else {
                 completion("")
             }
