@@ -118,7 +118,7 @@ class CurrentUser {
     }
     
     func addPlaylist(playlist: Playlist) {
-        self.playlists.append(playlist)
+        self.playlists.insert(playlist, at: 0)
         // First put the tracks in the database
         let tracksRef = self.dbRef.child("Tracks")
         tracksRef.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -137,7 +137,7 @@ class CurrentUser {
     
     func latestPlaylist() -> Playlist? {
         if self.playlists.count > 0 {
-            return self.playlists[self.playlists.count-1]
+            return self.playlists[0]
         }
         return nil
     }

@@ -16,6 +16,7 @@ class ProfileViewController: UIViewController, MoodifyViewController, UITableVie
     
     var spotifyController: SpotifyController!
     var currentUser: CurrentUser!
+    var selectedPlaylist: Playlist?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +62,7 @@ class ProfileViewController: UIViewController, MoodifyViewController, UITableVie
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // Select playlist - perform seque to the PlaylistView
+        selectedPlaylist = currentUser.getPlaylists()[indexPath.item]
         performSegue(withIdentifier: "profileToPlaylist", sender: self)
     }
     
@@ -71,7 +72,7 @@ class ProfileViewController: UIViewController, MoodifyViewController, UITableVie
             dest.spotifyController = self.spotifyController
         }
         if let dest = segue.destination as? PlaylistViewController {
-            if let playlist = self.currentUser.latestPlaylist() {
+            if let playlist = selectedPlaylist {
                 dest.playlist = playlist
             }
         }
