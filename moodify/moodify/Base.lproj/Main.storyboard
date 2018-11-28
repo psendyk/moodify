@@ -63,10 +63,9 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.1647058824" green="0.1647058824" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
-                                            <outlet property="moodImage" destination="2eJ-aJ-QoD" id="XXj-Kw-BJz"/>
-                                            <outlet property="name" destination="TMR-qg-L7y" id="lOx-e3-kfO"/>
-                                            <outlet property="numSongs" destination="2zP-6s-bkt" id="TZD-B6-pff"/>
-                                            <outlet property="numTracks" destination="2zP-6s-bkt" id="Se1-jU-2ek"/>
+                                            <outlet property="moodImage" destination="2eJ-aJ-QoD" id="nNu-Nf-HQa"/>
+                                            <outlet property="name" destination="TMR-qg-L7y" id="mb8-YG-Zyy"/>
+                                            <outlet property="numTracks" destination="2zP-6s-bkt" id="R9x-cn-F4d"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

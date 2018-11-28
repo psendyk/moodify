@@ -43,7 +43,7 @@ class ProfileViewController: UIViewController, MoodifyViewController, UITableVie
     */
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return currentUser.playlists.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
