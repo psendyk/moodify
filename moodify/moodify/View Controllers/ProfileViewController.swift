@@ -52,6 +52,11 @@ class ProfileViewController: UIViewController, MoodifyViewController, UITableVie
         cell.name.text = playlist.name
         cell.numTracks.text = String(playlist.tracks.count) + " songs"
         cell.moodImage.image = playlist.moodImage
+        
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor(red:0.1, green:0.1, blue:0.1, alpha:1.0)
+        cell.selectedBackgroundView = backgroundView
+        
         return cell
     }
     

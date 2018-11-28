@@ -109,6 +109,11 @@ class PlaylistViewController: UIViewController, MoodifyViewController, SPTAppRem
                 }
             })
         }
+        
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor(red:0.1, green:0.1, blue:0.1, alpha:1.0)
+        cell.selectedBackgroundView = backgroundView
+        
         return cell
     }
     

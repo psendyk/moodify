@@ -30,7 +30,9 @@ class Playlist {
         self.name = name // Set an actual name later (maybe the phrase that the user said?)
         self.tracks = tracks
         self.mood = mood
-        self.moodImage = Playlist.moodImages[mood]?[Int.random(in: 0 ..< Playlist.moodImages.count)]
+        if let imagesForMood = Playlist.moodImages[mood] {
+            self.moodImage = imagesForMood[Int.random(in: 0 ..< imagesForMood.count)]
+        }
         let formatter = DateFormatter()
         formatter.dateFormat = "MM.dd.yyyy"
         self.timestamp =  formatter.string(from: Date()) // Get current timestamp
