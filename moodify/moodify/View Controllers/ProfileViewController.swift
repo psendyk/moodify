@@ -60,4 +60,16 @@ class ProfileViewController: UIViewController, MoodifyViewController, UITableVie
         performSegue(withIdentifier: "profileToPlaylist", sender: self)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if var dest = segue.destination as? MoodifyViewController {
+            dest.currentUser = self.currentUser
+            dest.spotifyController = self.spotifyController
+        }
+        if let dest = segue.destination as? PlaylistViewController {
+            if let playlist = self.currentUser.latestPlaylist() {
+                dest.playlist = playlist
+            }
+        }
+    }
+    
 }

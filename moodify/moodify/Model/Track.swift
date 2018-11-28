@@ -21,4 +21,18 @@ class Track {
         self.artist = artist
         self.coverUrl = coverUrl
     }
+    
+    func getName() -> String {
+        return self.name
+    }
+    func getId() -> String {
+        return self.id
+    }
+    func getArtist() -> String {
+        return self.artist
+    }
+    func getCover() -> String {
+        return self.coverUrl
+    }
+    
 }

@@ -18,13 +18,15 @@ class LoginViewController: UIViewController, SPTSessionManagerDelegate {
     // please use Autolayout in real project
     
     //replace when we have logo
-    
     @IBOutlet weak var logoImage: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.spotifyController = SpotifyController()
         self.spotifyController.configuration = self.configuration
         self.spotifyController.sessionManager = self.sessionManager
+        
         logoImage.center = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height/2 - 150)
         self.view.addSubview(button)
         button.setTitle("Log in with Spotify", for: .normal)
@@ -35,8 +37,6 @@ class LoginViewController: UIViewController, SPTSessionManagerDelegate {
         button.cornerRadius = 30
         button.spinnerColor = .white
         button.addTarget(self, action: #selector(buttonAction(_:)), for: .touchUpInside)
-        
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func buttonAction(_ button: TransitionButton) {
@@ -68,7 +68,7 @@ class LoginViewController: UIViewController, SPTSessionManagerDelegate {
         redirectURL: SpotifyRedirectURL
     )
     
-    // Might have to set up a server later - now running locally
+    // Perform the token swap
     lazy var sessionManager: SPTSessionManager = {
         if let tokenSwapURL = URL(string: "https://polar-crag-31078.herokuapp.com/swap"),
             let tokenRefreshURL = URL(string: "https://polar-crag-31078.herokuapp.com/refresh") {
@@ -80,12 +80,15 @@ class LoginViewController: UIViewController, SPTSessionManagerDelegate {
         return manager
     }()
     
-    
+    // Session succesfully initiated
     func sessionManager(manager: SPTSessionManager, didInitiate session: SPTSession) {
         debugPrint("success", session)
         self.spotifyController.session = session
-        createCurrentUser(completion: {_ in
-            self.performSegue(withIdentifier: "logInToSpeaker", sender: self)
+        createCurrentUser(completion: { currentUser in
+            if let currentUser = currentUser {
+                self.currentUser = currentUser
+                self.performSegue(withIdentifier: "logInToSpeaker", sender: self)
+            }
         })
     }
     
@@ -96,16 +99,28 @@ class LoginViewController: UIViewController, SPTSessionManagerDelegate {
         print("renewed", session)
     }
     
-    func createCurrentUser(completion: @escaping ((String?) -> Void)) {
+    func createCurrentUser(completion: @escaping ((CurrentUser?) -> Void)) {
         // Create a new user
-        spotifyController.getUsersEmail(completion: {email in
+        spotifyController.getUsersEmail(completion: { email in
             if let email = email {
-                self.currentUser = CurrentUser(username: email)
-                completion(nil)
+                let currentUser = CurrentUser(username: email)
+                self.spotifyController.getUsersPicture(completion: { image in
+                    if let image = image {
+                        currentUser.profilePicture = image
+                        self.spotifyController.getUsersName(completion: { name in
+                            if let name = name {
+                                currentUser.name = name
+                                completion(currentUser)
+                            } else {
+                                completion(nil)
+                            }
+                        })
+                    } else {
+                        completion(nil)
+                    }
+                })
             } else {
-                let alert = UIAlertController(title: "Error", message: "Unable to retrieve user's email", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                completion(nil)
             }
         })
     }
