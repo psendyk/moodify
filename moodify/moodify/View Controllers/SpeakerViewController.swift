@@ -88,7 +88,7 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
         // Disable the record buttons until authorization has been granted.
         self.view.addSubview(createPlaylistButton)
         createPlaylistButton.frame.size = CGSize(width: 260, height: 60)
-        createPlaylistButton.frame.origin = CGPoint(x: self.view.frame.size.width/2 - 130, y: self.view.frame.size.height - 300)
+        createPlaylistButton.frame.origin = CGPoint(x: self.view.frame.size.width/2 - 130, y: self.view.frame.size.height - 270)
         createPlaylistButton.titleLabel?.font =  .boldSystemFont(ofSize: 24)
         createPlaylistButton.backgroundColor = UIColor(red:0.11, green:0.73, blue:0.33, alpha:1.0)
         createPlaylistButton.setTitle("Create Playlist", for: .normal)
@@ -111,7 +111,7 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
         view.layout(raisedRecordButton)
             .width(CGFloat(160))
             .height(CGFloat(160))
-            .center(offsetY: ButtonLayout.Raised.offsetY - 50)
+            .center(offsetY: ButtonLayout.Raised.offsetY)
     }
     
     @IBAction func raisedRecordButton(_ button: RaisedButton) {
@@ -144,7 +144,11 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
                 self.extractMood(text, completion: { mood in
                     if let mood = mood {
                         self.currentUser.updateMood(mood: mood)
-                        self.spotifyController.createPlaylist(currentUser: self.currentUser, mood: mood, name: text, completion: { playlist in
+                        var name = text
+                        if name.count > 27 {
+                            name = String(name.prefix(27)) + "..."
+                        }
+                        self.spotifyController.createPlaylist(currentUser: self.currentUser, mood: mood, name: name, completion: { playlist in
                             if let playlist = playlist {
                                 self.currentUser.addPlaylist(playlist: playlist)
                                 self.performSegue(withIdentifier: "speakerToPlaylist", sender: self)
@@ -174,15 +178,15 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
         
         switch(currentUser.currentMood) {
         case "Joy":
-            profileButton.imageView?.layer.borderColor = UIColor.yellow.cgColor
+            profileButton.imageView?.layer.borderColor = UIColor(red:0.99, green:0.87, blue:0.16, alpha:1.0).cgColor
         case "Sadness":
-            profileButton.imageView?.layer.borderColor = UIColor.blue.cgColor
+            profileButton.imageView?.layer.borderColor = UIColor(red:0.14, green:0.40, blue:0.64, alpha:1.0).cgColor
         case "Anger":
-            profileButton.imageView?.layer.borderColor = UIColor.red.cgColor
+            profileButton.imageView?.layer.borderColor = UIColor(red:0.99, green:0.20, blue:0.16, alpha:1.0).cgColor
         case "Fear":
-            profileButton.imageView?.layer.borderColor = UIColor.gray.cgColor
+            profileButton.imageView?.layer.borderColor = UIColor(red:0.74, green:0.74, blue:0.74, alpha:1.0).cgColor
         default:
-            profileButton.imageView?.layer.borderColor = UIColor.black.cgColor
+            profileButton.imageView?.layer.borderColor = UIColor(red:0.99, green:0.87, blue:0.16, alpha:1.0).cgColor
         }
         
         // Make the authorization request.

@@ -25,19 +25,19 @@ class ProfileViewController: UIViewController, MoodifyViewController, UITableVie
         profilePicture.image = UIImage(named: "profilepic")
         // pull name from Spotify
         //username.text = currentUser.name
-        profilePicture.layer.borderWidth = 4
+        profilePicture.layer.borderWidth = 8
         profilePicture.layer.masksToBounds = false
         switch(currentUser.currentMood) {
             case "Joy":
-                profilePicture.layer.borderColor = UIColor.yellow.cgColor
+                profilePicture.layer.borderColor = UIColor(red:0.99, green:0.87, blue:0.16, alpha:1.0).cgColor
             case "Sadness":
-                profilePicture.layer.borderColor = UIColor.blue.cgColor
+                profilePicture.layer.borderColor = UIColor(red:0.14, green:0.40, blue:0.64, alpha:1.0).cgColor
             case "Anger":
-                profilePicture.layer.borderColor = UIColor.red.cgColor
+                profilePicture.layer.borderColor = UIColor(red:0.99, green:0.20, blue:0.16, alpha:1.0).cgColor
             case "Fear":
-                profilePicture.layer.borderColor = UIColor.gray.cgColor
+                profilePicture.layer.borderColor = UIColor(red:0.74, green:0.74, blue:0.74, alpha:1.0).cgColor
             default:
-                profilePicture.layer.borderColor = UIColor.black.cgColor
+                profilePicture.layer.borderColor = UIColor(red:0.99, green:0.87, blue:0.16, alpha:1.0).cgColor
         }
         profilePicture.layer.cornerRadius = (profilePicture.frame.height)/2
         profilePicture.clipsToBounds = true
