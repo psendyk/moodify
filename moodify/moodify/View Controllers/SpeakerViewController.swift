@@ -83,7 +83,6 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
         profileButton.setImage(UIImage(named: "profilepic"), for: .normal) //set profile image
         profileButton.imageView?.layer.borderWidth = 4
         profileButton.imageView?.layer.masksToBounds = false
-        profileButton.imageView?.layer.borderColor = UIColor.black.cgColor //set mood color
         profileButton.imageView?.layer.cornerRadius = (profileButton.imageView?.frame.height)!/2
         profileButton.imageView?.clipsToBounds = true
         // Disable the record buttons until authorization has been granted.
@@ -172,6 +171,19 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
         // Configure the SFSpeechRecognizer object already
         // stored in a local member variable.
         speechRecognizer.delegate = self
+        
+        switch(currentUser.currentMood) {
+        case "Joy":
+            profileButton.imageView?.layer.borderColor = UIColor.yellow.cgColor
+        case "Sadness":
+            profileButton.imageView?.layer.borderColor = UIColor.blue.cgColor
+        case "Anger":
+            profileButton.imageView?.layer.borderColor = UIColor.red.cgColor
+        case "Fear":
+            profileButton.imageView?.layer.borderColor = UIColor.gray.cgColor
+        default:
+            profileButton.imageView?.layer.borderColor = UIColor.black.cgColor
+        }
         
         // Make the authorization request.
         SFSpeechRecognizer.requestAuthorization { authStatus in

@@ -22,10 +22,23 @@ class ProfileViewController: UIViewController, MoodifyViewController, UITableVie
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-//        profilePicture.setImage(UIImage(named: "profilepic"), for: .normal) //set profile image
+        profilePicture.image = UIImage(named: "profilepic")
+        // pull name from Spotify
+        //username.text = currentUser.name
         profilePicture.layer.borderWidth = 4
         profilePicture.layer.masksToBounds = false
-        profilePicture.layer.borderColor = UIColor.black.cgColor //set mood color
+        switch(currentUser.currentMood) {
+            case "Joy":
+                profilePicture.layer.borderColor = UIColor.yellow.cgColor
+            case "Sadness":
+                profilePicture.layer.borderColor = UIColor.blue.cgColor
+            case "Anger":
+                profilePicture.layer.borderColor = UIColor.red.cgColor
+            case "Fear":
+                profilePicture.layer.borderColor = UIColor.gray.cgColor
+            default:
+                profilePicture.layer.borderColor = UIColor.black.cgColor
+        }
         profilePicture.layer.cornerRadius = (profilePicture.frame.height)/2
         profilePicture.clipsToBounds = true
 
