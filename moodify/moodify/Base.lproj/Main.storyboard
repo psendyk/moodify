@@ -247,13 +247,20 @@
                                     <constraint firstAttribute="height" constant="3" id="RFN-pV-n0G"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JOu-Bc-844">
+                                <rect key="frame" x="0.0" y="587" width="375" height="3"/>
+                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="3" id="ggC-nb-edH"/>
+                                </constraints>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IzB-1u-jla">
                                 <rect key="frame" x="24" y="659" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tsq-0V-x9F">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tsq-0V-x9F">
                                 <rect key="frame" x="311" y="619" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="8mL-h7-PSq"/>
@@ -278,6 +285,7 @@
                             <constraint firstItem="Jhc-vy-pCe" firstAttribute="top" secondItem="JJn-JR-PhD" secondAttribute="top" constant="97" id="G3b-ud-TTX"/>
                             <constraint firstItem="Jhc-vy-pCe" firstAttribute="leading" secondItem="JJn-JR-PhD" secondAttribute="leading" id="J5n-97-HZs"/>
                             <constraint firstItem="Tsq-0V-x9F" firstAttribute="top" secondItem="Jhc-vy-pCe" secondAttribute="bottom" constant="32" id="Sr3-OK-LGM"/>
+                            <constraint firstItem="JOu-Bc-844" firstAttribute="width" secondItem="9GZ-jW-Agj" secondAttribute="width" id="X6N-UK-bdx"/>
                             <constraint firstItem="lIn-m6-lP2" firstAttribute="centerX" secondItem="JJn-JR-PhD" secondAttribute="centerX" id="bIF-tP-4fM"/>
                             <constraint firstItem="Jhc-vy-pCe" firstAttribute="top" secondItem="5WP-nl-0bp" secondAttribute="bottom" constant="24" id="bc4-ST-Nrn"/>
                             <constraint firstItem="Jhc-vy-pCe" firstAttribute="top" secondItem="lIn-m6-lP2" secondAttribute="bottom" id="dIc-hY-6hg"/>
@@ -287,8 +295,10 @@
                             <constraint firstItem="Jhc-vy-pCe" firstAttribute="centerX" secondItem="JJn-JR-PhD" secondAttribute="centerX" id="jRD-2X-cDF"/>
                             <constraint firstItem="JJn-JR-PhD" firstAttribute="bottom" secondItem="IzB-1u-jla" secondAttribute="bottom" constant="8" id="mlY-79-ZZP"/>
                             <constraint firstItem="lIn-m6-lP2" firstAttribute="width" secondItem="9GZ-jW-Agj" secondAttribute="width" id="n55-GN-Qsx"/>
+                            <constraint firstItem="JOu-Bc-844" firstAttribute="centerX" secondItem="JJn-JR-PhD" secondAttribute="centerX" id="sZA-FU-zSM"/>
                             <constraint firstItem="Jhc-vy-pCe" firstAttribute="width" secondItem="9GZ-jW-Agj" secondAttribute="width" id="uDN-aJ-mlT"/>
                             <constraint firstItem="U40-bf-LJr" firstAttribute="top" secondItem="Jhc-vy-pCe" secondAttribute="bottom" constant="32" id="xEy-n9-c8M"/>
+                            <constraint firstItem="JOu-Bc-844" firstAttribute="top" secondItem="Jhc-vy-pCe" secondAttribute="bottom" id="xWN-5p-igX"/>
                             <constraint firstItem="5WP-nl-0bp" firstAttribute="leading" secondItem="JJn-JR-PhD" secondAttribute="leading" constant="24" id="yk0-et-K23"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JJn-JR-PhD"/>

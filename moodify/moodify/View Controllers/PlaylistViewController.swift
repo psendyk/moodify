@@ -24,9 +24,11 @@ class PlaylistViewController: UIViewController, MoodifyViewController, SPTAppRem
             if playing! {
                 playTrack(trackId: trackId)
                 playPauseButton.setImage(UIImage(named: "playButton"), for: .normal)
+                playing = false
             } else {
                 // pause
-                playPauseButton.setImage(UIImage(named: "playButton"), for: .normal)
+                playPauseButton.setImage(UIImage(named: "pauseButton"), for: .normal)
+                playing = true
             }
         }
     }
@@ -121,7 +123,11 @@ class PlaylistViewController: UIViewController, MoodifyViewController, SPTAppRem
         let cell = tableView.dequeueReusableCell(withIdentifier: "trackCell", for: indexPath) as! TrackTableViewCell
         let track = (playlist?.tracks[indexPath.item])
         if let track = track {
-            cell.trackTitle.text = track.name
+            if track.name.count >= 34 {
+                cell.trackTitle.text = String(track.name.prefix(31)) + "..."
+            } else {
+                 cell.trackTitle.text = track.name
+            }
             cell.trackArtist.text = track.artist
             Alamofire.request(track.coverUrl).responseImage(completionHandler: { response in
                 if let image = response.result.value {
@@ -147,10 +153,14 @@ class PlaylistViewController: UIViewController, MoodifyViewController, SPTAppRem
         */
         if let track = self.playlist?.tracks[indexPath.item] {
             currTrackId = "spotify:track:"+track.id
-            currentSongTitle.text = track.name
+            if track.name.count >= 37 {
+                currentSongTitle.text = String(track.name.prefix(34)) + "..."
+            } else {
+                currentSongTitle.text = track.name
+            }
             currentSongArtist.text = track.artist
             playing = true
-            playPauseButton.setImage(UIImage(named: "playButton"), for: .normal)
+            playPauseButton.setImage(UIImage(named: "pauseButton"), for: .normal)
             self.appRemote.playerAPI?.play(currTrackId!, callback: defaultCallback)
         }
     }
