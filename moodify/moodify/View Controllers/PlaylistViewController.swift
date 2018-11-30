@@ -14,6 +14,26 @@ class PlaylistViewController: UIViewController, MoodifyViewController, SPTAppRem
 
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var currentSongTitle: UILabel!
+    @IBOutlet weak var currentSongArtist: UILabel!
+    // need outlet as well as action to change play/puase image
+    @IBOutlet weak var playPauseButton: UIButton!
+    
+    @IBAction func playPause(_ sender: Any) {
+        if let trackId = currTrackId {
+            if playing! {
+                playTrack(trackId: trackId)
+                playPauseButton.setImage(UIImage(named: "playButton"), for: .normal)
+            } else {
+                // pause
+                playPauseButton.setImage(UIImage(named: "playButton"), for: .normal)
+            }
+        }
+    }
+    
+    // show pause button when playing, play button when not playing
+    var playing: Bool?
+    var currTrackId: String?
     
     var spotifyController: SpotifyController!
     var currentUser: CurrentUser!
@@ -126,8 +146,12 @@ class PlaylistViewController: UIViewController, MoodifyViewController, SPTAppRem
         }
         */
         if let track = self.playlist?.tracks[indexPath.item] {
-            let trackId = "spotify:track:"+track.id
-            self.appRemote.playerAPI?.play(trackId, callback: defaultCallback)
+            currTrackId = "spotify:track:"+track.id
+            currentSongTitle.text = track.name
+            currentSongArtist.text = track.artist
+            playing = true
+            playPauseButton.setImage(UIImage(named: "playButton"), for: .normal)
+            self.appRemote.playerAPI?.play(currTrackId!, callback: defaultCallback)
         }
     }
 

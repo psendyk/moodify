@@ -58,6 +58,12 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
     
     let raisedRecordButton = RaisedButton(title: "Press to Record", titleColor: .white)
     
+    /*let recordGesture = UILongPressGestureRecognizer(target: self, action: #selector(record()))
+    recordGesture.minimumPressDuration = 0.1 // seconds
+    recordGesture.allowableMovement = 15 // points
+    recordGesture.delegate = self
+    raisedRecordButton.addGestureRecognizer(recordGesture)*/
+    
     var textHeightConstraint: NSLayoutConstraint?
     
     
