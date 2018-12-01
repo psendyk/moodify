@@ -124,6 +124,7 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
             .width(CGFloat(160))
             .height(CGFloat(160))
             .center(offsetY: ButtonLayout.Raised.offsetY)
+        
     }
     
     @IBAction func raisedRecordButton(_ button: RaisedButton) {

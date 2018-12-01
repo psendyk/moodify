@@ -16,22 +16,35 @@ class PlaylistViewController: UIViewController, MoodifyViewController, SPTAppRem
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var currentSongTitle: UILabel!
     @IBOutlet weak var currentSongArtist: UILabel!
+    var currTrack = 0
     // need outlet as well as action to change play/puase image
     @IBOutlet weak var playPauseButton: UIButton!
     
+    private var playerState: SPTAppRemotePlayerState?
+    
     @IBAction func playPause(_ sender: Any) {
-        if let trackId = currTrackId {
-            if playing! {
-                playTrack(trackId: trackId)
-                playPauseButton.setImage(UIImage(named: "playButton"), for: .normal)
-                playing = false
+        if let paused = self.playerState?.isPaused {
+            if paused {
+                startPlayback()
             } else {
-                // pause
-                playPauseButton.setImage(UIImage(named: "pauseButton"), for: .normal)
-                playing = true
+                pausePlayback()
             }
         }
     }
+    
+    private func updatePlayPauseButtonState(_ paused: Bool) {
+        if paused {
+            self.playPauseButton.setImage(UIImage(named: "playButton"), for: .normal)
+        } else {
+            self.playPauseButton.setImage(UIImage(named: "pauseButton"), for: .normal)
+        }
+    }
+    
+    private func updateCurrentTrack() {
+        self.currentSongTitle.text = self.playerState!.track.name
+        self.currentSongArtist.text = self.playerState!.track.artist.name
+    }
+    
     
     // show pause button when playing, play button when not playing
     var playing: Bool?
@@ -48,13 +61,19 @@ class PlaylistViewController: UIViewController, MoodifyViewController, SPTAppRem
         tableView.delegate = self
         tableView.dataSource = self
         
-        if let playlist = self.playlist {
-            self.name.text = playlist.name
-        }
-        
         self.appRemote.connectionParameters.accessToken = self.spotifyController.session.accessToken
         self.appRemote.connect()
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if let playlist = self.playlist {
+            self.name.text = playlist.name
+            let trackId = "spotify:track:" + self.playlist!.tracks[0].getId()
+            self.playTrack(trackId: trackId)
+            self.currTrack = 0
+        }
     }
     
     func appRemoteDidEstablishConnection(_ appRemote: SPTAppRemote) {
@@ -78,6 +97,9 @@ class PlaylistViewController: UIViewController, MoodifyViewController, SPTAppRem
     func playerStateDidChange(_ playerState: SPTAppRemotePlayerState) {
         print("player state changed")
         debugPrint("Track name: %@", playerState.track.name)
+        self.playerState = playerState
+        updatePlayPauseButtonState(self.playerState!.isPaused)
+        updateCurrentTrack()
     }
     
     lazy var appRemote: SPTAppRemote = {
@@ -152,25 +174,44 @@ class PlaylistViewController: UIViewController, MoodifyViewController, SPTAppRem
         }
         */
         if let track = self.playlist?.tracks[indexPath.item] {
-            currTrackId = "spotify:track:"+track.id
-            if track.name.count >= 37 {
-                currentSongTitle.text = String(track.name.prefix(34)) + "..."
-            } else {
-                currentSongTitle.text = track.name
-            }
-            currentSongArtist.text = track.artist
-            playing = true
-            playPauseButton.setImage(UIImage(named: "pauseButton"), for: .normal)
-            self.appRemote.playerAPI?.play(currTrackId!, callback: defaultCallback)
+            let trackId = "spotify:track:"+track.id
+            playTrack(trackId: trackId)
+            
         }
+        self.currTrack = indexPath.item
     }
 
     
     /*
      Controlling the Spotify remote
      */
+
+    
     private func playTrack(trackId: String) {
+        print(trackId)
         appRemote.playerAPI?.play(trackId, callback: defaultCallback)
+    }
+    
+    private func skipNext() {
+        if self.currTrack < self.playlist!.tracks.count - 1 {
+            playTrack(trackId: self.playlist!.tracks[self.currTrack + 1].getId())
+            self.currTrack += 1
+        }
+    }
+    
+    private func skipPrevious() {
+        if self.currTrack > 0 {
+            playTrack(trackId: self.playlist!.tracks[self.currTrack - 1].getId())
+            self.currTrack -= 1
+        }
+    }
+    
+    fileprivate func startPlayback() {
+        appRemote.playerAPI?.resume(defaultCallback)
+    }
+    
+    fileprivate func pausePlayback() {
+        appRemote.playerAPI?.pause(defaultCallback)
     }
 
 }
