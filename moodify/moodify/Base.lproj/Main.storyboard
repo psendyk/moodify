@@ -71,12 +71,12 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PfZ-qc-lnW">
-                                <rect key="frame" x="24" y="292" width="97" height="28"/>
+                                <rect key="frame" x="24" y="293" width="97.5" height="27"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Playlists">
                                         <attributes>
-                                            <color key="NSColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" size="24" name="ArialRoundedMTBold"/>
+                                            <color key="NSColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="24" name="Arial-BoldMT"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
@@ -147,18 +147,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spotify-icon-16-256.png" translatesAutoresizingMaskIntoConstraints="NO" id="mVJ-t3-fBx">
-                                <rect key="frame" x="75" y="162" width="225" height="219"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moodify_logo_3" translatesAutoresizingMaskIntoConstraints="NO" id="mVJ-t3-fBx">
+                                <rect key="frame" x="12.5" y="120" width="350" height="350"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="219" id="73I-Yf-CgI"/>
-                                    <constraint firstAttribute="width" constant="225" id="rQj-ox-QKX"/>
+                                    <constraint firstAttribute="width" constant="350" id="8sv-nD-dTM"/>
+                                    <constraint firstAttribute="width" secondItem="mVJ-t3-fBx" secondAttribute="height" multiplier="1:1" id="RjE-X2-tso"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.16470588235294117" green="0.16470588235294117" blue="0.16470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="mVJ-t3-fBx" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="4Qa-lD-m5b"/>
-                            <constraint firstItem="mVJ-t3-fBx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="142" id="LBH-AV-awx"/>
+                            <constraint firstItem="mVJ-t3-fBx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="LBH-AV-awx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -513,7 +513,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="spotify-icon-16-256.png" width="256" height="256"/>
+        <image name="moodify_logo_3" width="298.32000732421875" height="298.07998657226562"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="0pY-Dy-EAa"/>

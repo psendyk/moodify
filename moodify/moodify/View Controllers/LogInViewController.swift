@@ -27,11 +27,11 @@ class LoginViewController: UIViewController, SPTSessionManagerDelegate {
         self.spotifyController.configuration = self.configuration
         self.spotifyController.sessionManager = self.sessionManager
         
-        logoImage.center = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height/2 - 150)
+        //logoImage.center = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height/2 - 150)
         self.view.addSubview(button)
         button.setTitle("Log in with Spotify", for: .normal)
         button.frame.size = CGSize(width: 260, height: 60)
-        button.frame.origin = CGPoint(x: self.view.frame.size.width/2 - 130, y: self.view.frame.size.height - 350)
+        button.frame.origin = CGPoint(x: self.view.frame.size.width/2 - 130, y: self.view.frame.size.height - 460)
         button.backgroundColor = UIColor(red:0.11, green:0.73, blue:0.33, alpha:1.0)
         button.titleLabel?.font =  .boldSystemFont(ofSize: 24)
         button.cornerRadius = 30
