@@ -111,7 +111,8 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
         
         
         raisedRecordButton.pulseColor = .white
-        raisedRecordButton.setImage(UIImage(named: "mic_black_192x192"), for: .normal)
+        //raisedRecordButton.setImage(UIImage(named: "mic_black_192x192"), for: .normal)
+        raisedRecordButton.setImage(UIImage(named: "mic_button_red"), for: .normal)
         raisedRecordButton.addTarget(self, action: #selector(raisedRecordButton(_:)), for: .touchUpInside)
         raisedRecordButton.layer.cornerRadius = 80
         raisedRecordButton.clipsToBounds = true
