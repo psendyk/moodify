@@ -325,7 +325,7 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
                     completion(tones[0].toneName)
                 }
             } else {
-                completion("")
+                completion(nil)
             }
         })
     }
