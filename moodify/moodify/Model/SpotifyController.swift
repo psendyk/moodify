@@ -57,7 +57,6 @@ class SpotifyController {
     
     // Get user's Spotify name
     func getUsersName(completion: @escaping ((String?) -> Void)) {
-        completion("")
         let headers: HTTPHeaders = ["Authorization": "Bearer " + self.session.accessToken]
         Alamofire.request("https://api.spotify.com/v1/me", headers: headers).responseJSON { response in
             if let data = response.data {
