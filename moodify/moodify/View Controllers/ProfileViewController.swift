@@ -22,7 +22,7 @@ class ProfileViewController: UIViewController, MoodifyViewController, UITableVie
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        profilePicture.image = UIImage(named: "profilepic")
+        profilePicture.image = self.currentUser.profilePicture
         // pull name from Spotify
         //username.text = currentUser.name
         profilePicture.layer.borderWidth = 8
@@ -42,19 +42,9 @@ class ProfileViewController: UIViewController, MoodifyViewController, UITableVie
         profilePicture.layer.cornerRadius = (profilePicture.frame.height)/2
         profilePicture.clipsToBounds = true
 
-        // Do any additional setup after loading the view.
-    }
-    
+        self.username.text = self.currentUser.name
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return currentUser.playlists.count

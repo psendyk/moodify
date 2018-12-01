@@ -86,8 +86,11 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.textView.text = "How is it going, " + self.currentUser.name + "?"
+        
         profileButton.setTitle("", for: .normal)
-        profileButton.setImage(UIImage(named: "profilepic"), for: .normal) //set profile image
+        profileButton.setImage(self.currentUser.profilePicture, for: .normal) //set profile image
         profileButton.imageView?.layer.borderWidth = 4
         profileButton.imageView?.layer.masksToBounds = false
         profileButton.imageView?.layer.cornerRadius = (profileButton.imageView?.frame.height)!/2

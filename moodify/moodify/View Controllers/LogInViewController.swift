@@ -46,7 +46,7 @@ class LoginViewController: UIViewController, SPTSessionManagerDelegate {
         backgroundQueue.async(execute: {
             
             sleep(1) // 3: Do your networking task or background work here.
-            let requestedScopes: SPTScope = [.appRemoteControl, .userTopRead, .userReadEmail]
+            let requestedScopes: SPTScope = [.appRemoteControl, .userTopRead, .userReadPrivate, .userReadEmail]
             self.sessionManager.initiateSession(with: requestedScopes, options: .default)
             DispatchQueue.main.async(execute: { () -> Void in
                 // 4: Stop the animation, here you have three options for the `animationStyle` property:

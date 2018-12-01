@@ -37,14 +37,36 @@ class SpotifyController {
     
     // Get user's Spotify profile picture
     func getUsersPicture(completion: @escaping ((UIImage?) -> Void)) {
-        completion(UIImage())
-        // TODO: Get profile picture from the Web API
+        let headers: HTTPHeaders = ["Authorization": "Bearer " + self.session.accessToken]
+        Alamofire.request("https://api.spotify.com/v1/me", headers: headers).responseJSON { response in
+            if let data = response.data {
+                let json = JSON(data)
+                let imageUrl = json["images"][0]["url"]
+                Alamofire.request(imageUrl.string!).responseImage(completionHandler: { response in
+                    if let image = response.result.value {
+                        completion(image)
+                    } else {
+                        completion(nil)
+                    }
+                })
+            } else {
+                completion(nil)
+            }
+        }
     }
     
     // Get user's Spotify name
     func getUsersName(completion: @escaping ((String?) -> Void)) {
         completion("")
-        // TODO: Get user's name from the Web API
+        let headers: HTTPHeaders = ["Authorization": "Bearer " + self.session.accessToken]
+        Alamofire.request("https://api.spotify.com/v1/me", headers: headers).responseJSON { response in
+            if let data = response.data {
+                let json = JSON(data)
+                completion(json["display_name"].string!)
+            } else {
+                completion(nil)
+            }
+        }
     }
 
     
