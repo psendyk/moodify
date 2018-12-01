@@ -25,7 +25,8 @@ struct ButtonLayout {
 
 class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRecognizerDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        //return 7
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
