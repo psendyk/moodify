@@ -186,7 +186,7 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
         speechRecognizer.delegate = self
         
         if let name =  self.currentUser.name.components(separatedBy: " ").first {
-            self.textView.text = "How is it going, " + name + "?"
+            self.textView.text = "How's it going, " + name + "?"
         }
         
         switch(currentUser.currentMood) {
