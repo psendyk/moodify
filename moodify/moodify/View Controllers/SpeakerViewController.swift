@@ -96,7 +96,7 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
         // Disable the record buttons until authorization has been granted.
         self.view.addSubview(createPlaylistButton)
         createPlaylistButton.frame.size = CGSize(width: 260, height: 60)
-        createPlaylistButton.frame.origin = CGPoint(x: self.view.frame.size.width/2 - 130, y: self.view.frame.size.height - 270)
+        createPlaylistButton.frame.origin = CGPoint(x: self.view.frame.size.width/2 - createPlaylistButton.frame.width/2, y: 13 * self.view.frame.size.height/16)
         createPlaylistButton.titleLabel?.font =  .boldSystemFont(ofSize: 24)
         createPlaylistButton.backgroundColor = UIColor(red:0.11, green:0.73, blue:0.33, alpha:1.0)
         createPlaylistButton.setTitle("Create Playlist", for: .normal)
@@ -119,7 +119,7 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
         view.layout(raisedRecordButton)
             .width(CGFloat(160))
             .height(CGFloat(160))
-            .center(offsetY: ButtonLayout.Raised.offsetY)
+            .center(offsetY: self.view.frame.size.height/8)
         
     }
     
