@@ -74,7 +74,7 @@ class LoginViewController: UIViewController, SPTSessionManagerDelegate {
             let tokenRefreshURL = URL(string: "https://polar-crag-31078.herokuapp.com/refresh") {
             self.configuration.tokenSwapURL = tokenSwapURL
             self.configuration.tokenRefreshURL = tokenRefreshURL
-            self.configuration.playURI = "spotify:album:5uMfshtC2Jwqui0NUyUYIL"
+            self.configuration.playURI = ""
         }
         let manager = SPTSessionManager(configuration: self.configuration, delegate: self)
         return manager
