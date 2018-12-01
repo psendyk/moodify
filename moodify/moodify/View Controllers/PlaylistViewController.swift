@@ -14,6 +14,28 @@ class PlaylistViewController: UIViewController, MoodifyViewController, SPTAppRem
 
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var currentSongTitle: UILabel!
+    @IBOutlet weak var currentSongArtist: UILabel!
+    // need outlet as well as action to change play/puase image
+    @IBOutlet weak var playPauseButton: UIButton!
+    
+    @IBAction func playPause(_ sender: Any) {
+        if let trackId = currTrackId {
+            if playing! {
+                playTrack(trackId: trackId)
+                playPauseButton.setImage(UIImage(named: "playButton"), for: .normal)
+                playing = false
+            } else {
+                // pause
+                playPauseButton.setImage(UIImage(named: "pauseButton"), for: .normal)
+                playing = true
+            }
+        }
+    }
+    
+    // show pause button when playing, play button when not playing
+    var playing: Bool?
+    var currTrackId: String?
     
     var spotifyController: SpotifyController!
     var currentUser: CurrentUser!
@@ -101,7 +123,11 @@ class PlaylistViewController: UIViewController, MoodifyViewController, SPTAppRem
         let cell = tableView.dequeueReusableCell(withIdentifier: "trackCell", for: indexPath) as! TrackTableViewCell
         let track = (playlist?.tracks[indexPath.item])
         if let track = track {
-            cell.trackTitle.text = track.name
+            if track.name.count >= 34 {
+                cell.trackTitle.text = String(track.name.prefix(31)) + "..."
+            } else {
+                 cell.trackTitle.text = track.name
+            }
             cell.trackArtist.text = track.artist
             Alamofire.request(track.coverUrl).responseImage(completionHandler: { response in
                 if let image = response.result.value {
@@ -126,8 +152,16 @@ class PlaylistViewController: UIViewController, MoodifyViewController, SPTAppRem
         }
         */
         if let track = self.playlist?.tracks[indexPath.item] {
-            let trackId = "spotify:track:"+track.id
-            self.appRemote.playerAPI?.play(trackId, callback: defaultCallback)
+            currTrackId = "spotify:track:"+track.id
+            if track.name.count >= 37 {
+                currentSongTitle.text = String(track.name.prefix(34)) + "..."
+            } else {
+                currentSongTitle.text = track.name
+            }
+            currentSongArtist.text = track.artist
+            playing = true
+            playPauseButton.setImage(UIImage(named: "pauseButton"), for: .normal)
+            self.appRemote.playerAPI?.play(currTrackId!, callback: defaultCallback)
         }
     }
 

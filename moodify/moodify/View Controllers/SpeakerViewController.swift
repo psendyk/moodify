@@ -25,7 +25,8 @@ struct ButtonLayout {
 
 class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRecognizerDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        //return 7
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -57,6 +58,12 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
     let createPlaylistButton = TransitionButton(frame: CGRect(x: 97.5, y: 100, width: 180, height: 40))
     
     let raisedRecordButton = RaisedButton(title: "Press to Record", titleColor: .white)
+    
+    /*let recordGesture = UILongPressGestureRecognizer(target: self, action: #selector(record()))
+    recordGesture.minimumPressDuration = 0.1 // seconds
+    recordGesture.allowableMovement = 15 // points
+    recordGesture.delegate = self
+    raisedRecordButton.addGestureRecognizer(recordGesture)*/
     
     var textHeightConstraint: NSLayoutConstraint?
     
