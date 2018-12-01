@@ -38,6 +38,19 @@ class Playlist {
         self.timestamp =  formatter.string(from: Date()) // Get current timestamp
     }
     
+    init(tracks: [Track], id: String, mood: String, name: String, timestamp: String) {
+        self.id = "p" + id
+        self.name = name // Set an actual name later (maybe the phrase that the user said?)
+        self.tracks = tracks
+        self.mood = mood
+        if let imagesForMood = Playlist.moodImages[mood] {
+            self.moodImage = imagesForMood[Int.random(in: 0 ..< imagesForMood.count)]
+        }
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM.dd.yyyy"
+        self.timestamp =  timestamp // Get timestamp from Firebase
+    }
+    
     func getTracks() -> [Track] {
         return self.tracks
     }

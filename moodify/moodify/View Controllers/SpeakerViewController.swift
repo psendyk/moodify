@@ -87,10 +87,6 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let name =  self.currentUser.name.components(separatedBy: " ").first {
-            self.textView.text = "How is it going, " + name + "?"
-        }
-        
         profileButton.setTitle("", for: .normal)
         profileButton.setImage(self.currentUser.profilePicture, for: .normal) //set profile image
         profileButton.imageView?.layer.borderWidth = 4
@@ -188,6 +184,10 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
         // Configure the SFSpeechRecognizer object already
         // stored in a local member variable.
         speechRecognizer.delegate = self
+        
+        if let name =  self.currentUser.name.components(separatedBy: " ").first {
+            self.textView.text = "How is it going, " + name + "?"
+        }
         
         switch(currentUser.currentMood) {
         case "Joy":
@@ -325,7 +325,7 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
                     completion(tones[0].toneName)
                 }
             } else {
-                completion("")
+                completion(nil)
             }
         })
     }

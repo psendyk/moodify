@@ -51,15 +51,15 @@ class CurrentUser {
         self.dbRef.child("Users/\(self.username)/Playlists").observeSingleEvent(of: .value, with: { (snapshot) in
             if snapshot.exists() {
                 let playlistsDict = snapshot.value as! [String : AnyObject]
-                    for keyVal in playlistsDict {
-                        if let playlistDict = keyVal.1 as? [String : [String]] {
-                            self.getTracks(trackIds: playlistDict["Tracks"]!, completion: { tracks in
-                                if let tracks = tracks {
-                                    self.playlists.append(Playlist(tracks: tracks, id: keyVal.0, mood: playlistDict["Mood"]![0], name: playlistDict["Name"]![0]))
-                                }
-                            })
-                            self.playlists.sort(by: { $0.timestamp > $1.timestamp })
-                        }
+                for keyVal in playlistsDict {
+                    if let playlistDict = keyVal.1 as? [String : [String]] {
+                        self.getTracks(trackIds: playlistDict["Tracks"]!, completion: { tracks in
+                            if let tracks = tracks {
+                                self.playlists.append(Playlist(tracks: tracks, id: keyVal.0, mood: playlistDict["Mood"]![0], name: playlistDict["Name"]![0], timestamp: playlistDict["Timestamp"]![0]))
+                            }
+                        })
+                        self.playlists = self.playlists.sorted(by: { $0.timestamp < $1.timestamp })
+                    }
                 }
              }
         })
@@ -131,7 +131,7 @@ class CurrentUser {
         })
         // Now add the playlist
         let playlistRef = self.dbRef.child("Users/\(self.username)/Playlists")
-        let playlistDict = ["Name" : [playlist.getName()], "Mood" : [playlist.getMood()], "Tracks" : playlist.getTracks().map { $0.getId() } ]
+        let playlistDict = ["Name" : [playlist.getName()], "Mood" : [playlist.getMood()], "Tracks" : playlist.getTracks().map { $0.getId() }, "Timestamp": [playlist.getTimestamp()] ]
         playlistRef.child(playlist.getId()).setValue(playlistDict)
     }
     
