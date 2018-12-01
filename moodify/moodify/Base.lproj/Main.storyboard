@@ -460,6 +460,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="speech_bubble_tail" translatesAutoresizingMaskIntoConstraints="NO" id="Q1F-um-BEX">
+                                <rect key="frame" x="302" y="280" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="f1e-hJ-Qli"/>
+                                    <constraint firstAttribute="height" constant="25" id="w5v-2O-xLI"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.16470588235294117" green="0.16470588235294117" blue="0.16470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -467,6 +474,7 @@
                             <constraint firstItem="X0l-SS-0o0" firstAttribute="leading" secondItem="K7i-q5-bgP" secondAttribute="leading" id="FgC-2S-fu5"/>
                             <constraint firstItem="K7i-q5-bgP" firstAttribute="trailing" secondItem="HUz-2D-1PU" secondAttribute="trailing" constant="16" id="JMl-3M-RDr"/>
                             <constraint firstItem="HUz-2D-1PU" firstAttribute="top" secondItem="K7i-q5-bgP" secondAttribute="top" constant="157" id="M7r-K1-gEW"/>
+                            <constraint firstItem="Q1F-um-BEX" firstAttribute="top" secondItem="HUz-2D-1PU" secondAttribute="bottom" id="STB-MS-30U"/>
                             <constraint firstItem="X0l-SS-0o0" firstAttribute="centerX" secondItem="kVK-Yy-V4j" secondAttribute="centerX" id="TQx-6E-fv5"/>
                             <constraint firstItem="HUz-2D-1PU" firstAttribute="leading" secondItem="K7i-q5-bgP" secondAttribute="leading" constant="16" id="UQ5-fF-6aA"/>
                             <constraint firstItem="HUz-2D-1PU" firstAttribute="centerX" secondItem="K7i-q5-bgP" secondAttribute="centerX" id="YF9-MR-zBg"/>
@@ -474,6 +482,7 @@
                             <constraint firstItem="Mu2-Bf-El6" firstAttribute="top" secondItem="K7i-q5-bgP" secondAttribute="top" constant="24" id="ZxQ-Ds-bPH"/>
                             <constraint firstItem="HUz-2D-1PU" firstAttribute="leading" secondItem="K7i-q5-bgP" secondAttribute="leading" constant="16" id="gVP-ej-G2k"/>
                             <constraint firstItem="K7i-q5-bgP" firstAttribute="trailing" secondItem="HUz-2D-1PU" secondAttribute="trailing" constant="16" id="huc-pM-x0H"/>
+                            <constraint firstItem="K7i-q5-bgP" firstAttribute="trailing" secondItem="Q1F-um-BEX" secondAttribute="trailing" constant="48" id="kFS-n1-1fR"/>
                             <constraint firstItem="X0l-SS-0o0" firstAttribute="bottom" secondItem="K7i-q5-bgP" secondAttribute="bottom" id="kxF-lF-joX"/>
                             <constraint firstItem="K7i-q5-bgP" firstAttribute="trailing" secondItem="Mu2-Bf-El6" secondAttribute="trailing" constant="24" id="tR9-Fl-Vfd"/>
                         </constraints>
@@ -514,8 +523,9 @@
     </scenes>
     <resources>
         <image name="moodify_logo_3" width="298.32000732421875" height="298.07998657226562"/>
+        <image name="speech_bubble_tail" width="198" height="209"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0pY-Dy-EAa"/>
+        <segue reference="28j-lM-HRU"/>
     </inferredMetricsTieBreakers>
 </document>
