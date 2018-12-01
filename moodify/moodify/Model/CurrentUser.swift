@@ -58,8 +58,8 @@ class CurrentUser {
                                     self.playlists.append(Playlist(tracks: tracks, id: keyVal.0, mood: playlistDict["Mood"]![0], name: playlistDict["Name"]![0]))
                                 }
                             })
+                            self.playlists.sort(by: { $0.timestamp > $1.timestamp })
                         }
-                    
                 }
              }
         })
