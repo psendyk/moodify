@@ -41,14 +41,18 @@ class SpotifyController {
         Alamofire.request("https://api.spotify.com/v1/me", headers: headers).responseJSON { response in
             if let data = response.data {
                 let json = JSON(data)
-                let imageUrl = json["images"][0]["url"]
-                Alamofire.request(imageUrl.string!).responseImage(completionHandler: { response in
-                    if let image = response.result.value {
-                        completion(image)
-                    } else {
-                        completion(nil)
-                    }
-                })
+                if let imageUrl = json["images"][0]["url"].string {
+                    Alamofire.request(imageUrl).responseImage(completionHandler: { response in
+                        if let image = response.result.value {
+                            completion(image)
+                        } else {
+                            completion(nil)
+                        }
+                    })
+                } else {
+                    let image = UIImage(named: "oski")
+                    completion(image)
+                }
             } else {
                 completion(nil)
             }
