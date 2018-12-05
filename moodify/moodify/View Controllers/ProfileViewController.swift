@@ -54,7 +54,7 @@ class ProfileViewController: UIViewController, MoodifyViewController, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: "playlistCell", for: indexPath) as! PlaylistTableViewCell
         let playlist = currentUser.getPlaylists()[indexPath.item]
         cell.name.text = playlist.name
-        cell.numTracks.text = String(playlist.tracks.count) + " songs"
+        cell.numTracks.text = playlist.timestamp
         cell.moodImage.image = playlist.moodImage
         
         let backgroundView = UIView()

@@ -17,10 +17,15 @@ class SpotifyController {
     var configuration: SPTConfiguration!
     
     // We make it a variable because we'll either let user adjust it or adjust it on their listening history
-    var trackAttributes = ["Joy": ["energy": "0.8", "danceability": "0.9", "instrumentalness": "0.3", "valence": "1"],
-                           "Sadness": ["energy": "0", "danceability": "0", "instrumentalness": "0.8", "valence": "0"],
-                           "Anger": ["energy": "0.9", "danceability": "0.2", "instrumentalness": "0.3", "valence": "0.2"],
-                           "Fear": ["energy": "0.5", "danceability": "0", "instrumentalness": "0.8", "valence": "0.2"]]
+    var trackAttributes = ["Joy": ["energy": 0.8, "danceability": 0.9, "instrumentalness": 0.3, "valence": 1],
+                           "Sadness": ["energy": 0, "danceability": 0, "instrumentalness": 0.8, "valence": 0],
+                           "Anger": ["energy": 0.9, "danceability": 0.2, "instrumentalness": 0.3, "valence": 0.2],
+                           "Fear": ["energy": 0.5, "danceability": 0, "instrumentalness": 0.8, "valence": 0.2]]
+    
+    func getAttrWithNoise(mood: String, attr: String) -> String {
+        let r = Double.random(in: -0.1...0.1)
+        return String(min(1, max(0, trackAttributes[mood]![attr]! + r)))
+    }
     
     // Get the email from User's Spotify account
     func getUsersEmail(completion: @escaping (String?) -> Void) {
@@ -137,7 +142,6 @@ class SpotifyController {
     // Get recommendations based on current user's top artists/genres and current mood
         var tracks = [Track]()
         let mood = currentUser.getCurrentMood()
-        let trackAttributes = self.trackAttributes[mood]!
         let headers: HTTPHeaders = [
             "Authorization": "Bearer " + self.session.accessToken
         ]
@@ -146,7 +150,7 @@ class SpotifyController {
                 let limitStr = "?limit=" + currentUser.getSetting(setting: "numTracks")
                 let popularityStr = "&popularity=" + currentUser.getSetting(setting: "popularity")
                 let genreStr = "&seed_genres=" + topGenre.joined(separator: ",").replacingOccurrences(of: " ", with: "%20")
-                let attrStr = "&target_energy=" + trackAttributes["energy"]! + "&target_danceability=" + trackAttributes["danceability"]! + "&target_instrumentalness=" + trackAttributes["instrumentalness"]! + "&target_valence=" + trackAttributes["valence"]! // We can later randomzie this part a little bit
+                let attrStr = "&target_energy=" + self.getAttrWithNoise(mood: mood, attr: "energy") + "&target_danceability=" + self.getAttrWithNoise(mood: mood, attr: "danceability") + "&target_instrumentalness=" + self.getAttrWithNoise(mood: mood, attr: "instrumentalness") + "&target_valence=" + self.getAttrWithNoise(mood: mood, attr: "valence")
                 let urlStr = "https://api.spotify.com/v1/recommendations" + limitStr + popularityStr + genreStr + attrStr
                 let url = URL(string: urlStr)!
                 print(url)

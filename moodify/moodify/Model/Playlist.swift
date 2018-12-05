@@ -34,7 +34,7 @@ class Playlist {
             self.moodImage = imagesForMood[Int.random(in: 0 ..< imagesForMood.count)]
         }
         let formatter = DateFormatter()
-        formatter.dateFormat = "MM.dd.yyyy"
+        formatter.dateFormat = "MM/dd/yyyy"
         self.timestamp =  formatter.string(from: Date()) // Get current timestamp
     }
     
@@ -47,7 +47,7 @@ class Playlist {
             self.moodImage = imagesForMood[Int.random(in: 0 ..< imagesForMood.count)]
         }
         let formatter = DateFormatter()
-        formatter.dateFormat = "MM.dd.yyyy"
+        formatter.dateFormat = "MM/dd/yyyy"
         self.timestamp =  timestamp // Get timestamp from Firebase
     }
     

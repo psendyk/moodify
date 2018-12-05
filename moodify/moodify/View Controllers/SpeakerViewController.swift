@@ -153,6 +153,12 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
             sleep(1) // 3: Do your networking task or background work here.
                 self.extractMood(text, completion: { mood in
                     if let mood = mood {
+                        if mood == "Analytical" {
+                            DispatchQueue.main.async {
+                            self.textView.text = "How does it make you feel?"
+                            return
+                            }
+                        }
                         self.currentUser.updateMood(mood: mood)
                         var name = text
                         if name.count > 27 {
@@ -164,6 +170,10 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
                                 self.performSegue(withIdentifier: "speakerToPlaylist", sender: self)
                             }
                         })
+                    } else {
+                        DispatchQueue.main.async {
+                            self.textView.text = "How does it make you feel?"
+                        }
                     }
                 })
                 
@@ -324,6 +334,8 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
             if let tones = tone.documentTone.tones {
                 if tones.count > 0 {
                     completion(tones[0].toneName)
+                } else {
+                    completion(nil)
                 }
             } else {
                 completion(nil)
