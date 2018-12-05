@@ -17,10 +17,10 @@ class SpotifyController {
     var configuration: SPTConfiguration!
     
     // We make it a variable because we'll either let user adjust it or adjust it on their listening history
-    var trackAttributes = ["Joy": ["energy": "0.8", "danceability": "0.8", "instrumentalness": "0.5", "valence": "0.9"],
-                           "Sadness": ["energy": "0.3", "danceability": "0.1", "instrumentalness": "0.8", "valence": "0.3"],
-                           "Anger": ["energy": "0.9", "danceability": "0.4", "instrumentalness": "0.3", "valence": "0.3"],
-                           "Fear": ["energy": "0.4", "danceability": "0.2", "instrumentalness": "0.8", "valence": "0.9"]]
+    var trackAttributes = ["Joy": ["energy": "0.8", "danceability": "0.9", "instrumentalness": "0.3", "valence": "1"],
+                           "Sadness": ["energy": "0", "danceability": "0", "instrumentalness": "0.8", "valence": "0"],
+                           "Anger": ["energy": "0.9", "danceability": "0.2", "instrumentalness": "0.3", "valence": "0.2"],
+                           "Fear": ["energy": "0.5", "danceability": "0", "instrumentalness": "0.8", "valence": "0.2"]]
     
     // Get the email from User's Spotify account
     func getUsersEmail(completion: @escaping (String?) -> Void) {
