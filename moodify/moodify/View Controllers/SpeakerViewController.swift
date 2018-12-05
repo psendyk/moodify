@@ -332,6 +332,11 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if audioEngine.isRunning {
+            audioEngine.stop()
+            recognitionRequest?.endAudio()
+            raisedRecordButton.isEnabled = false
+        }
         if var dest = segue.destination as? MoodifyViewController {
             dest.currentUser = self.currentUser
             dest.spotifyController = self.spotifyController

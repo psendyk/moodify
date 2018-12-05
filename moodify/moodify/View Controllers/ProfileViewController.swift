@@ -69,6 +69,13 @@ class ProfileViewController: UIViewController, MoodifyViewController, UITableVie
         performSegue(withIdentifier: "profileToPlaylist", sender: self)
     }
     
+    /*func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // delete playlist from database
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }*/
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if var dest = segue.destination as? MoodifyViewController {
             dest.currentUser = self.currentUser
