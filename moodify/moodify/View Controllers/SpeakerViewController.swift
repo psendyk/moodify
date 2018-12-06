@@ -191,8 +191,9 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
         }
     }
     
-    override public func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override public func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
         // Configure the SFSpeechRecognizer object already
         // stored in a local member variable.
         speechRecognizer.delegate = self
@@ -240,6 +241,10 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
         }
     }
     
+    override public func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+    }
     
     
     func adjustTextViewHeight() {
@@ -325,8 +330,6 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
     
     // MARK: Interface Builder actions
     
-    
-    
     func extractMood(_ text: String, completion: @escaping ((String?) -> Void)) {
         toneAnalyzer.serviceURL = "https://gateway.watsonplatform.net/tone-analyzer/api"
         let toneInput = ToneInput(text: text)
@@ -352,6 +355,11 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if audioEngine.isRunning {
+            audioEngine.stop()
+            recognitionRequest?.endAudio()
+            raisedRecordButton.isEnabled = false
+        }
         if var dest = segue.destination as? MoodifyViewController {
             dest.currentUser = self.currentUser
             dest.spotifyController = self.spotifyController

@@ -479,7 +479,7 @@
                             <constraint firstItem="HUz-2D-1PU" firstAttribute="leading" secondItem="K7i-q5-bgP" secondAttribute="leading" constant="16" id="UQ5-fF-6aA"/>
                             <constraint firstItem="HUz-2D-1PU" firstAttribute="centerX" secondItem="K7i-q5-bgP" secondAttribute="centerX" id="YF9-MR-zBg"/>
                             <constraint firstItem="X0l-SS-0o0" firstAttribute="top" secondItem="kVK-Yy-V4j" secondAttribute="bottom" constant="35" id="ZuN-Yx-1XF"/>
-                            <constraint firstItem="Mu2-Bf-El6" firstAttribute="top" secondItem="K7i-q5-bgP" secondAttribute="top" constant="24" id="ZxQ-Ds-bPH"/>
+                            <constraint firstItem="Mu2-Bf-El6" firstAttribute="top" secondItem="K7i-q5-bgP" secondAttribute="top" constant="24" id="drU-ix-JvB"/>
                             <constraint firstItem="HUz-2D-1PU" firstAttribute="leading" secondItem="K7i-q5-bgP" secondAttribute="leading" constant="16" id="gVP-ej-G2k"/>
                             <constraint firstItem="K7i-q5-bgP" firstAttribute="trailing" secondItem="HUz-2D-1PU" secondAttribute="trailing" constant="16" id="huc-pM-x0H"/>
                             <constraint firstItem="K7i-q5-bgP" firstAttribute="trailing" secondItem="Q1F-um-BEX" secondAttribute="trailing" constant="48" id="kFS-n1-1fR"/>
@@ -514,6 +514,9 @@
                         <color key="barTintColor" red="0.16468539834022522" green="0.16472017765045166" blue="0.16468080878257751" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="PON-Qv-fEi">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="ZWZ-kW-3Wm" kind="relationship" relationship="rootViewController" id="k43-MR-6GH"/>
                     </connections>
@@ -528,6 +531,6 @@
         <image name="speech_bubble_tail" width="198" height="209"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0pY-Dy-EAa"/>
+        <segue reference="28j-lM-HRU"/>
     </inferredMetricsTieBreakers>
 </document>
