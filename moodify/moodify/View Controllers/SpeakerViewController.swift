@@ -5,6 +5,8 @@
 //  Created by Stephen Boyle on 11/7/18.
 //  Copyright © 2018 Pawel Sendyk. All rights reserved.
 //
+//  Reference: Speech to text code copied from a tutorial at developer.apple.com
+//
 
 import UIKit
 import Speech
@@ -21,6 +23,8 @@ struct ButtonLayout {
         static let offsetY: CGFloat = 35
     }
 }
+
+let audioSession = AVAudioSession.sharedInstance()
 
 
 class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRecognizerDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
@@ -49,6 +53,11 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
     
     var spotifyController: SpotifyController!
     var currentUser: CurrentUser!
+    
+    lazy var appRemote: SPTAppRemote = {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.appRemote
+    }()
     
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))!
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
@@ -121,16 +130,25 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
             .width(CGFloat(160))
             .height(CGFloat(160))
             .center(offsetY: self.view.frame.size.height/8)
+    
+        // Connect the Spotify remote
+        self.appRemote.connectionParameters.accessToken = self.spotifyController.session.accessToken
+        self.appRemote.connect()
         
     }
     
-    @IBAction func raisedRecordButton(_ button: RaisedButton) {
+    @IBAction func raisedRecordButton(_ button: RaisedButton) throws {
         if audioEngine.isRunning {
             audioEngine.stop()
             recognitionRequest?.endAudio()
             raisedRecordButton.isEnabled = false
             raisedRecordButton.setTitle("Stopping", for: .disabled)
-            // process the text from textView
+            if self.textView.text == "(Go ahead, I'm listening)" {
+                if let name =  self.currentUser.name.components(separatedBy: " ").first {
+                    self.textView.text = "How's it going, " + name + "?"
+                }
+            }
+            try audioSession.setActive(false, options: .notifyOthersOnDeactivation)
         } else {
             do {
                 try startRecording()
@@ -257,8 +275,7 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
         }
         
         // Configure the audio session for the app.
-        let audioSession = AVAudioSession.sharedInstance()
-        try audioSession.setCategory(.record, mode: .measurement, options: .duckOthers)
+        try audioSession.setCategory(AVAudioSession.Category.playAndRecord, mode: AVAudioSession.Mode.measurement, options: AVAudioSession.CategoryOptions.mixWithOthers)
         try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
         let inputNode = audioEngine.inputNode
         
@@ -353,5 +370,27 @@ class SpeakerViewController: UIViewController, MoodifyViewController, SFSpeechRe
                 dest.playlist = playlist
             }
         }
+    }
+    
+    var defaultCallback: SPTAppRemoteCallback {
+        get {
+            return {[weak self] _, error in
+                if let error = error {
+                    self?.displayError(error as NSError)
+                }
+            }
+        }
+    }
+    
+    fileprivate func displayError(_ error: NSError?) {
+        if let error = error {
+            presentAlert(title: "Error", message: error.description)
+        }
+    }
+    
+    fileprivate func presentAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }

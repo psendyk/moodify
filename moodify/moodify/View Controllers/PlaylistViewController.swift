@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 
 
-class PlaylistViewController: UIViewController, MoodifyViewController, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate, UITableViewDelegate, UITableViewDataSource {
+class PlaylistViewController: UIViewController, MoodifyViewController,  UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -20,7 +20,15 @@ class PlaylistViewController: UIViewController, MoodifyViewController, SPTAppRem
     // need outlet as well as action to change play/puase image
     @IBOutlet weak var playPauseButton: UIButton!
     
-    private var playerState: SPTAppRemotePlayerState?
+    lazy var playerState: SPTAppRemotePlayerState? = {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.playerState
+    }()
+    
+    lazy var appRemote: SPTAppRemote = {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.appRemote
+    }()
     
     @IBAction func playPause(_ sender: Any) {
         if let paused = self.playerState?.isPaused {
@@ -30,6 +38,12 @@ class PlaylistViewController: UIViewController, MoodifyViewController, SPTAppRem
                 pausePlayback()
             }
         }
+        updatePlayerState()
+    }
+    
+    func updatePlayerState() {
+        updatePlayPauseButtonState(self.playerState!.isPaused)
+        updateCurrentTrack()
     }
     
     private func updatePlayPauseButtonState(_ paused: Bool) {
@@ -61,9 +75,6 @@ class PlaylistViewController: UIViewController, MoodifyViewController, SPTAppRem
         tableView.delegate = self
         tableView.dataSource = self
         
-        self.appRemote.connectionParameters.accessToken = self.spotifyController.session.accessToken
-        self.appRemote.connect()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -76,60 +87,7 @@ class PlaylistViewController: UIViewController, MoodifyViewController, SPTAppRem
         }
     }
     
-    func appRemoteDidEstablishConnection(_ appRemote: SPTAppRemote) {
-        print("connected")
-        // Connection was successful, you can begin issuing commands
-        self.appRemote.playerAPI?.delegate = self
-        self.appRemote.playerAPI?.subscribe(toPlayerState: { (result, error) in
-            if let error = error {
-                debugPrint(error.localizedDescription)
-            }
-        })
-    }
     
-    func appRemote(_ appRemote: SPTAppRemote, didDisconnectWithError error: Error?) {
-        print("disconnected")
-    }
-    func appRemote(_ appRemote: SPTAppRemote, didFailConnectionAttemptWithError error: Error?) {
-        print("failed")
-    }
-    
-    func playerStateDidChange(_ playerState: SPTAppRemotePlayerState) {
-        print("player state changed")
-        debugPrint("Track name: %@", playerState.track.name)
-        self.playerState = playerState
-        updatePlayPauseButtonState(self.playerState!.isPaused)
-        updateCurrentTrack()
-    }
-    
-    lazy var appRemote: SPTAppRemote = {
-        let appRemote = SPTAppRemote(configuration: self.spotifyController.configuration, logLevel: .debug)
-        appRemote.delegate = self
-        return appRemote
-        
-    }()
-    
-    var defaultCallback: SPTAppRemoteCallback {
-        get {
-            return {[weak self] _, error in
-                if let error = error {
-                    self?.displayError(error as NSError)
-                }
-            }
-        }
-    }
-    
-    fileprivate func displayError(_ error: NSError?) {
-        if let error = error {
-            presentAlert(title: "Error", message: error.description)
-        }
-    }
-    
-    fileprivate func presentAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
     
     /* UI */
     
@@ -179,6 +137,7 @@ class PlaylistViewController: UIViewController, MoodifyViewController, SPTAppRem
             
         }
         self.currTrack = indexPath.item
+        updatePlayerState()
     }
 
     
@@ -190,6 +149,7 @@ class PlaylistViewController: UIViewController, MoodifyViewController, SPTAppRem
     private func playTrack(trackId: String) {
         print(trackId)
         appRemote.playerAPI?.play(trackId, callback: defaultCallback)
+        updatePlayerState()
     }
     
     private func skipNext() {
@@ -197,6 +157,7 @@ class PlaylistViewController: UIViewController, MoodifyViewController, SPTAppRem
             playTrack(trackId: self.playlist!.tracks[self.currTrack + 1].getId())
             self.currTrack += 1
         }
+        updatePlayerState()
     }
     
     private func skipPrevious() {
@@ -204,14 +165,39 @@ class PlaylistViewController: UIViewController, MoodifyViewController, SPTAppRem
             playTrack(trackId: self.playlist!.tracks[self.currTrack - 1].getId())
             self.currTrack -= 1
         }
+        updatePlayerState()
     }
     
     fileprivate func startPlayback() {
         appRemote.playerAPI?.resume(defaultCallback)
+        updatePlayerState()
     }
     
     fileprivate func pausePlayback() {
         appRemote.playerAPI?.pause(defaultCallback)
+        updatePlayerState()
+    }
+    
+    var defaultCallback: SPTAppRemoteCallback {
+        get {
+            return {[weak self] _, error in
+                if let error = error {
+                    self?.displayError(error as NSError)
+                }
+            }
+        }
+    }
+    
+    fileprivate func displayError(_ error: NSError?) {
+        if let error = error {
+            presentAlert(title: "Error", message: error.description)
+        }
+    }
+    
+    fileprivate func presentAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 
 }

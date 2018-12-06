@@ -11,7 +11,7 @@ import CoreData
 import Firebase
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, SPTAppRemoteDelegate, SPTAppRemotePlayerStateDelegate {
 
     var window: UIWindow?
     var logInViewController: LoginViewController!
@@ -93,6 +93,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return container
     }()
 
+    // App Remote
+    
+    let SpotifyClientID = "991ca7685e364b6a98c3cab163e01f47"
+    let SpotifyRedirectURL = URL(string: "moodify://spotify-login-callback")!
+    
+    lazy var configuration = SPTConfiguration(
+        clientID: SpotifyClientID,
+        redirectURL: SpotifyRedirectURL
+    )
+    
+    var playerState: SPTAppRemotePlayerState?
+    
+    func appRemoteDidEstablishConnection(_ appRemote: SPTAppRemote) {
+        print("connected")
+        // Connection was successful, you can begin issuing commands
+        self.appRemote.playerAPI?.delegate = self
+        self.appRemote.playerAPI?.subscribe(toPlayerState: { (result, error) in
+            if let error = error {
+                debugPrint(error.localizedDescription)
+            }
+        })
+    }
+    
+    func appRemote(_ appRemote: SPTAppRemote, didDisconnectWithError error: Error?) {
+        print("disconnected")
+    }
+    func appRemote(_ appRemote: SPTAppRemote, didFailConnectionAttemptWithError error: Error?) {
+        print("failed")
+    }
+    
+    func playerStateDidChange(_ playerState: SPTAppRemotePlayerState) {
+        print("player state changed")
+        debugPrint("Track name: %@", playerState.track.name)
+        self.playerState = playerState
+    }
+    
+    lazy var appRemote: SPTAppRemote = {
+        let appRemote = SPTAppRemote(configuration: self.configuration, logLevel: .debug)
+        appRemote.delegate = self
+        return appRemote
+        
+    }()
+    
+    
+    
     // MARK: - Core Data Saving support
 
     func saveContext () {
