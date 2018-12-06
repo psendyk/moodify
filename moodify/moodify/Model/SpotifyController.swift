@@ -19,8 +19,8 @@ class SpotifyController {
     // We make it a variable because we'll either let user adjust it or adjust it on their listening history
     var trackAttributes = ["Joy": ["energy": 0.8, "danceability": 0.9, "instrumentalness": 0.3, "valence": 1],
                            "Sadness": ["energy": 0, "danceability": 0, "instrumentalness": 0.8, "valence": 0],
-                           "Anger": ["energy": 0.9, "danceability": 0.2, "instrumentalness": 0.3, "valence": 0.2],
-                           "Fear": ["energy": 0.5, "danceability": 0, "instrumentalness": 0.8, "valence": 0.2]]
+                           "Anger": ["energy": 1, "danceability": 0.2, "instrumentalness": 0.3, "valence": 0.1],
+                           "Fear": ["energy": 0.4, "danceability": 0, "instrumentalness": 0.8, "valence": 0.1]]
     
     func getAttrWithNoise(mood: String, attr: String) -> String {
         print(mood)
@@ -99,13 +99,14 @@ class SpotifyController {
             "Authorization": "Bearer " + self.session.accessToken
         ]
         
-        Alamofire.request("https://api.spotify.com/v1/me/top/artists?limit=5", headers: headers).responseJSON { response in
+        Alamofire.request("https://api.spotify.com/v1/me/top/artists?limit=10", headers: headers).responseJSON { response in
             if let data = response.data {
                 let json = JSON(data)
                 for i in 0...json["items"].count-1 {
-                    topArtists.append(json["items"][i]["name"].string!)
+                    topArtists.append(json["items"][i]["id"].string!)
                 }
-                completion(topArtists)
+                let shuffled = Array(topArtists.shuffled()[0...1])
+                completion(shuffled)
             } else {
                 completion(nil)
             }
@@ -119,7 +120,7 @@ class SpotifyController {
             "Authorization": "Bearer " + self.session.accessToken
         ]
         
-        Alamofire.request("https://api.spotify.com/v1/me/top/artists?limit=5", headers: headers).responseJSON { response in
+        Alamofire.request("https://api.spotify.com/v1/me/top/artists?limit=50", headers: headers).responseJSON { response in
             if let data = response.data {
                 let json = JSON(data)
                 for i in 0...json["items"].count-1 {
@@ -132,7 +133,7 @@ class SpotifyController {
                     counts[item] = (counts[item] ?? 0) + 1
                 }
                 let topCounts = counts.sorted { $0.value > $1.value }.map { $0.key }
-                completion(Array(topCounts[0...4]))
+                completion(Array(topCounts[0...2]))
             } else {
                 completion(nil)
             }
@@ -146,26 +147,32 @@ class SpotifyController {
         let headers: HTTPHeaders = [
             "Authorization": "Bearer " + self.session.accessToken
         ]
-        getTopGenre(currentUser: currentUser, completion: { topGenre in
-            if let topGenre = topGenre {
-                let limitStr = "?limit=" + currentUser.getSetting(setting: "numTracks")
-                let popularityStr = "&popularity=" + currentUser.getSetting(setting: "popularity")
-                let genreStr = "&seed_genres=" + topGenre.joined(separator: ",").replacingOccurrences(of: " ", with: "%20")
-                let attrStr = "&target_energy=" + self.getAttrWithNoise(mood: mood, attr: "energy") + "&target_danceability=" + self.getAttrWithNoise(mood: mood, attr: "danceability") + "&target_instrumentalness=" + self.getAttrWithNoise(mood: mood, attr: "instrumentalness") + "&target_valence=" + self.getAttrWithNoise(mood: mood, attr: "valence")
-                let urlStr = "https://api.spotify.com/v1/recommendations" + limitStr + popularityStr + genreStr + attrStr
-                let url = URL(string: urlStr)!
-                print(url)
-                Alamofire.request(url, headers: headers).responseJSON { response in
-                    if let data = response.data {
-                        let json = JSON(data)
-                        for (_, track) in json["tracks"]{
-                            tracks.append(Track(id: track["id"].string!, name: track["name"].string!, artist: track["artists"][0]["name"].string!, coverUrl: track["album"]["images"][2]["url"].string!))
+        getTopArtists(currentUser: currentUser, completion: { topArtists in
+            if let topArtists = topArtists {
+                self.getTopGenre(currentUser: currentUser, completion: { topGenre in
+                    if let topGenre = topGenre {
+                        let numTracks = currentUser.getSetting(setting: "numTracks")
+                        let limitStr = "?limit=" + String(100)
+                        let popularityStr = "&popularity=" + String(currentUser.getSetting(setting: "popularity"))
+                        let artistsStr = "&seed_artists=" + topArtists.joined(separator: ",")
+                        let genreStr = "&seed_genre=" + topGenre.joined(separator: ",").replacingOccurrences(of: " ", with: "%20")
+                        let attrStr = "&target_energy=" + self.getAttrWithNoise(mood: mood, attr: "energy") + "&target_danceability=" + self.getAttrWithNoise(mood: mood, attr: "danceability") + "&target_instrumentalness=" + self.getAttrWithNoise(mood: mood, attr: "instrumentalness") + "&target_valence=" + self.getAttrWithNoise(mood: mood, attr: "valence")
+                        let urlStr = "https://api.spotify.com/v1/recommendations" + limitStr + popularityStr + artistsStr + genreStr + attrStr
+                        print(urlStr)
+                        let url = URL(string: urlStr)!
+                        Alamofire.request(url, headers: headers).responseJSON { response in
+                            if let data = response.data {
+                                let json = JSON(data)
+                                for (_, track) in json["tracks"]{
+                                    tracks.append(Track(id: track["id"].string!, name: track["name"].string!, artist: track["artists"][0]["name"].string!, coverUrl: track["album"]["images"][2]["url"].string!))
+                                }
+                                completion(Array(tracks.shuffled()[0...numTracks]))
+                            } else {
+                                completion(nil)
+                            }
                         }
-                        completion(tracks)
-                    } else {
-                        completion(nil)
                     }
-                }
+                })
             }
         })
     }

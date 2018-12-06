@@ -17,7 +17,7 @@ class CurrentUser {
     var username: String
     var profilePicture: UIImage!
     var currentMood: String! // Everyone is happy at the beginning
-    var settings: [String : String]! // Allow the user to change those in the settings
+    var settings: [String : Int]! // Allow the user to change those in the settings
     
     // The following we get from Spotify API since they're not specific to our app and might change
     var playlists: [Playlist]!
@@ -39,7 +39,7 @@ class CurrentUser {
                 let userRef = self.dbRef.child("Users/\(self.username)")
                 userRef.child("Mood").setValue("Joy")
                 userRef.child("Playlists").setValue([String : [String : String]]())
-                userRef.child("Settings").setValue(["numTracks": "25", "popularity": "80"])
+                userRef.child("Settings").setValue(["numTracks": 25, "popularity": 80])
                 self.loadSettings()
                 self.currentMood = "Joy"
             }
@@ -96,7 +96,7 @@ class CurrentUser {
     func loadSettings() {
         self.dbRef.child("Users/\(self.username)/Settings").observeSingleEvent(of: .value, with: { (snapshot) in
             if snapshot.exists() {
-                let settings = snapshot.value as! [String : String]
+                let settings = snapshot.value as! [String : Int]
                 self.settings = settings
             }
         })
@@ -142,11 +142,11 @@ class CurrentUser {
         return nil
     }
     
-    func getSetting(setting: String) -> String {
+    func getSetting(setting: String) -> Int {
         return self.settings[setting]!
     }
     
-    func updateSetting(setting: String, newValue: String) -> Void {
+    func updateSetting(setting: String, newValue: Int) -> Void {
         self.settings[setting] = newValue
         let settingsRef = self.dbRef.child("Users/\(self.username)/Settings")
         settingsRef.child(setting).setValue(newValue)
