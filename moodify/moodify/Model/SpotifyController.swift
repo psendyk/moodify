@@ -23,6 +23,7 @@ class SpotifyController {
                            "Fear": ["energy": 0.5, "danceability": 0, "instrumentalness": 0.8, "valence": 0.2]]
     
     func getAttrWithNoise(mood: String, attr: String) -> String {
+        print(mood)
         let r = Double.random(in: -0.1...0.1)
         return String(min(1, max(0, trackAttributes[mood]![attr]! + r)))
     }
