@@ -99,12 +99,13 @@ class SpotifyController {
             "Authorization": "Bearer " + self.session.accessToken
         ]
         
-        Alamofire.request("https://api.spotify.com/v1/me/top/artists?limit=10", headers: headers).responseJSON { response in
+        Alamofire.request("https://api.spotify.com/v1/me/top/artists?limit=5", headers: headers).responseJSON { response in
             if let data = response.data {
                 let json = JSON(data)
                 for i in 0...json["items"].count-1 {
                     topArtists.append(json["items"][i]["id"].string!)
                 }
+                topArtists = topArtists.filter{$0 != "Travis Scott"}
                 let shuffled = Array(topArtists.shuffled()[0...1])
                 completion(shuffled)
             } else {
@@ -120,7 +121,7 @@ class SpotifyController {
             "Authorization": "Bearer " + self.session.accessToken
         ]
         
-        Alamofire.request("https://api.spotify.com/v1/me/top/artists?limit=50", headers: headers).responseJSON { response in
+        Alamofire.request("https://api.spotify.com/v1/me/top/artists?limit=25", headers: headers).responseJSON { response in
             if let data = response.data {
                 let json = JSON(data)
                 for i in 0...json["items"].count-1 {
@@ -133,7 +134,9 @@ class SpotifyController {
                     counts[item] = (counts[item] ?? 0) + 1
                 }
                 let topCounts = counts.sorted { $0.value > $1.value }.map { $0.key }
-                completion(Array(topCounts[0...2]))
+                var topCounts_ = Array(topCounts[0...1])
+                topCounts_.append("edm")
+                completion(topCounts_)
             } else {
                 completion(nil)
             }
@@ -152,7 +155,7 @@ class SpotifyController {
                 self.getTopGenre(currentUser: currentUser, completion: { topGenre in
                     if let topGenre = topGenre {
                         let numTracks = currentUser.getSetting(setting: "numTracks")
-                        let limitStr = "?limit=" + String(100)
+                        let limitStr = "?limit=" + String(50)
                         let popularityStr = "&popularity=" + String(currentUser.getSetting(setting: "popularity"))
                         let artistsStr = "&seed_artists=" + topArtists.joined(separator: ",")
                         let genreStr = "&seed_genre=" + topGenre.joined(separator: ",").replacingOccurrences(of: " ", with: "%20")

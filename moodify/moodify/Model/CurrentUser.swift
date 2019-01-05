@@ -39,7 +39,7 @@ class CurrentUser {
                 let userRef = self.dbRef.child("Users/\(self.username)")
                 userRef.child("Mood").setValue("Joy")
                 userRef.child("Playlists").setValue([String : [String : String]]())
-                userRef.child("Settings").setValue(["numTracks": 25, "popularity": 80])
+                userRef.child("Settings").setValue(["numTracks": 25, "popularity": 60])
                 self.loadSettings()
                 self.currentMood = "Joy"
             }
